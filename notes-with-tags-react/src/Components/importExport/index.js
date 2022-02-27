@@ -1,5 +1,5 @@
 import React from "react"
-import { exportNotesAsNTWFile } from '../../Util/util.js'
+import { exportNotesAsNTWFile } from '../../Util/Util.js'
 
 export default class ImportExport extends React.Component {
     state = {
