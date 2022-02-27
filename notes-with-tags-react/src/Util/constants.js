@@ -1,0 +1,5 @@
+export const NOTE_COMPONENT_STATUS = {
+    THUMBNAIL: 'THUMBNAIL',
+    VIEW: 'VIEW',
+    EDIT: 'EDIT'
+}
