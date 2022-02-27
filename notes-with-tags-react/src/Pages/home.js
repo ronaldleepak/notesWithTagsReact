@@ -1,6 +1,6 @@
 import React from "react"
-import NoteList from "../Components/NoteList/Index";
-import ImportExport from "../Components/ImportExport/Index";
+import NoteList from "../Components/NoteList";
+import ImportExport from "../Components/ImportExport";
 
 export default class HomePage extends React.Component {
     state = {
@@ -9,6 +9,7 @@ export default class HomePage extends React.Component {
     };
 
     render() {
+        var { notes } = this.state;
         return (
             <div>
                 <div className="block has-text-centered">
@@ -17,9 +18,9 @@ export default class HomePage extends React.Component {
                     </h1>
                 </div>
                 <div>
-                    <NoteList/>
+                    <NoteList notes={notes}/>
 
-                    <ImportExport/>
+                    <ImportExport notes={notes}/>
                 </div>
             </div>
         );

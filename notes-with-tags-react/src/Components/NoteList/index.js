@@ -1,4 +1,5 @@
 import React from "react"
+import NoteCard from "../NoteCard"
 
 const NEW_NOTE = 'NEW_NOTE'
 const DELETE_NOTE = 'DELETE_NOTE'
@@ -12,6 +13,7 @@ export default class NoteList extends React.Component {
     };
 
     render() {
+        var { notes } = this.props;
         return (
             <div className="columns is-centered is-mobile">
                 <div className="column is-9">
@@ -19,12 +21,13 @@ export default class NoteList extends React.Component {
                         <button className="button is-light">New Note</button>
                     </div>
                     <div className="list">
-                    {/* {% for note in notes %}
-                        {% set key = "note" + loop.index0 %}
-                        <div key="{{key}}" class="box is-light">
-                            {% mount '../noteCard' with { note: note, onNoteDelete: onNoteDelete } %}
-                        </div>
-                    {% endfor %} */}
+                    {
+                        notes.map(note => {
+                            return (
+                                <NoteCard note={note}/>
+                            )
+                        })
+                    }
                     </div>
                 </div>
             </div>
