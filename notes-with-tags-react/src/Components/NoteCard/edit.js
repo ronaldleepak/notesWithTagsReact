@@ -1,4 +1,5 @@
 import React from "react"
+import { ButtonGroup } from "../Common"
 
 export default class NoteEdit extends React.Component {
     state = {
@@ -6,6 +7,12 @@ export default class NoteEdit extends React.Component {
         content: '',
         header: '',
     };
+
+    buttons = [
+        { label: "Save", bulmaClassName: "is-success" },
+        { label: "Close Without Saving" },
+        { label: "Delete", bulmaClassName: "is-danger" },
+    ]
 
     render() {
         var { content, header } = this.props;
@@ -17,11 +24,7 @@ export default class NoteEdit extends React.Component {
                 <div class="block">
                     <textarea class="textarea" value={content}/>
                 </div>
-                <div class="buttons">
-                    <button class="button is-light is-success" type="submit">Save</button>
-                    <button class="button is-light">Close Without Saving</button>
-                    <button class="button is-light is-danger">Delete</button>
-                </div>
+                <ButtonGroup buttons={this.buttons}/>
             </div>
         );
     };

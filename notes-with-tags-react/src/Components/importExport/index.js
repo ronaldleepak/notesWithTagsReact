@@ -1,20 +1,22 @@
 import React from "react"
+import { ButtonGroup } from "../Common"
 import { exportNotesAsNTWFile } from '../../Util/Util.js'
 
 export default class ImportExport extends React.Component {
     state = {
-        message: "Welcome to NotesWithTags!",
         notes: [],
     };
+
+    buttons = [
+        { label: "Import .NWT file" },
+        { label: "Export .NWT file" }
+    ]
 
     render() {
         return (
             <div className="columns is-centered is-mobile">
                 <div className="column is-9">
-                    <div className="block buttons">
-                        <button className="button is-light">Import .NWT file</button>
-                        <button className="button is-light">Export .NWT file</button>
-                    </div>
+                    <ButtonGroup buttons={this.buttons}/>
                 </div>
             </div>
         );

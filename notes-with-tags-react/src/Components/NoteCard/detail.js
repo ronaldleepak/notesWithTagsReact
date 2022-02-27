@@ -1,4 +1,5 @@
 import React from "react"
+import NewLineText from "../Common/NewLineText"
 
 export default class NoteDetail extends React.Component {
     state = {
@@ -24,7 +25,7 @@ export default class NoteDetail extends React.Component {
                         </div>
                     </div>
                 </div>
-                {content}
+                <NewLineText text={content}/>
                 <div class="block">
                     <button class="button">EDIT</button>
                 </div>
