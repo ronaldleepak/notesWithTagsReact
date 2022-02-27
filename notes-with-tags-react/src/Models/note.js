@@ -1,4 +1,4 @@
-import { uid } from '../Util/util.js';
+import { uid } from '../Util/Util.js';
 
 export const newNote = () => {
     return {

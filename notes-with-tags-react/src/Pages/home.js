@@ -1,6 +1,6 @@
 import React from "react"
-import NoteList from "../Components/NoteList";
-import ImportExport from "../Components/importExport";
+import NoteList from "../Components/NoteList/Index";
+import ImportExport from "../Components/ImportExport/Index";
 
 export default class HomePage extends React.Component {
     state = {
