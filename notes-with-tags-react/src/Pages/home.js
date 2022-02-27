@@ -1,4 +1,6 @@
 import React from "react"
+import NoteList from "../Components/NoteList";
+import ImportExport from "../Components/importExport";
 
 export default class HomePage extends React.Component {
     state = {
@@ -9,13 +11,15 @@ export default class HomePage extends React.Component {
     render() {
         return (
             <div>
-                <div class="block has-text-centered">
-                    <h1 class="title is-1">
+                <div className="block has-text-centered">
+                    <h1 className="title is-1">
                         {this.state.message}
                     </h1>
                 </div>
                 <div>
-                    
+                    <NoteList/>
+
+                    <ImportExport/>
                 </div>
             </div>
         );
