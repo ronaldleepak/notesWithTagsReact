@@ -4,10 +4,10 @@ export const newNote = () => {
     return {
         noteID: uid(),
         tags: [],
-        header: 'New note',
+        header: 'Write your header here',
         content: 'Write your contents here',
-        createDate: new Date(Date.now()),
-        modifyDate: new Date(Date.now()),
+        createdDate: new Date(Date.now()),
+        modifiedDate: new Date(Date.now()),
     };
 };
 
