@@ -24,7 +24,7 @@ export default class NoteCard extends React.Component {
         } = this.state;
         
         return (
-            <div class="box is-light">
+            <div className="box is-light">
                 {(isComponentStatusThumbnail) ? <Thumbnail note={note}/> : null}
                 {(isComponentStatusView) ? <Edit note={note}/> : null}
                 {(isComponentStatusEdit) ? <Detail note={note}/> : null}

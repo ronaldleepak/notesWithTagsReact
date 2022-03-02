@@ -18,11 +18,11 @@ export default class NoteEdit extends React.Component {
         var { content, header } = this.props;
         return (
             <div>
-                <div class="block">
-                    <input class="input" value={header}/>
+                <div className="block">
+                    <input className="input" value={header}/>
                 </div>
-                <div class="block">
-                    <textarea class="textarea" value={content}/>
+                <div className="block">
+                    <textarea className="textarea" value={content}/>
                 </div>
                 <ButtonGroup buttons={this.buttons}/>
             </div>

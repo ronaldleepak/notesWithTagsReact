@@ -9,7 +9,7 @@ export default class ButtonGroup extends React.Component {
                 buttons.map(button => {
                     var className = "button is-light " + button.bulmaClassName;
                     return (
-                        <button className={className}>
+                        <button className={className} onClick={button.action}>
                             {button.label}
                         </button>
                     )

@@ -9,7 +9,7 @@ export default class NewLineText extends React.Component {
     render() {
         var { text } = this.props;
         return (
-            <div class="block">
+            <div className="block">
             {
                 this.splitNextLine(text).map(paragraphContent => {
                     return (
