@@ -3,11 +3,13 @@ import { createNote, deleteNoteFromList } from '../Models/Note'
 
 export const notesSlice = createSlice({
     name: 'notes',
-    initialState: {
-        notes: []
-    },
+    initialState: [
+        createNote(),
+        createNote()
+    ],
     reducers: {
         newNote: state => {
+            console.log(state)
             return {
                 ...state,
                 notes: [createNote(), ...state.notes],

@@ -7,7 +7,6 @@ const CHANGE_COMPONENT_STATUS = 'CHANGE_COMPONENT_STATUS';
 
 export default class NoteCard extends React.Component {
     state = {
-        note: {},
         isComponentStatusThumbnail: true,
         isComponentStatusView: false,
         isComponentStatusEdit: false,
@@ -16,10 +15,14 @@ export default class NoteCard extends React.Component {
     render() {
         var {
             note,
+        } = this.props;
+
+        var {
             isComponentStatusThumbnail,
             isComponentStatusView,
             isComponentStatusEdit,
-        } = this.props;
+        } = this.state;
+        
         return (
             <div class="box is-light">
                 {(isComponentStatusThumbnail) ? <Thumbnail note={note}/> : null}

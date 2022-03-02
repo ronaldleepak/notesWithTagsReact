@@ -1,25 +1,20 @@
 import React from "react"
+import { connect } from 'react-redux'
+import { ButtonGroup } from "../Common"
 import NoteCard from "../NoteCard"
 
-const NEW_NOTE = 'NEW_NOTE'
-const DELETE_NOTE = 'DELETE_NOTE'
-const SORT_NOTES = 'SORT_NOTES'
-const FILTER_NOTES = 'FILTER_NOTES'
+class NoteList extends React.Component {
 
-export default class NoteList extends React.Component {
-    state = {
-        message: "Welcome to NotesWithTags!",
-        notes: [],
-    };
+    buttons = [
+        { label: "New Note" },
+    ]
 
     render() {
-        var { notes } = this.props;
+        var {notes} = this.props
         return (
             <div className="columns is-centered is-mobile">
                 <div className="column is-9">
-                    <div className="block buttons">
-                        <button className="button is-light">New Note</button>
-                    </div>
+                    <ButtonGroup buttons={this.buttons}/>
                     <div className="list">
                     {
                         notes.map(note => {
@@ -34,3 +29,13 @@ export default class NoteList extends React.Component {
         );
     };
 }
+
+const mapStateToProps = (state) => {
+    return {
+        notes: state.notes
+    }
+}
+
+const enhancer = connect(mapStateToProps);
+
+export default enhancer(NoteList)

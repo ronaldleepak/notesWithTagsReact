@@ -3,6 +3,6 @@ import { notesReducer } from './Reducers'
 
 export default configureStore({
   reducer: {
-      note: notesReducer,
+      notes: notesReducer,
   }
 })
