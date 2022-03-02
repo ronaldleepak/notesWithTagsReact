@@ -1,6 +1,15 @@
 import React from "react"
+import PropTypes from 'prop-types'
 
 export default class ButtonGroup extends React.Component {
+    static propTypes = {
+        buttons: PropTypes.arrayOf(PropTypes.shape({
+            label: PropTypes.string,
+            action: PropTypes.func,
+            bulmaClassName: PropTypes.string,
+        }))
+    }
+
     render() {
         var { buttons } = this.props;
         return (
