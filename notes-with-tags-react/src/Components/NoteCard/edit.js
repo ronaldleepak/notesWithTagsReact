@@ -1,8 +1,10 @@
 import React from "react"
+import { connect } from 'react-redux'
 import { ButtonGroup } from "../Common"
+import { deleteNote } from "../../Actions"
 import { VIEW_STATUS } from "../../Util/Constants"
 
-export default class NoteEdit extends React.Component {
+class NoteEdit extends React.Component {
     constructor(props) {
         super(props);
 
@@ -23,8 +25,8 @@ export default class NoteEdit extends React.Component {
     }
 
     handleDeleteButtonClick = () => {
-        const { onViewChange } = this.props;
-        onViewChange(VIEW_STATUS.DETAIL);
+        const { onDeleteNoteClick, note } = this.props;
+        onDeleteNoteClick(note.noteID)
     }
 
     buttons = [
@@ -60,3 +62,11 @@ export default class NoteEdit extends React.Component {
         );
     };
 }
+
+const mapDispatchToProps = {
+    onDeleteNoteClick: deleteNote,
+};
+
+const enhancer = connect(null, mapDispatchToProps);
+
+export default enhancer(NoteEdit)

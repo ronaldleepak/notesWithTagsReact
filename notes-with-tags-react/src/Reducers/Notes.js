@@ -12,7 +12,7 @@ const notes = handleActions({
         return [...state, createNote()];
     },
     [DELETE_NOTE]: (state, { payload }) => {
-        return deleteNoteFromList(state, payload.noteID);
+        return deleteNoteFromList(state, payload);
     }
 }, initialState);
 
