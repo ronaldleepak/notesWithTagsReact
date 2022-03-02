@@ -3,6 +3,8 @@ import React from "react"
 export default class CreatedModifiedDate extends React.Component {
     render() {
         var { createdDate, modifiedDate } = this.props;
+        createdDate = new Date(createdDate);
+        modifiedDate = new Date(modifiedDate);
         return (
             <div className="block">
                 <p>

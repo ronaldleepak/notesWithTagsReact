@@ -6,8 +6,8 @@ export const createNote = () => {
         tags: [],
         header: 'Write your header here',
         content: 'Write your contents here',
-        createdDate: new Date(Date.now()),
-        modifiedDate: new Date(Date.now()),
+        createdDate: Date.now(),
+        modifiedDate: Date.now(),
     };
 };
 
