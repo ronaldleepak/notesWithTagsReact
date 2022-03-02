@@ -1,1 +1,1 @@
-export { default as notesReducer } from './NotesSlice';
+export { default as notesReducer } from './Notes';

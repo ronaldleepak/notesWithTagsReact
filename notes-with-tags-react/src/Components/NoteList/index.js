@@ -2,11 +2,11 @@ import React from "react"
 import { connect } from 'react-redux'
 import { ButtonGroup } from "../Common"
 import NoteCard from "../NoteCard"
-
+import { newNote, deleteNote } from "../../Actions/UpdateNoteList"
 class NoteList extends React.Component {
 
     buttons = [
-        { label: "New Note" },
+        { label: "New Notes", action: this.props.onNewNoteClick },
     ]
 
     render() {
@@ -36,6 +36,11 @@ const mapStateToProps = (state) => {
     }
 }
 
-const enhancer = connect(mapStateToProps);
+const mapDispatchToProps = {
+    onNewNoteClick: newNote,
+    onDeleteNote: deleteNote,
+};
+
+const enhancer = connect(mapStateToProps, mapDispatchToProps);
 
 export default enhancer(NoteList)
