@@ -1,8 +1,14 @@
 import { render, screen } from '@testing-library/react';
+import { Provider } from 'react-redux'
 import App from '../App';
+import store from '../store';
 
 export default test('renders all initial UI', () => {
-    render(<App />);
+    render(
+        <Provider store={store}>
+            <App />
+        </Provider>
+    );
     const headerElement = screen.getByText(/Welcome to NotesWithTags!/i);
     expect(headerElement).toBeInTheDocument();
 

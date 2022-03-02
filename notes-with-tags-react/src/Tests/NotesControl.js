@@ -1,8 +1,14 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { Provider } from 'react-redux'
 import App from '../App';
+import store from '../store';
 
 export const NewNote = test('New Note', () => {
-    render(<App />);
+    render(
+        <Provider store={store}>
+            <App />
+        </Provider>
+    );
     
     fireEvent.click(screen.getByText('New Note'))
 
@@ -15,7 +21,11 @@ export const NewNote = test('New Note', () => {
 });
 
 export const ChangeNoteViewingStatus = test('Change Note Viewing Status', () => {
-    render(<App />);
+    render(
+        <Provider store={store}>
+            <App />
+        </Provider>
+    );
 
     // new 1 note
     fireEvent.click(screen.getByText('New Note'))
@@ -30,7 +40,11 @@ export const ChangeNoteViewingStatus = test('Change Note Viewing Status', () => 
 });
 
 export const DeleteNote = test('Delete Note', () => {
-    render(<App />);
+    render(
+        <Provider store={store}>
+            <App />
+        </Provider>
+    );
 
     // new 3 notes
     fireEvent.click(screen.getByText('New Note'))
@@ -45,7 +59,11 @@ export const DeleteNote = test('Delete Note', () => {
 });
 
 export const UpdateNote = test('Update Note', () => {
-    render(<App />);
+    render(
+        <Provider store={store}>
+            <App />
+        </Provider>
+    );
 
     // new 1 note
     fireEvent.click(screen.getByText('New Note'))
