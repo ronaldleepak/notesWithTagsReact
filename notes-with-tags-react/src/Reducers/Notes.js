@@ -9,7 +9,7 @@ const initialState = [];
 
 const notes = handleActions({
     [NEW_NOTE]: (state, { payload }) => {
-        return [...state, createNote()];
+        return [createNote(), ...state];
     },
     [DELETE_NOTE]: (state, { payload }) => {
         return deleteNoteFromList(state, payload);
