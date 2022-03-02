@@ -8,7 +8,7 @@ class NoteList extends React.Component {
 
     buttons = [
         {
-            label: "New Notes",
+            label: "New Note",
             action: () => {
                 this.props.onNewNoteClick();
             }
