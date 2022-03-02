@@ -3,8 +3,6 @@ import Thumbnail from "./Thumbnail"
 import Edit from "./Edit"
 import Detail from "./Detail"
 
-const CHANGE_COMPONENT_STATUS = 'CHANGE_COMPONENT_STATUS';
-
 export default class NoteCard extends React.Component {
     state = {
         isComponentStatusThumbnail: true,

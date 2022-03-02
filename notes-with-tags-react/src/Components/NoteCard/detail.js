@@ -21,7 +21,6 @@ export default class NoteDetail extends React.Component {
                     <button className="button">EDIT</button>
                 </div>
             </div>
-
         );
     };
 }
