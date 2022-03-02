@@ -1,21 +1,52 @@
 import React from "react"
 import { ButtonGroup } from "../Common"
+import { VIEW_STATUS } from "../../Util/Constants"
 
 export default class NoteEdit extends React.Component {
-    state = {
-        note: {},
-        content: '',
-        header: '',
-    };
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            content: props.note.content,
+            header: props.note.header,
+        };
+    }
+
+    handleSaveButtonClick = () => {
+        const { onViewChange } = this.props;
+        onViewChange(VIEW_STATUS.DETAIL);
+    }
+
+    handleCloseButtonClick = () => {
+        const { onViewChange } = this.props;
+        onViewChange(VIEW_STATUS.DETAIL);
+    }
+
+    handleDeleteButtonClick = () => {
+        const { onViewChange } = this.props;
+        onViewChange(VIEW_STATUS.DETAIL);
+    }
 
     buttons = [
-        { label: "Save", bulmaClassName: "is-success" },
-        { label: "Close Without Saving" },
-        { label: "Delete", bulmaClassName: "is-danger" },
+        {
+            label: "Save",
+            bulmaClassName: "is-success",
+            action: this.handleSaveButtonClick,
+        },
+        {
+            label: "Close Without Saving",
+            action: this.handleCloseButtonClick,
+        },
+        {
+            label: "Delete",
+            bulmaClassName: "is-danger",
+            action: this.handleDeleteButtonClick,
+        },
     ]
 
     render() {
-        var { content, header } = this.props;
+        var { content, header } = this.state;
+
         return (
             <div>
                 <div className="block">

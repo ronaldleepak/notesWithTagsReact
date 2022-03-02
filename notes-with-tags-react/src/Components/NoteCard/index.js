@@ -2,13 +2,28 @@ import React from "react"
 import Thumbnail from "./Thumbnail"
 import Edit from "./Edit"
 import Detail from "./Detail"
+import { VIEW_STATUS } from "../../Util/Constants"
+
+const {
+    THUMBNAIL,
+    DETAIL,
+    EDIT,
+} = VIEW_STATUS;
 
 export default class NoteCard extends React.Component {
-    state = {
-        isComponentStatusThumbnail: true,
-        isComponentStatusView: false,
-        isComponentStatusEdit: false,
-    };
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            viewStatus: THUMBNAIL,
+        };
+    }
+
+    handleViewChange = (viewStatus) => {
+        this.setState({
+            viewStatus: viewStatus,
+        })
+    }
 
     render() {
         var {
@@ -16,16 +31,14 @@ export default class NoteCard extends React.Component {
         } = this.props;
 
         var {
-            isComponentStatusThumbnail,
-            isComponentStatusView,
-            isComponentStatusEdit,
+            viewStatus,
         } = this.state;
         
         return (
             <div className="box is-light">
-                {(isComponentStatusThumbnail) ? <Thumbnail note={note}/> : null}
-                {(isComponentStatusView) ? <Edit note={note}/> : null}
-                {(isComponentStatusEdit) ? <Detail note={note}/> : null}
+                {(viewStatus === THUMBNAIL) ? <Thumbnail note={note} onViewChange={this.handleViewChange}/> : null}
+                {(viewStatus === DETAIL) ? <Detail note={note} onViewChange={this.handleViewChange}/> : null}
+                {(viewStatus === EDIT) ? <Edit note={note} onViewChange={this.handleViewChange}/> : null}
             </div>
         );
     };

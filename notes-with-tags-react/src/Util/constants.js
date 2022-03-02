@@ -1,5 +1,5 @@
-export const NOTE_COMPONENT_STATUS = {
+export const VIEW_STATUS = {
     THUMBNAIL: 'THUMBNAIL',
-    VIEW: 'VIEW',
-    EDIT: 'EDIT'
+    DETAIL: 'DETAIL',
+    EDIT: 'EDIT',
 }
