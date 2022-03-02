@@ -1,8 +1,9 @@
 import React from "react"
 import { connect } from 'react-redux'
 import { ButtonGroup } from "../Common"
+import { newNote } from "../../Actions"
 import NoteCard from "../NoteCard"
-import { newNote } from "../../Actions/UpdateNoteList"
+
 class NoteList extends React.Component {
 
     buttons = [

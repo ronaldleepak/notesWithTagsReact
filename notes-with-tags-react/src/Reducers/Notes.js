@@ -2,7 +2,7 @@ import { handleActions } from 'redux-actions';
 import {
     NEW_NOTE,
     DELETE_NOTE,
-} from '../Actions/UpdateNoteList'
+} from '../Actions'
 import { createNote, deleteNoteFromList } from '../Models/Note'
 
 const initialState = [];
