@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from 'react-redux'
-import { ButtonGroup, Card } from "../Common"
-import { deleteNote } from "../../Actions"
+import { ButtonGroup, Card, Textfield, Textarea } from "../Common"
+import { deleteNote, saveNote } from "../../Actions"
 import { VIEW_STATUS, BUTTON_STYLE } from "../../Util/Constants"
 
 class NoteEdit extends React.Component {
@@ -15,8 +15,9 @@ class NoteEdit extends React.Component {
     }
 
     handleSaveButtonClick = () => {
-        const { onViewChange } = this.props;
+        const { onViewChange, onSaveNoteClick, note } = this.props;
         onViewChange(VIEW_STATUS.DETAIL);
+        onSaveNoteClick(note)
     }
 
     handleCloseButtonClick = () => {
@@ -27,6 +28,14 @@ class NoteEdit extends React.Component {
     handleDeleteButtonClick = () => {
         const { onDeleteNoteClick, note } = this.props;
         onDeleteNoteClick(note.noteID)
+    }
+
+    handleHeaderChange = (e) => {
+        this.setState({header: e.target.value})
+    }
+
+    handleContentChange = (e) => {
+        this.setState({content: e.target.value})
     }
 
     buttons = [
@@ -51,12 +60,16 @@ class NoteEdit extends React.Component {
 
         return (
             <Card name="note-edit">
-                <div className="block">
-                    <input className="input" value={header}/>
-                </div>
-                <div className="block">
-                    <textarea className="textarea" value={content}/>
-                </div>
+                <Textfield
+                    value={header}
+                    name="note-header-input"
+                    onChange={this.handleHeaderChange}
+                />
+                <Textarea
+                    value={content}
+                    name="note-content-input"
+                    onChange={this.handleContentChange}
+                />
                 <ButtonGroup buttons={this.buttons}/>
             </Card>
         );
@@ -65,6 +78,7 @@ class NoteEdit extends React.Component {
 
 const mapDispatchToProps = {
     onDeleteNoteClick: deleteNote,
+    onSaveNoteClick: saveNote,
 };
 
 const enhancer = connect(null, mapDispatchToProps);
