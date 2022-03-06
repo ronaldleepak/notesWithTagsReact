@@ -1,5 +1,5 @@
 import React from "react"
-import { CreatedModifiedDate } from "../Common"
+import { CreatedModifiedDate, Card } from "../Common"
 import { VIEW_STATUS } from "../../Util/Constants"
 
 export default class NoteThumbnail extends React.Component {
@@ -13,7 +13,7 @@ export default class NoteThumbnail extends React.Component {
         const { note } = this.props;
 
         return (
-            <div className="contents">
+            <Card name="note-thumbnail">
                 <div className="columns">
                     <div className="column is-8">
                         <h2 className="title is-2" onClick={this.handleTitleClick}>
@@ -26,7 +26,7 @@ export default class NoteThumbnail extends React.Component {
                             modifiedDate={note.modifiedDate}/>
                     </div>
                 </div>
-            </div>
+            </Card>
         );
     };
 }

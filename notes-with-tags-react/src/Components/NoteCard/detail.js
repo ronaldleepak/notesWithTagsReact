@@ -3,6 +3,7 @@ import {
     NewLineText,
     CreatedModifiedDate,
     ButtonGroup,
+    Card,
 } from "../Common"
 import { VIEW_STATUS } from "../../Util/Constants"
 
@@ -20,7 +21,7 @@ export default class NoteDetail extends React.Component {
 
     buttons = [
         {
-            label: "EDIT",
+            label: "Edit",
             action: this.handleEditButtonClick
         },
     ]
@@ -29,7 +30,7 @@ export default class NoteDetail extends React.Component {
         var { note } = this.props;
 
         return (
-            <div className="contents">
+            <Card name="note-detail">
                 <div className="columns">
                     <div className="column is-8">
                         <h2 className="title is-2" onClick={this.handleTitleClick}>
@@ -44,7 +45,7 @@ export default class NoteDetail extends React.Component {
                 </div>
                 <NewLineText text={note.content}/>
                 <ButtonGroup buttons={this.buttons}/>
-            </div>
+            </Card>
         );
     };
 }

@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from 'react-redux'
-import { ButtonGroup } from "../Common"
+import { ButtonGroup, Card } from "../Common"
 import { deleteNote } from "../../Actions"
 import { VIEW_STATUS, BUTTON_STYLE } from "../../Util/Constants"
 
@@ -50,7 +50,7 @@ class NoteEdit extends React.Component {
         var { content, header } = this.state;
 
         return (
-            <div className="contents" name="note-edit">
+            <Card name="note-edit">
                 <div className="block">
                     <input className="input" value={header}/>
                 </div>
@@ -58,7 +58,7 @@ class NoteEdit extends React.Component {
                     <textarea className="textarea" value={content}/>
                 </div>
                 <ButtonGroup buttons={this.buttons}/>
-            </div>
+            </Card>
         );
     };
 }
