@@ -2,7 +2,7 @@ import { uid } from '../Util/Util.js';
 
 export const createNote = () => {
     return {
-        noteID: uid(),
+        id: uid(),
         tags: [],
         header: 'Write your header here',
         content: 'Write your contents here',
@@ -25,6 +25,6 @@ export const filterNotes = (searchItem) => {
     return true;
 }
 
-export const deleteNoteFromList = (notes, noteID) => {
-    return notes.filter( note => note.noteID !== noteID )
+export const deleteNoteFromList = (notes, id) => {
+    return notes.filter( note => note.id !== id )
 }

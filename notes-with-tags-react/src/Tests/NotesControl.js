@@ -29,7 +29,7 @@ export const ChangeNoteViewingStatus = test('Change Note Viewing Status', () => 
     render(
         <Provider store={store}>
             <NoteCard note={{
-                noteID: 'testID',
+                id: 'testID',
                 tags: [],
                 header: 'header',
                 content: 'contents',
