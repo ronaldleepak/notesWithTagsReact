@@ -9,7 +9,7 @@ export default class Card extends React.Component {
     render() {
         var { children, name } = this.props;
         return (
-            <div className="contents" role="listitem" name={name}>
+            <div className="contents" role="listitem" aria-label={name}>
                 {children}
             </div>
         );
