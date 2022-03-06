@@ -42,7 +42,7 @@ export default class ButtonGroup extends React.Component {
                     const key = "button_" + uid();
                     return (
                         <button
-                            name={button.name}
+                            aria-label={button.name}
                             key={key}
                             className={className}
                             onClick={button.action}>
