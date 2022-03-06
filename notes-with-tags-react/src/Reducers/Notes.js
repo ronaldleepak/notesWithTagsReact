@@ -4,7 +4,7 @@ import {
     SAVE_NOTE,
     DELETE_NOTE,
 } from '../Actions'
-import { createNote, deleteNoteFromList } from '../Models/Note'
+import { createNote, deleteNoteFromList, saveNote } from '../Models/Note'
 
 const initialState = [];
 
@@ -13,7 +13,7 @@ const notes = handleActions({
         return [createNote(), ...state];
     },
     [SAVE_NOTE]: (state, { payload }) => {
-        return state;
+        return saveNote(state, payload);
     }, 
     [DELETE_NOTE]: (state, { payload }) => {
         return deleteNoteFromList(state, payload);

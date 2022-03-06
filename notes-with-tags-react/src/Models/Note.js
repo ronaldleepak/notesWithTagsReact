@@ -25,6 +25,19 @@ export const filterNotes = (searchItem) => {
     return true;
 }
 
+export const saveNote = (notes, newNoteContent) => {
+    return notes.map(note =>
+        note.id === newNoteContent.id
+            ? {
+                ...note,
+                header: newNoteContent.header,
+                content: newNoteContent.content,
+                modifiedDate: Date.now(),
+            }
+            : note
+      );
+}
+
 export const deleteNoteFromList = (notes, id) => {
     return notes.filter( note => note.id !== id )
 }

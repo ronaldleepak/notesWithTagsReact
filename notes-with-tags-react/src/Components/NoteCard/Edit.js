@@ -15,9 +15,23 @@ class NoteEdit extends React.Component {
     }
 
     handleSaveButtonClick = () => {
-        const { onViewChange, onSaveNoteClick, note } = this.props;
+        const {
+            onViewChange,
+            onSaveNoteClick,
+            note,
+        } = this.props;
+
+        const {
+            content,
+            header,
+        } = this.state;
+
+        onSaveNoteClick({
+            id: note.id,
+            header: header,
+            content: content,
+        });
         onViewChange(VIEW_STATUS.DETAIL);
-        onSaveNoteClick(note)
     }
 
     handleCloseButtonClick = () => {
