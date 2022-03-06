@@ -3,3 +3,9 @@ export const VIEW_STATUS = {
     DETAIL: 'DETAIL',
     EDIT: 'EDIT',
 }
+
+export const BUTTON_STYLE = {
+    NORMAL: 'NORMAL',
+    SUBMIT: 'SUBMIT',
+    DANGER: 'DANGER',
+}

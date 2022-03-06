@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from 'react-redux'
 import { ButtonGroup } from "../Common"
 import { deleteNote } from "../../Actions"
-import { VIEW_STATUS } from "../../Util/Constants"
+import { VIEW_STATUS, BUTTON_STYLE } from "../../Util/Constants"
 
 class NoteEdit extends React.Component {
     constructor(props) {
@@ -32,7 +32,7 @@ class NoteEdit extends React.Component {
     buttons = [
         {
             label: "Save",
-            bulmaClassName: "is-success",
+            buttonStyle: BUTTON_STYLE.SUBMIT,
             action: this.handleSaveButtonClick,
         },
         {
@@ -41,7 +41,7 @@ class NoteEdit extends React.Component {
         },
         {
             label: "Delete",
-            bulmaClassName: "is-danger",
+            buttonStyle: BUTTON_STYLE.DANGER,
             action: this.handleDeleteButtonClick,
         },
     ]
@@ -50,7 +50,7 @@ class NoteEdit extends React.Component {
         var { content, header } = this.state;
 
         return (
-            <div>
+            <div className="contents" name="note-edit">
                 <div className="block">
                     <input className="input" value={header}/>
                 </div>
