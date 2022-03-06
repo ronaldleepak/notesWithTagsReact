@@ -1,12 +1,17 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { userEvent } from '@testing-library/user-event';
 import { Provider } from 'react-redux'
 import App from '../App';
+import NoteList from '../Components/NoteList';
+import NoteCard from '../Components/NoteCard';
 import store from '../store';
 
 export const NewNote = test('New Note', () => {
     render(
         <Provider store={store}>
-            <App />
+            <NoteList notes={
+                []
+            }/>
         </Provider>
     );
     
@@ -23,20 +28,40 @@ export const NewNote = test('New Note', () => {
 export const ChangeNoteViewingStatus = test('Change Note Viewing Status', () => {
     render(
         <Provider store={store}>
-            <App />
+            <NoteCard note={{
+                noteID: 'testID',
+                tags: [],
+                header: 'header',
+                content: 'contents',
+                createdDate: Date.now(),
+                modifiedDate: Date.now(),
+            }} />
         </Provider>
     );
 
-    // new 1 note
-    fireEvent.click(screen.getByText('New Note'))
+    // ensure it is in thumbnail
+    var noteThumbnailDialog = screen.getByRole('listitem', {name: "note-thumbnail"});
+    expect(noteThumbnailDialog).toBeInTheDocument();
 
     // from thumbnail to view detail
+    fireEvent.click(screen.getByText('header'))
+    var noteDetailDialog = screen.getByRole('listitem', { name: 'note-detail' });
+    expect(noteDetailDialog).toBeInTheDocument();
 
     // from view detail to edit
+    fireEvent.click(screen.getByText('Edit'))
+    var noteEditDialog = screen.getByRole('listitem', { name: 'note-edit' });
+    expect(noteEditDialog).toBeInTheDocument();
 
     // from edit status to view detail
+    fireEvent.click(screen.getByText('Close Without Saving'))
+    noteEditDialog = screen.getByRole('listitem', { name: 'note-detail' });
+    expect(noteEditDialog).toBeInTheDocument();
 
     // from view to thumbnail
+    fireEvent.click(screen.getByText('header'))
+    noteThumbnailDialog = screen.getByRole('listitem', { name: 'note-thumbnail' });
+    expect(noteThumbnailDialog).toBeInTheDocument();
 });
 
 export const DeleteNote = test('Delete Note', () => {
