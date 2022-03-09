@@ -1,23 +1,31 @@
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux'
 import App from '../App';
-import store from '../store';
+import { createTestStore } from '../store';
 
-export default test('renders all initial UI', () => {
-    render(
-        <Provider store={store}>
-            <App />
-        </Provider>
-    );
-    const headerElement = screen.getByText(/Welcome to NotesWithTags!/i);
-    expect(headerElement).toBeInTheDocument();
+let store
 
-    const notesButtonsElement = screen.getByText(/New Note/i);
-    expect(notesButtonsElement).toBeInTheDocument();
+describe("Test UI rendering", () => {
+    beforeEach(() => {
+        store = createTestStore();
+    });
+    
+    test('renders all initial UI', () => {
+        render(
+            <Provider store={store}>
+                <App />
+            </Provider>
+        );
+        const headerElement = screen.getByText(/Welcome to NotesWithTags!/i);
+        expect(headerElement).toBeInTheDocument();
 
-    const importElement = screen.getByText(/Import .NWT file/i);
-    expect(importElement).toBeInTheDocument();
+        const notesButtonsElement = screen.getByText(/New Note/i);
+        expect(notesButtonsElement).toBeInTheDocument();
 
-    const exportElement = screen.getByText(/Export .NWT file/i);
-    expect(exportElement).toBeInTheDocument();
+        const importElement = screen.getByText(/Import .NWT file/i);
+        expect(importElement).toBeInTheDocument();
+
+        const exportElement = screen.getByText(/Export .NWT file/i);
+        expect(exportElement).toBeInTheDocument();
+    });
 });

@@ -1,20 +1,28 @@
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux'
-import App from '../App';
-import store from '../store';
+import Home from '../Pages/Home';
+import { createTestStore } from '../store';
 
-export const Import = test('Import', () => {
-    render(
-        <Provider store={store}>
-            <App />
-        </Provider>
-    );
-});
+let store
 
-export const Export = test('Export', () => {
-    render(
-        <Provider store={store}>
-            <App />
-        </Provider>
-    );
+describe("Test import export controls", () => {
+    beforeEach(() => {
+        store = createTestStore();
+    });
+    
+    test('Import', () => {
+        render(
+            <Provider store={store}>
+                <Home notes={[]} />
+            </Provider>
+        );
+    });
+
+    test('Export', () => {
+        render(
+            <Provider store={store}>
+                <Home notes={[]} />
+            </Provider>
+        );
+    });
 });
