@@ -22,6 +22,7 @@ export default class NoteDetail extends React.Component {
     buttons = [
         {
             label: "Edit",
+            name: "edit-note",
             action: this.handleEditButtonClick
         },
     ]

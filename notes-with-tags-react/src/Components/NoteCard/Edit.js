@@ -55,15 +55,18 @@ class NoteEdit extends React.Component {
     buttons = [
         {
             label: "Save",
+            name: "save-note",
             buttonStyle: BUTTON_STYLE.SUBMIT,
             action: this.handleSaveButtonClick,
         },
         {
             label: "Close Without Saving",
+            name: "close-note",
             action: this.handleCloseButtonClick,
         },
         {
             label: "Delete",
+            name: "delete-note",
             buttonStyle: BUTTON_STYLE.DANGER,
             action: this.handleDeleteButtonClick,
         },
