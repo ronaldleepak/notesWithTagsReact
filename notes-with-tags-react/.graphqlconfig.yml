@@ -1,0 +1,15 @@
+projects:
+  NotesWithTagsReact-dev:
+    schemaPath: src/graphql/schema.json
+    includes:
+      - src/graphql/**/*.js
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: javascript
+        generatedFileName: ''
+        docsFilePath: src/graphql
+        region: eu-central-1
+        apiId: 6izg6otu2van5dgw2fwfc2huxe
+        maxDepth: 2
