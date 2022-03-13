@@ -1,0 +1,12 @@
+type Tags @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  notesID: ID! @index(name: "byNotes")
+}
+
+type Notes @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  header: String
+  content: String
+  Tags: [Tags] @hasMany(indexName: "byNotes", fields: ["id"])
+}

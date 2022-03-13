@@ -10,6 +10,11 @@
       "StackName": "amplify-noteswithtagsreact-dev-230059",
       "StackId": "arn:aws:cloudformation:eu-central-1:840572839621:stack/amplify-noteswithtagsreact-dev-230059/94161120-a0bd-11ec-8613-0a9efaf64422",
       "AmplifyAppId": "d2bxddqswnnxdb"
+    },
+    "categories": {
+      "auth": {
+        "NotesWithTagsReact": {}
+      }
     }
   }
 }
