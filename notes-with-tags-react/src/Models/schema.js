@@ -1,7 +1,7 @@
 export const schema = {
     "models": {
-        "Tags": {
-            "name": "Tags",
+        "Tag": {
+            "name": "Tag",
             "fields": {
                 "id": {
                     "name": "id",
@@ -17,8 +17,8 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "notesID": {
-                    "name": "notesID",
+                "noteID": {
+                    "name": "noteID",
                     "isArray": false,
                     "type": "ID",
                     "isRequired": true,
@@ -51,9 +51,9 @@ export const schema = {
                 {
                     "type": "key",
                     "properties": {
-                        "name": "byNotes",
+                        "name": "byNote",
                         "fields": [
-                            "notesID"
+                            "noteID"
                         ]
                     }
                 },
@@ -75,8 +75,8 @@ export const schema = {
                 }
             ]
         },
-        "Notes": {
-            "name": "Notes",
+        "Note": {
+            "name": "Note",
             "fields": {
                 "id": {
                     "name": "id",
@@ -103,14 +103,14 @@ export const schema = {
                     "name": "Tags",
                     "isArray": true,
                     "type": {
-                        "model": "Tags"
+                        "model": "Tag"
                     },
                     "isRequired": false,
                     "attributes": [],
                     "isArrayNullable": true,
                     "association": {
                         "connectionType": "HAS_MANY",
-                        "associatedWith": "notesID"
+                        "associatedWith": "noteID"
                     }
                 },
                 "createdAt": {
@@ -158,5 +158,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "d6e91cb255d42760bfb876d3dc28f275"
+    "version": "6697b3d50a6d32fd7bf3ddf1ae3263ff"
 };

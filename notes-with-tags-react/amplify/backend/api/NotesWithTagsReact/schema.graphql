@@ -1,12 +1,13 @@
-type Tags @model @auth(rules: [{allow: public}]) {
+type Tag @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String
-  notesID: ID! @index(name: "byNotes")
+  noteID: ID! @index(name: "byNote")
 }
 
-type Notes @model @auth(rules: [{allow: public}]) {
+type Note @model @auth(rules: [{allow: public}]) {
   id: ID!
   header: String
   content: String
-  Tags: [Tags] @hasMany(indexName: "byNotes", fields: ["id"])
+  Tags: [Tag] @hasMany(indexName: "byNote", fields: ["id"])
 }
+ 

@@ -11,7 +11,7 @@
   #set( $query = {
   "expression": "#partitionKey = :partitionKey",
   "expressionNames": {
-      "#partitionKey": "notesID"
+      "#partitionKey": "noteID"
   },
   "expressionValues": {
       ":partitionKey": $util.dynamodb.toDynamoDB($context.source.id)
@@ -63,6 +63,6 @@ $util.toJson($context.args.nextToken)
     #else
 null
     #end,
-      "index": "byNotes"
+      "index": "byNote"
   }
 #end

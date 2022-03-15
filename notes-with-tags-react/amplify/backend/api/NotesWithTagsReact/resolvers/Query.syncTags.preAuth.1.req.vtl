@@ -7,8 +7,8 @@
 #set( $filterArgsMap = {} )
 ## [End] Set map initialization for @key **
 ## [Start] Set query expression for @key **
-$util.qr($QueryMap.put('notesID' , 'byNotes'))
-$util.qr($PkMap.put('notesID' , 'byNotes'))
+$util.qr($QueryMap.put('noteID' , 'byNote'))
+$util.qr($PkMap.put('noteID' , 'byNote'))
 ## [End] Set query expression for @key **
 ## [Start] Set query expression for @key **
 #set( $filterArgsMap = $ctx.args.filter.get("and") )

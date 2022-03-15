@@ -4,31 +4,31 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
-type TagsMetaData = {
+type TagMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
-type NotesMetaData = {
+type NoteMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
-export declare class Tags {
+export declare class Tag {
   readonly id: string;
   readonly name?: string;
-  readonly notesID: string;
+  readonly noteID: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
-  constructor(init: ModelInit<Tags, TagsMetaData>);
-  static copyOf(source: Tags, mutator: (draft: MutableModel<Tags, TagsMetaData>) => MutableModel<Tags, TagsMetaData> | void): Tags;
+  constructor(init: ModelInit<Tag, TagMetaData>);
+  static copyOf(source: Tag, mutator: (draft: MutableModel<Tag, TagMetaData>) => MutableModel<Tag, TagMetaData> | void): Tag;
 }
 
-export declare class Notes {
+export declare class Note {
   readonly id: string;
   readonly header?: string;
   readonly content?: string;
-  readonly Tags?: (Tags | null)[];
+  readonly Tags?: (Tag | null)[];
   readonly createdAt?: string;
   readonly updatedAt?: string;
-  constructor(init: ModelInit<Notes, NotesMetaData>);
-  static copyOf(source: Notes, mutator: (draft: MutableModel<Notes, NotesMetaData>) => MutableModel<Notes, NotesMetaData> | void): Notes;
+  constructor(init: ModelInit<Note, NoteMetaData>);
+  static copyOf(source: Note, mutator: (draft: MutableModel<Note, NoteMetaData>) => MutableModel<Note, NoteMetaData> | void): Note;
 }

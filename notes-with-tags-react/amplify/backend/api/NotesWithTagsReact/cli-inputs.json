@@ -3,7 +3,7 @@
   "serviceConfiguration": {
     "apiName": "NotesWithTagsReact",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/tmp/amplify-be01efad-4630-45bd-9659-40c215e9697e/amplify/backend/api/NotesWithTagsReact/schema.graphql",
+    "gqlSchemaPath": "/tmp/amplify-77c2200b-8881-4aa9-8729-f71d28d4c017/amplify/backend/api/NotesWithTagsReact/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
       "keyDescription": "api key description",
