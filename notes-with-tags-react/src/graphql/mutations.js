@@ -8,11 +8,13 @@ export const createNote = /* GraphQL */ `
   ) {
     createNote(input: $input, condition: $condition) {
       id
+      userID
       header
       content
       tags {
         items {
           id
+          userID
           name
           createdAt
           updatedAt
@@ -32,11 +34,13 @@ export const updateNote = /* GraphQL */ `
   ) {
     updateNote(input: $input, condition: $condition) {
       id
+      userID
       header
       content
       tags {
         items {
           id
+          userID
           name
           createdAt
           updatedAt
@@ -56,11 +60,13 @@ export const deleteNote = /* GraphQL */ `
   ) {
     deleteNote(input: $input, condition: $condition) {
       id
+      userID
       header
       content
       tags {
         items {
           id
+          userID
           name
           createdAt
           updatedAt
@@ -80,6 +86,7 @@ export const createTag = /* GraphQL */ `
   ) {
     createTag(input: $input, condition: $condition) {
       id
+      userID
       name
       createdAt
       updatedAt
@@ -94,6 +101,7 @@ export const updateTag = /* GraphQL */ `
   ) {
     updateTag(input: $input, condition: $condition) {
       id
+      userID
       name
       createdAt
       updatedAt
@@ -108,6 +116,7 @@ export const deleteTag = /* GraphQL */ `
   ) {
     deleteTag(input: $input, condition: $condition) {
       id
+      userID
       name
       createdAt
       updatedAt

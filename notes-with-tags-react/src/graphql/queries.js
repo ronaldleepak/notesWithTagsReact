@@ -5,11 +5,13 @@ export const getNote = /* GraphQL */ `
   query GetNote($id: ID!) {
     getNote(id: $id) {
       id
+      userID
       header
       content
       tags {
         items {
           id
+          userID
           name
           createdAt
           updatedAt
@@ -31,6 +33,7 @@ export const listNotes = /* GraphQL */ `
     listNotes(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        userID
         header
         content
         tags {
@@ -47,6 +50,7 @@ export const getTag = /* GraphQL */ `
   query GetTag($id: ID!) {
     getTag(id: $id) {
       id
+      userID
       name
       createdAt
       updatedAt
@@ -63,6 +67,7 @@ export const listTags = /* GraphQL */ `
     listTags(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        userID
         name
         createdAt
         updatedAt
