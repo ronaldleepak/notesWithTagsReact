@@ -2,8 +2,11 @@ import React from "react"
 import { connect } from 'react-redux'
 import { ButtonGroup, Card, Textfield, Textarea } from "../Common"
 import { deleteNote, saveNote } from "../../Actions"
-import { VIEW_STATUS, BUTTON_STYLE } from "../../Util/Constants"
-import { LOADING_STATUS } from '../../Util/Constants';
+import {
+    VIEW_STATUS,
+    BUTTON_STYLE,
+    LOADING_STATUS,
+} from "../../Util/Constants"
 
 class NoteEdit extends React.Component {
     constructor(props) {
