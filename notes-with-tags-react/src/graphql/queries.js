@@ -1,91 +1,30 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getTags = /* GraphQL */ `
-  query GetTags($id: ID!) {
-    getTags(id: $id) {
-      id
-      name
-      notesID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const listTags = /* GraphQL */ `
-  query ListTags(
-    $filter: ModelTagsFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listTags(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        name
-        notesID
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const syncTags = /* GraphQL */ `
-  query SyncTags(
-    $filter: ModelTagsFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncTags(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        name
-        notesID
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const getNotes = /* GraphQL */ `
-  query GetNotes($id: ID!) {
-    getNotes(id: $id) {
+export const getNote = /* GraphQL */ `
+  query GetNote($id: ID!) {
+    getNote(id: $id) {
       id
       header
       content
-      Tags {
+      tags {
+        items {
+          id
+          name
+          createdAt
+          updatedAt
+          noteTagsId
+        }
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
 export const listNotes = /* GraphQL */ `
   query ListNotes(
-    $filter: ModelNotesFilterInput
+    $filter: ModelNoteFilterInput
     $limit: Int
     $nextToken: String
   ) {
@@ -94,42 +33,42 @@ export const listNotes = /* GraphQL */ `
         id
         header
         content
+        tags {
+          nextToken
+        }
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
   }
 `;
-export const syncNotes = /* GraphQL */ `
-  query SyncNotes(
-    $filter: ModelNotesFilterInput
+export const getTag = /* GraphQL */ `
+  query GetTag($id: ID!) {
+    getTag(id: $id) {
+      id
+      name
+      createdAt
+      updatedAt
+      noteTagsId
+    }
+  }
+`;
+export const listTags = /* GraphQL */ `
+  query ListTags(
+    $filter: ModelTagFilterInput
     $limit: Int
     $nextToken: String
-    $lastSync: AWSTimestamp
   ) {
-    syncNotes(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
+    listTags(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        header
-        content
+        name
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
+        noteTagsId
       }
       nextToken
-      startedAt
     }
   }
 `;

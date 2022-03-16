@@ -1,99 +1,99 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateTags = /* GraphQL */ `
-  subscription OnCreateTags {
-    onCreateTags {
-      id
-      name
-      notesID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onUpdateTags = /* GraphQL */ `
-  subscription OnUpdateTags {
-    onUpdateTags {
-      id
-      name
-      notesID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onDeleteTags = /* GraphQL */ `
-  subscription OnDeleteTags {
-    onDeleteTags {
-      id
-      name
-      notesID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onCreateNotes = /* GraphQL */ `
-  subscription OnCreateNotes {
-    onCreateNotes {
+export const onCreateNote = /* GraphQL */ `
+  subscription OnCreateNote {
+    onCreateNote {
       id
       header
       content
-      Tags {
+      tags {
+        items {
+          id
+          name
+          createdAt
+          updatedAt
+          noteTagsId
+        }
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
-export const onUpdateNotes = /* GraphQL */ `
-  subscription OnUpdateNotes {
-    onUpdateNotes {
+export const onUpdateNote = /* GraphQL */ `
+  subscription OnUpdateNote {
+    onUpdateNote {
       id
       header
       content
-      Tags {
+      tags {
+        items {
+          id
+          name
+          createdAt
+          updatedAt
+          noteTagsId
+        }
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
-export const onDeleteNotes = /* GraphQL */ `
-  subscription OnDeleteNotes {
-    onDeleteNotes {
+export const onDeleteNote = /* GraphQL */ `
+  subscription OnDeleteNote {
+    onDeleteNote {
       id
       header
       content
-      Tags {
+      tags {
+        items {
+          id
+          name
+          createdAt
+          updatedAt
+          noteTagsId
+        }
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+    }
+  }
+`;
+export const onCreateTag = /* GraphQL */ `
+  subscription OnCreateTag {
+    onCreateTag {
+      id
+      name
+      createdAt
+      updatedAt
+      noteTagsId
+    }
+  }
+`;
+export const onUpdateTag = /* GraphQL */ `
+  subscription OnUpdateTag {
+    onUpdateTag {
+      id
+      name
+      createdAt
+      updatedAt
+      noteTagsId
+    }
+  }
+`;
+export const onDeleteTag = /* GraphQL */ `
+  subscription OnDeleteTag {
+    onDeleteTag {
+      id
+      name
+      createdAt
+      updatedAt
+      noteTagsId
     }
   }
 `;

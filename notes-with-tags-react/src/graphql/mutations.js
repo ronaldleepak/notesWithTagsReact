@@ -1,117 +1,117 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createTags = /* GraphQL */ `
-  mutation CreateTags(
-    $input: CreateTagsInput!
-    $condition: ModelTagsConditionInput
+export const createNote = /* GraphQL */ `
+  mutation CreateNote(
+    $input: CreateNoteInput!
+    $condition: ModelNoteConditionInput
   ) {
-    createTags(input: $input, condition: $condition) {
-      id
-      name
-      notesID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const updateTags = /* GraphQL */ `
-  mutation UpdateTags(
-    $input: UpdateTagsInput!
-    $condition: ModelTagsConditionInput
-  ) {
-    updateTags(input: $input, condition: $condition) {
-      id
-      name
-      notesID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const deleteTags = /* GraphQL */ `
-  mutation DeleteTags(
-    $input: DeleteTagsInput!
-    $condition: ModelTagsConditionInput
-  ) {
-    deleteTags(input: $input, condition: $condition) {
-      id
-      name
-      notesID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const createNotes = /* GraphQL */ `
-  mutation CreateNotes(
-    $input: CreateNotesInput!
-    $condition: ModelNotesConditionInput
-  ) {
-    createNotes(input: $input, condition: $condition) {
+    createNote(input: $input, condition: $condition) {
       id
       header
       content
-      Tags {
+      tags {
+        items {
+          id
+          name
+          createdAt
+          updatedAt
+          noteTagsId
+        }
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
-export const updateNotes = /* GraphQL */ `
-  mutation UpdateNotes(
-    $input: UpdateNotesInput!
-    $condition: ModelNotesConditionInput
+export const updateNote = /* GraphQL */ `
+  mutation UpdateNote(
+    $input: UpdateNoteInput!
+    $condition: ModelNoteConditionInput
   ) {
-    updateNotes(input: $input, condition: $condition) {
+    updateNote(input: $input, condition: $condition) {
       id
       header
       content
-      Tags {
+      tags {
+        items {
+          id
+          name
+          createdAt
+          updatedAt
+          noteTagsId
+        }
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
-export const deleteNotes = /* GraphQL */ `
-  mutation DeleteNotes(
-    $input: DeleteNotesInput!
-    $condition: ModelNotesConditionInput
+export const deleteNote = /* GraphQL */ `
+  mutation DeleteNote(
+    $input: DeleteNoteInput!
+    $condition: ModelNoteConditionInput
   ) {
-    deleteNotes(input: $input, condition: $condition) {
+    deleteNote(input: $input, condition: $condition) {
       id
       header
       content
-      Tags {
+      tags {
+        items {
+          id
+          name
+          createdAt
+          updatedAt
+          noteTagsId
+        }
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+    }
+  }
+`;
+export const createTag = /* GraphQL */ `
+  mutation CreateTag(
+    $input: CreateTagInput!
+    $condition: ModelTagConditionInput
+  ) {
+    createTag(input: $input, condition: $condition) {
+      id
+      name
+      createdAt
+      updatedAt
+      noteTagsId
+    }
+  }
+`;
+export const updateTag = /* GraphQL */ `
+  mutation UpdateTag(
+    $input: UpdateTagInput!
+    $condition: ModelTagConditionInput
+  ) {
+    updateTag(input: $input, condition: $condition) {
+      id
+      name
+      createdAt
+      updatedAt
+      noteTagsId
+    }
+  }
+`;
+export const deleteTag = /* GraphQL */ `
+  mutation DeleteTag(
+    $input: DeleteTagInput!
+    $condition: ModelTagConditionInput
+  ) {
+    deleteTag(input: $input, condition: $condition) {
+      id
+      name
+      createdAt
+      updatedAt
+      noteTagsId
     }
   }
 `;
