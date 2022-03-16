@@ -1,6 +1,10 @@
 import { createAction } from "redux-actions";
 import { API, graphqlOperation } from 'aws-amplify'
-import { createNote, updateNote } from '../graphql/mutations'
+import {
+    createNote as CreateNote,
+    updateNote as UpdateNote,
+    deleteNote as DeleteNote,
+} from '../graphql/mutations'
 
 const NEW_NOTE_START = 'NEW_NOTE_START';
 const NEW_NOTE_SUCCESS = 'NEW_NOTE_SUCCESS';
@@ -26,7 +30,7 @@ export const newNote = () => async (dispatch, getState) => {
     dispatch(newNoteStart())
 
     try {
-        const newNoteData = await API.graphql(graphqlOperation(createNote, {input: 
+        const newNoteData = await API.graphql(graphqlOperation(CreateNote, {input: 
             {
                 header: "Write your header here",
                 content: "Write your contents here",
@@ -42,12 +46,12 @@ export const newNote = () => async (dispatch, getState) => {
     }
 }
 
-export const saveNote = (noteAttrs) => async (dispatch, getState) => {
+export const saveNote = (note) => async (dispatch, getState) => {
     dispatch(saveNoteStart())
 
     try {
-        const updatedNoteData = await API.graphql(graphqlOperation(updateNote, {input: 
-            noteAttrs
+        const updatedNoteData = await API.graphql(graphqlOperation(UpdateNote, {input: 
+            note
         }));
         const updatedNote = updatedNoteData.data.updateNote
         dispatch(saveNoteSuccess(updatedNote))
@@ -59,8 +63,23 @@ export const saveNote = (noteAttrs) => async (dispatch, getState) => {
     }
 }
 
-export const deleteNote = (noteAttrs) => async (dispatch, getState) => {
-    const { notes } = getState();
+export const deleteNote = (noteID) => async (dispatch, getState) => {
+    dispatch(deleteNoteStart())
+
+    try {
+        const deletedNoteData = await API.graphql(graphqlOperation(DeleteNote, {input: {
+            id: noteID,
+        }
+            
+        }));
+        const deletedNote = deletedNoteData.data.deleteNote
+        dispatch(deleteNoteSuccess(deletedNote))
+    } catch (error) {
+        const errorMessage = `Failed to delete note: ${error.toString()}`;
+        console.log(error)
+
+        dispatch(deleteNoteFailure(errorMessage))
+    }
 }
 
 export {

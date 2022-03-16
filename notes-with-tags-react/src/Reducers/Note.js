@@ -90,10 +90,16 @@ const note = handleActions({
         loadingStatus: LOADING,
         error: null,
     }),
-    [DELETE_NOTE_SUCCESS]: (state, { payload }) => ({
-        ...state,
-        loadingStatus: IDLE,
-    }),
+    [DELETE_NOTE_SUCCESS]: (state, { payload }) => {
+        const deletedNote = payload;
+        const notes = state.notes.filter( note => note.id !== deletedNote.id )
+        
+        return {
+            ...state,
+            notes,
+            loadingStatus: IDLE,
+        }
+    },
     [DELETE_NOTE_FAILURE]: (state, { payload }) => ({
         ...state,
         loadingStatus: IDLE,
