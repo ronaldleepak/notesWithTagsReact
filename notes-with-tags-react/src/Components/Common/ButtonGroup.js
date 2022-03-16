@@ -16,6 +16,7 @@ export default class ButtonGroup extends React.Component {
             name: PropTypes.string,
             action: PropTypes.func,
             buttonStyle: PropTypes.string,
+            isLoading: PropTypes.bool,
         }))
     }
 
@@ -32,13 +33,19 @@ export default class ButtonGroup extends React.Component {
         }
     }
 
+    buttonIsLoading = (isLoading) => {
+        return isLoading ? "is-loading" : "";
+    }
+
     render() {
         var { buttons } = this.props;
         return (
             <div className="block buttons">
             {
                 buttons.map((button) => {
-                    const className = "button is-light " + this.buttonStyleToBulmaClass(button.buttonStyle);
+                    const className = `button is-light
+                        ${this.buttonStyleToBulmaClass(button.buttonStyle)}
+                        ${this.buttonIsLoading(button.isLoading)}`;
                     const key = "button_" + uid();
                     return (
                         <button

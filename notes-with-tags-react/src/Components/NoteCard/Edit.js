@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { ButtonGroup, Card, Textfield, Textarea } from "../Common"
 import { deleteNote, saveNote } from "../../Actions"
 import { VIEW_STATUS, BUTTON_STYLE } from "../../Util/Constants"
+import { LOADING_STATUS } from '../../Util/Constants';
 
 class NoteEdit extends React.Component {
     constructor(props) {
@@ -52,26 +53,6 @@ class NoteEdit extends React.Component {
         this.setState({content: e.target.value})
     }
 
-    buttons = [
-        {
-            label: "Save",
-            name: "save-note",
-            buttonStyle: BUTTON_STYLE.SUBMIT,
-            action: this.handleSaveButtonClick,
-        },
-        {
-            label: "Close Without Saving",
-            name: "close-note",
-            action: this.handleCloseButtonClick,
-        },
-        {
-            label: "Delete",
-            name: "delete-note",
-            buttonStyle: BUTTON_STYLE.DANGER,
-            action: this.handleDeleteButtonClick,
-        },
-    ]
-
     render() {
         var { content, header } = this.state;
 
@@ -87,10 +68,36 @@ class NoteEdit extends React.Component {
                     name="note-content-input"
                     onChange={this.handleContentChange}
                 />
-                <ButtonGroup buttons={this.buttons}/>
+                <ButtonGroup buttons={[
+                    {
+                        label: "Save",
+                        name: "save-note",
+                        buttonStyle: BUTTON_STYLE.SUBMIT,
+                        isLoading: this.props.loadingStatus === LOADING_STATUS.LOADING,
+                        action: this.handleSaveButtonClick,
+                    },
+                    {
+                        label: "Close Without Saving",
+                        name: "close-note",
+                        action: this.handleCloseButtonClick,
+                    },
+                    {
+                        label: "Delete",
+                        name: "delete-note",
+                        buttonStyle: BUTTON_STYLE.DANGER,
+                        isLoading: this.props.loadingStatus === LOADING_STATUS.LOADING,
+                        action: this.handleDeleteButtonClick,
+                    },
+                ]}/>
             </Card>
         );
     };
+}
+
+const mapStateToProps = (state) => {
+    return {
+        loadingStatus: state.note.loadingStatus,
+    }
 }
 
 const mapDispatchToProps = {
@@ -98,6 +105,6 @@ const mapDispatchToProps = {
     onSaveNoteClick: saveNote,
 };
 
-const enhancer = connect(null, mapDispatchToProps);
+const enhancer = connect(mapStateToProps, mapDispatchToProps);
 
 export default enhancer(NoteEdit)
