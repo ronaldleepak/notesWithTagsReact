@@ -1,6 +1,6 @@
 import { createAction } from "redux-actions";
 import { API, graphqlOperation } from 'aws-amplify'
-import { createNote } from '../graphql/mutations'
+import { createNote, updateNote } from '../graphql/mutations'
 
 const NEW_NOTE_START = 'NEW_NOTE_START';
 const NEW_NOTE_SUCCESS = 'NEW_NOTE_SUCCESS';
@@ -33,8 +33,6 @@ export const newNote = () => async (dispatch, getState) => {
             },
         }));
         const newNote = newNoteData.data.createNote;
-
-        console.log("success")
         dispatch(newNoteSuccess(newNote))
     } catch (error) {
         const errorMessage = `Failed to new note: ${error.toString()}`;
@@ -45,7 +43,20 @@ export const newNote = () => async (dispatch, getState) => {
 }
 
 export const saveNote = (noteAttrs) => async (dispatch, getState) => {
-    const { notes } = getState();
+    dispatch(saveNoteStart())
+
+    try {
+        const updatedNoteData = await API.graphql(graphqlOperation(updateNote, {input: 
+            noteAttrs
+        }));
+        const updatedNote = updatedNoteData.data.updateNote
+        dispatch(saveNoteSuccess(updatedNote))
+    } catch (error) {
+        const errorMessage = `Failed to save note: ${error.toString()}`;
+        console.log(error)
+
+        dispatch(saveNoteFailure(errorMessage))
+    }
 }
 
 export const deleteNote = (noteAttrs) => async (dispatch, getState) => {

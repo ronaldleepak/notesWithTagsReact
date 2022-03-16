@@ -33,8 +33,6 @@ const note = handleActions({
         error: null,
     }),
     [GET_NOTE_SUCCESS]: (state, { payload }) => {
-        console.log("get note success")
-        console.log(payload);
         return {
             ...state,
             notes: payload,
@@ -53,8 +51,6 @@ const note = handleActions({
         error: null,
     }),
     [NEW_NOTE_SUCCESS]: (state, { payload }) => {
-        console.log("new note success")
-        console.log(payload);
         const { notes } = state;
         return {
             ...state,
@@ -72,10 +68,18 @@ const note = handleActions({
         loadingStatus: LOADING,
         error: null,
     }),
-    [SAVE_NOTE_SUCCESS]: (state, { payload }) => ({
-        ...state,
-        loadingStatus: IDLE,
-    }),
+    [SAVE_NOTE_SUCCESS]: (state, { payload }) => {
+        const updatedNote = payload;
+        const notes = state.notes.map((element) => 
+            element.id === updatedNote.id ? updatedNote : element
+        );
+
+        return {
+            ...state,
+            notes,
+            loadingStatus: IDLE,
+        }
+    },
     [SAVE_NOTE_FAILURE]: (state, { payload }) => ({
         ...state,
         loadingStatus: IDLE,
