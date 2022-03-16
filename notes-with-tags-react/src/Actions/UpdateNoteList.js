@@ -1,5 +1,5 @@
 import { createAction } from "redux-actions";
-import { API, graphqlOperation } from 'aws-amplify'
+import { API, graphqlOperation, Auth } from 'aws-amplify'
 import {
     createNote as CreateNote,
     updateNote as UpdateNote,
@@ -30,10 +30,14 @@ export const newNote = () => async (dispatch, getState) => {
     dispatch(newNoteStart())
 
     try {
+        const userData = await Auth.currentAuthenticatedUser();
+        const userID = userData.attributes.sub;
+
         const newNoteData = await API.graphql(graphqlOperation(CreateNote, {input: 
             {
                 header: "Write your header here",
                 content: "Write your contents here",
+                userID: userID,
             },
         }));
         const newNote = newNoteData.data.createNote;

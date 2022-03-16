@@ -10,7 +10,7 @@ export default class App extends React.Component {
                 <NavBar/>
                 <Authenticator>
                     {({ signOut, user }) => (
-                        <HomePage user={user}/>
+                        <HomePage/>
                     )}
                 </Authenticator>
             </div>

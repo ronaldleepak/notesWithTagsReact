@@ -1,5 +1,5 @@
 import { createAction } from "redux-actions";
-import { API, graphqlOperation } from 'aws-amplify'
+import { API, graphqlOperation, Auth } from 'aws-amplify'
 import { listNotes } from '../graphql/queries'
 
 const GET_NOTE_START = 'GET_NOTE_START';
@@ -14,7 +14,17 @@ const getNoteList = () => async (dispatch, getState) => {
     dispatch(getStart());
 
     try {
-        const noteListData = await API.graphql(graphqlOperation(listNotes));
+
+        const userData = await Auth.currentAuthenticatedUser();
+        const userID = userData.attributes.sub;
+
+        const noteListData = await API.graphql(graphqlOperation(listNotes, {
+            filter: {
+                userID: {
+                    eq: userID,
+                }
+            }
+        }));
         const noteList = noteListData.data.listNotes.items;
         dispatch(getSuccess(noteList));
     } catch (error) {
