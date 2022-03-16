@@ -1,15 +1,17 @@
 import React from "react"
+import { connect } from 'react-redux'
 import NoteList from "../Components/NoteList";
 import ImportExport from "../Components/ImportExport";
+import { getNotes } from "../Selectors/GetNotes";
 
-export default class HomePage extends React.Component {
+class HomePage extends React.Component { 
+
     state = {
         message: "Welcome to NotesWithTags!",
-        notes: [],
     };
 
     render() {
-        var { notes } = this.state;
+        var { notes } = this.props;
         return (
             <div>
                 <div className="block has-text-centered">
@@ -26,3 +28,13 @@ export default class HomePage extends React.Component {
         );
     };
 }
+
+const mapStateToProps = (state) => {
+    return {
+        notes: getNotes(state),
+    }
+}
+
+const enhancer = connect(mapStateToProps, null);
+
+export default enhancer(HomePage)

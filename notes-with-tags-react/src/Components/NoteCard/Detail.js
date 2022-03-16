@@ -40,8 +40,8 @@ export default class NoteDetail extends React.Component {
                     </div>
                     <div className="column is-4">
                         <CreatedModifiedDate
-                            createdDate={note.createdDate}
-                            modifiedDate={note.modifiedDate}/>
+                            createdDate={note.createdAt}
+                            modifiedDate={note.updatedAt}/>
                     </div>
                 </div>
                 <NewLineText text={note.content}/>

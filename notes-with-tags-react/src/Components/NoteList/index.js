@@ -37,16 +37,10 @@ class NoteList extends React.Component {
     };
 }
 
-const mapStateToProps = (state) => {
-    return {
-        notes: state.notes
-    }
-}
-
 const mapDispatchToProps = {
     onNewNoteClick: newNote,
 };
 
-const enhancer = connect(mapStateToProps, mapDispatchToProps);
+const enhancer = connect(null, mapDispatchToProps);
 
 export default enhancer(NoteList)

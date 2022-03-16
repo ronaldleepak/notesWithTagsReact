@@ -9,3 +9,8 @@ export const BUTTON_STYLE = {
     SUBMIT: 'SUBMIT',
     DANGER: 'DANGER',
 }
+
+export const LOADING_STATUS = {
+    LOADING: 'LOADING',
+    IDLE: 'IDLE',
+}

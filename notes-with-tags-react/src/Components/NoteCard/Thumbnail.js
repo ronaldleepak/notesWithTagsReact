@@ -22,8 +22,8 @@ export default class NoteThumbnail extends React.Component {
                     </div>
                     <div className="column is-4">
                         <CreatedModifiedDate
-                            createdDate={note.createdDate}
-                            modifiedDate={note.modifiedDate}/>
+                            createdDate={note.createdAt}
+                            modifiedDate={note.updatedAt}/>
                     </div>
                 </div>
             </Card>
