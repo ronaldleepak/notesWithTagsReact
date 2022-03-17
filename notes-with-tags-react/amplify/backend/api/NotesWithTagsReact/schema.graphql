@@ -1,17 +1,26 @@
-# This "input" configures a global authorization rule to enable public access to
-# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
-input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
+input AMPLIFY { globalAuthRule: AuthRule = { allow: public, provider: iam } }
 
-type Note @model {
+type Note
+  @model
+  @auth(
+    rules: [
+      { allow: owner, ownerField: "owner", operations: [create, update, delete, read] },
+    ]) {
   id: ID!
-  userID: ID!
+  owner: String
   header: String!
   content: String!
-  tags: [Tag] @hasMany
+  tags: [Tag] @manyToMany(relationName: "NoteTags")
 }
 
-type Tag @model {
+type Tag
+  @model
+  @auth(
+    rules: [
+      { allow: owner, ownerField: "owner", operations: [create, update, delete, read] },
+    ]) {
   id: ID!
-  userID: ID!
+  owner: String
   name: String!
+  notes: [Note] @manyToMany(relationName: "NoteTags")
 }

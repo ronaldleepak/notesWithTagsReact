@@ -8,17 +8,17 @@ export const createNote = /* GraphQL */ `
   ) {
     createNote(input: $input, condition: $condition) {
       id
-      userID
+      owner
       header
       content
       tags {
         items {
           id
-          userID
-          name
+          noteID
+          tagID
           createdAt
           updatedAt
-          noteTagsId
+          owner
         }
         nextToken
       }
@@ -34,17 +34,17 @@ export const updateNote = /* GraphQL */ `
   ) {
     updateNote(input: $input, condition: $condition) {
       id
-      userID
+      owner
       header
       content
       tags {
         items {
           id
-          userID
-          name
+          noteID
+          tagID
           createdAt
           updatedAt
-          noteTagsId
+          owner
         }
         nextToken
       }
@@ -60,17 +60,17 @@ export const deleteNote = /* GraphQL */ `
   ) {
     deleteNote(input: $input, condition: $condition) {
       id
-      userID
+      owner
       header
       content
       tags {
         items {
           id
-          userID
-          name
+          noteID
+          tagID
           createdAt
           updatedAt
-          noteTagsId
+          owner
         }
         nextToken
       }
@@ -86,11 +86,21 @@ export const createTag = /* GraphQL */ `
   ) {
     createTag(input: $input, condition: $condition) {
       id
-      userID
+      owner
       name
+      notes {
+        items {
+          id
+          noteID
+          tagID
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+      }
       createdAt
       updatedAt
-      noteTagsId
     }
   }
 `;
@@ -101,11 +111,21 @@ export const updateTag = /* GraphQL */ `
   ) {
     updateTag(input: $input, condition: $condition) {
       id
-      userID
+      owner
       name
+      notes {
+        items {
+          id
+          noteID
+          tagID
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+      }
       createdAt
       updatedAt
-      noteTagsId
     }
   }
 `;
@@ -116,11 +136,129 @@ export const deleteTag = /* GraphQL */ `
   ) {
     deleteTag(input: $input, condition: $condition) {
       id
-      userID
+      owner
       name
+      notes {
+        items {
+          id
+          noteID
+          tagID
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+      }
       createdAt
       updatedAt
-      noteTagsId
+    }
+  }
+`;
+export const createNoteTags = /* GraphQL */ `
+  mutation CreateNoteTags(
+    $input: CreateNoteTagsInput!
+    $condition: ModelNoteTagsConditionInput
+  ) {
+    createNoteTags(input: $input, condition: $condition) {
+      id
+      noteID
+      tagID
+      note {
+        id
+        owner
+        header
+        content
+        tags {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      tag {
+        id
+        owner
+        name
+        notes {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const updateNoteTags = /* GraphQL */ `
+  mutation UpdateNoteTags(
+    $input: UpdateNoteTagsInput!
+    $condition: ModelNoteTagsConditionInput
+  ) {
+    updateNoteTags(input: $input, condition: $condition) {
+      id
+      noteID
+      tagID
+      note {
+        id
+        owner
+        header
+        content
+        tags {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      tag {
+        id
+        owner
+        name
+        notes {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const deleteNoteTags = /* GraphQL */ `
+  mutation DeleteNoteTags(
+    $input: DeleteNoteTagsInput!
+    $condition: ModelNoteTagsConditionInput
+  ) {
+    deleteNoteTags(input: $input, condition: $condition) {
+      id
+      noteID
+      tagID
+      note {
+        id
+        owner
+        header
+        content
+        tags {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      tag {
+        id
+        owner
+        name
+        notes {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      owner
     }
   }
 `;

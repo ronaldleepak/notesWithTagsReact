@@ -5,17 +5,17 @@ export const getNote = /* GraphQL */ `
   query GetNote($id: ID!) {
     getNote(id: $id) {
       id
-      userID
+      owner
       header
       content
       tags {
         items {
           id
-          userID
-          name
+          noteID
+          tagID
           createdAt
           updatedAt
-          noteTagsId
+          owner
         }
         nextToken
       }
@@ -33,7 +33,7 @@ export const listNotes = /* GraphQL */ `
     listNotes(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        userID
+        owner
         header
         content
         tags {
@@ -50,11 +50,21 @@ export const getTag = /* GraphQL */ `
   query GetTag($id: ID!) {
     getTag(id: $id) {
       id
-      userID
+      owner
       name
+      notes {
+        items {
+          id
+          noteID
+          tagID
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+      }
       createdAt
       updatedAt
-      noteTagsId
     }
   }
 `;
@@ -67,11 +77,80 @@ export const listTags = /* GraphQL */ `
     listTags(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        userID
+        owner
         name
+        notes {
+          nextToken
+        }
         createdAt
         updatedAt
-        noteTagsId
+      }
+      nextToken
+    }
+  }
+`;
+export const getNoteTags = /* GraphQL */ `
+  query GetNoteTags($id: ID!) {
+    getNoteTags(id: $id) {
+      id
+      noteID
+      tagID
+      note {
+        id
+        owner
+        header
+        content
+        tags {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      tag {
+        id
+        owner
+        name
+        notes {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const listNoteTags = /* GraphQL */ `
+  query ListNoteTags(
+    $filter: ModelNoteTagsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listNoteTags(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        noteID
+        tagID
+        note {
+          id
+          owner
+          header
+          content
+          createdAt
+          updatedAt
+        }
+        tag {
+          id
+          owner
+          name
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+        owner
       }
       nextToken
     }
