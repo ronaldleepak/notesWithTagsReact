@@ -15,7 +15,7 @@ export default class NoteCard extends React.Component {
         super(props);
 
         this.state = {
-            viewStatus: THUMBNAIL,
+            viewStatus: (this.props.isNew === true) ? EDIT : THUMBNAIL,
         };
     }
 

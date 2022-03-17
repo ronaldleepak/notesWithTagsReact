@@ -54,7 +54,13 @@ const note = handleActions({
         const { notes } = state;
         return {
             ...state,
-            notes: [payload, ...notes],
+            notes: [
+                {
+                    ...payload,
+                    isNew: true,
+                },
+                ...notes,
+            ],
             loadingStatus: IDLE,
         }
     },

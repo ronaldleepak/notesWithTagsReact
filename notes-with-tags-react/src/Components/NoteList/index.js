@@ -25,7 +25,7 @@ class NoteList extends React.Component {
                     {
                         notes.map(note => {
                             return (
-                                <NoteCard note={note} key={note.id}/>
+                                <NoteCard note={note} key={note.id} isNew={note.isNew}/>
                             )
                         })
                     }
