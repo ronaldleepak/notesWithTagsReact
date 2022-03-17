@@ -1,5 +1,5 @@
 import { createAction } from "redux-actions";
-import { API, graphqlOperation, Auth } from 'aws-amplify'
+import { API } from 'aws-amplify'
 import { listNotes } from '../graphql/queries'
 
 const GET_NOTE_START = 'GET_NOTE_START';
