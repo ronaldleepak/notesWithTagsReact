@@ -30,16 +30,17 @@ export const newNote = () => async (dispatch, getState) => {
     dispatch(newNoteStart())
 
     try {
-        const userData = await Auth.currentAuthenticatedUser();
-        const userID = userData.attributes.sub;
-
-        const newNoteData = await API.graphql(graphqlOperation(CreateNote, {input: 
-            {
-                header: "Write your header here",
-                content: "Write your contents here",
-                userID: userID,
+        const newNoteData = await API.graphql(
+        {
+            query: CreateNote,
+            variables: {
+                input: {
+                    header: "Write your header here",
+                    content: "Write your contents here",
+                },
             },
-        }));
+            authMode: "AMAZON_COGNITO_USER_POOLS",
+        });
         const newNote = newNoteData.data.createNote;
         dispatch(newNoteSuccess(newNote))
     } catch (error) {
@@ -54,9 +55,16 @@ export const saveNote = (note) => async (dispatch, getState) => {
     dispatch(saveNoteStart())
 
     try {
-        const updatedNoteData = await API.graphql(graphqlOperation(UpdateNote, {input: 
-            note
-        }));
+        console.log(note)
+
+        const updatedNoteData = await API.graphql(
+        {
+            query: UpdateNote,
+            variables: {
+                input: note,
+            },
+            authMode: "AMAZON_COGNITO_USER_POOLS",
+        });
         const updatedNote = updatedNoteData.data.updateNote
         dispatch(saveNoteSuccess(updatedNote))
     } catch (error) {
@@ -71,11 +79,16 @@ export const deleteNote = (noteID) => async (dispatch, getState) => {
     dispatch(deleteNoteStart())
 
     try {
-        const deletedNoteData = await API.graphql(graphqlOperation(DeleteNote, {input: {
-            id: noteID,
-        }
-            
-        }));
+        const deletedNoteData = await API.graphql(
+        {
+            query: DeleteNote,
+            variables: {
+                input: {
+                    id: noteID,
+                },
+            },
+            authMode: "AMAZON_COGNITO_USER_POOLS",
+        });
         const deletedNote = deletedNoteData.data.deleteNote
         dispatch(deleteNoteSuccess(deletedNote))
     } catch (error) {

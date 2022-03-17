@@ -14,21 +14,15 @@ const getNoteList = () => async (dispatch, getState) => {
     dispatch(getStart());
 
     try {
-
-        const userData = await Auth.currentAuthenticatedUser();
-        const userID = userData.attributes.sub;
-
-        const noteListData = await API.graphql(graphqlOperation(listNotes, {
-            filter: {
-                userID: {
-                    eq: userID,
-                }
-            }
-        }));
+        const noteListData = await API.graphql({
+            query: listNotes,
+            authMode: 'AMAZON_COGNITO_USER_POOLS',
+        });
         const noteList = noteListData.data.listNotes.items;
         dispatch(getSuccess(noteList));
     } catch (error) {
         const errorMessage = `Failed to get note list: ${error.toString()}`;
+        console.log(error)
         dispatch(getFailure(errorMessage))
     }
 }
