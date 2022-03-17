@@ -5,6 +5,7 @@ import {
     updateNote as UpdateNote,
     deleteNote as DeleteNote,
 } from '../graphql/mutations'
+import { Note } from '../models/'
 
 const NEW_NOTE_START = 'NEW_NOTE_START';
 const NEW_NOTE_SUCCESS = 'NEW_NOTE_SUCCESS';
@@ -34,10 +35,10 @@ export const newNote = () => async (dispatch, getState) => {
         {
             query: CreateNote,
             variables: {
-                input: {
+                input: new Note({
                     header: "Write your header here",
                     content: "Write your contents here",
-                },
+                }),
             },
             authMode: "AMAZON_COGNITO_USER_POOLS",
         });
@@ -55,8 +56,6 @@ export const saveNote = (note) => async (dispatch, getState) => {
     dispatch(saveNoteStart())
 
     try {
-        console.log(note)
-
         const updatedNoteData = await API.graphql(
         {
             query: UpdateNote,
