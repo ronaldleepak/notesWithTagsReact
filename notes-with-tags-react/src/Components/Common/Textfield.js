@@ -6,6 +6,14 @@ export default class Textfield extends React.Component {
         value: PropTypes.string,
         name: PropTypes.string,
         onChange: PropTypes.func,
+        onEnterKeyDown: PropTypes.func,
+    }
+
+    handleKeyDown = (e) => {
+        var { value, onEnterKeyDown } = this.props;
+        if (e.key === 'Enter') {
+            onEnterKeyDown(value);
+        }
     }
 
     render() {
@@ -16,7 +24,8 @@ export default class Textfield extends React.Component {
                     className="input"
                     value={value}
                     aria-label={name}
-                    onChange={onChange}/>
+                    onChange={onChange}
+                    onKeyDown={this.handleKeyDown}/>
             </div>    
         );
     };
