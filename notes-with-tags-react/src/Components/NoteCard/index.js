@@ -1,8 +1,10 @@
 import React from "react"
+import { connect } from 'react-redux'
 import Thumbnail from "./Thumbnail"
 import Edit from "./Edit"
 import Detail from "./Detail"
 import { VIEW_STATUS } from "../../Util/Constants"
+import { fetchNote } from '../../Actions';
 
 const {
     THUMBNAIL,
@@ -10,7 +12,7 @@ const {
     EDIT,
 } = VIEW_STATUS;
 
-export default class NoteCard extends React.Component {
+class NoteCard extends React.Component {
     constructor(props) {
         super(props);
 
@@ -20,6 +22,13 @@ export default class NoteCard extends React.Component {
     }
 
     handleViewChange = (viewStatus) => {
+        const {
+            onLoadNoteDetail, note,
+        } = this.props;
+        
+        // always update the note detail
+        onLoadNoteDetail(note.id)
+        
         this.setState({
             viewStatus: viewStatus,
         })
@@ -43,3 +52,11 @@ export default class NoteCard extends React.Component {
         );
     };
 }
+
+const mapDispatchToProps = {
+    onLoadNoteDetail: fetchNote,
+};
+
+const enhancer = connect(null, mapDispatchToProps);
+
+export default enhancer(NoteCard)
