@@ -22,8 +22,6 @@ const fetchNoteList = () => async (dispatch, getState) => {
         });
         const noteList = noteListData.data.listNotes.items;
 
-        console.log(noteList)
-
         dispatch(fetchSuccess(noteList));
     } catch (error) {
         const errorMessage = `Failed to get note list: ${error.toString()}`;
