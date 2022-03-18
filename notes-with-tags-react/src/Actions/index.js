@@ -1,9 +1,10 @@
 export { 
-    GET_NOTE_START,
-    GET_NOTE_SUCCESS,
-    GET_NOTE_FAILURE,
-    default as getNoteList,
-} from './GetNoteList';
+export { 
+    FETCH_NOTE_LIST_START,
+    FETCH_NOTE_LIST_SUCCESS,
+    FETCH_NOTE_LIST_FAILURE,
+    default as fetchNoteList,
+} from './FetchNoteList';
 export { 
     NEW_NOTE_START,
     NEW_NOTE_SUCCESS,

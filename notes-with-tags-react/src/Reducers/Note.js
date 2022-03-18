@@ -1,9 +1,9 @@
 import { handleActions } from 'redux-actions';
 import { LOADING_STATUS } from '../Util/Constants';
 import {
-    GET_NOTE_START,
-    GET_NOTE_SUCCESS,
-    GET_NOTE_FAILURE,
+    FETCH_NOTE_LIST_START,
+    FETCH_NOTE_LIST_SUCCESS,
+    FETCH_NOTE_LIST_FAILURE,
     NEW_NOTE_START,
     NEW_NOTE_SUCCESS,
     NEW_NOTE_FAILURE,
@@ -27,12 +27,12 @@ const initialState = {
 };
 
 const note = handleActions({
-    [GET_NOTE_START]: (state) => ({
+    [FETCH_NOTE_LIST_START]: (state) => ({
         ...state,
         loadingStatus: LOADING,
         error: null,
     }),
-    [GET_NOTE_SUCCESS]: (state, { payload }) => {
+    [FETCH_NOTE_LIST_SUCCESS]: (state, { payload }) => {
         return {
             ...state,
             notes: payload,
@@ -40,7 +40,7 @@ const note = handleActions({
             error: null,
         }
     },
-    [GET_NOTE_FAILURE]: (state, { payload }) => ({
+    [FETCH_NOTE_LIST_FAILURE]: (state, { payload }) => ({
         ...state,
         loadingStatus: IDLE,
         error: payload,
@@ -62,6 +62,7 @@ const note = handleActions({
                 ...notes,
             ],
             loadingStatus: IDLE,
+            error: null,
         }
     },
     [NEW_NOTE_FAILURE]: (state, { payload }) => ({
@@ -84,6 +85,7 @@ const note = handleActions({
             ...state,
             notes,
             loadingStatus: IDLE,
+            error: null,
         }
     },
     [SAVE_NOTE_FAILURE]: (state, { payload }) => ({
@@ -104,6 +106,7 @@ const note = handleActions({
             ...state,
             notes,
             loadingStatus: IDLE,
+            error: null,
         }
     },
     [DELETE_NOTE_FAILURE]: (state, { payload }) => ({
