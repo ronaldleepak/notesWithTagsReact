@@ -4,6 +4,9 @@ import {
     FETCH_NOTE_LIST_START,
     FETCH_NOTE_LIST_SUCCESS,
     FETCH_NOTE_LIST_FAILURE,
+    FETCH_NOTE_START,
+    FETCH_NOTE_SUCCESS,
+    FETCH_NOTE_FAILURE,
     NEW_NOTE_START,
     NEW_NOTE_SUCCESS,
     NEW_NOTE_FAILURE,
@@ -41,6 +44,29 @@ const note = handleActions({
         }
     },
     [FETCH_NOTE_LIST_FAILURE]: (state, { payload }) => ({
+        ...state,
+        loadingStatus: IDLE,
+        error: payload,
+    }),
+    [FETCH_NOTE_START]: (state) => ({
+        ...state,
+        loadingStatus: LOADING,
+        error: null,
+    }),
+    [FETCH_NOTE_SUCCESS]: (state, { payload }) => {
+        const updatedNote = payload;
+        const notes = state.notes.map((element) => 
+            element.id === updatedNote.id ? updatedNote : element
+        );
+
+        return {
+            ...state,
+            notes,
+            loadingStatus: IDLE,
+            error: null,
+        }
+    },
+    [FETCH_NOTE_FAILURE]: (state, { payload }) => ({
         ...state,
         loadingStatus: IDLE,
         error: payload,
