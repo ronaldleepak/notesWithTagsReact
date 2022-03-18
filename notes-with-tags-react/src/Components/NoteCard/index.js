@@ -26,11 +26,11 @@ export default class NoteCard extends React.Component {
     }
 
     render() {
-        var {
+        const {
             note,
         } = this.props;
 
-        var {
+        const {
             viewStatus,
         } = this.state;
         
