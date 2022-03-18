@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from 'react-redux'
-import { ButtonGroup, Card, Textfield, Textarea } from "../Common"
+import { ButtonGroup, Card, Textfield, Textarea, TagsControl } from "../Common"
 import { deleteNote, saveNote } from "../../Actions"
 import {
     VIEW_STATUS,
@@ -15,6 +15,7 @@ class NoteEdit extends React.Component {
         this.state = {
             content: props.note.content,
             header: props.note.header,
+            tags: (props.note.tags.items != null) ? props.note.tags.items : [],
         };
     }
 
@@ -28,12 +29,16 @@ class NoteEdit extends React.Component {
         const {
             content,
             header,
+            tags,
         } = this.state;
 
         onSaveNoteClick({
             id: note.id,
             header: header,
             content: content,
+            tags: {
+                items: tags,
+            },
         });
         onViewChange(VIEW_STATUS.DETAIL);
     }
@@ -56,8 +61,12 @@ class NoteEdit extends React.Component {
         this.setState({content: e.target.value})
     }
 
+    handleTagsChange = (newTags) => {
+        this.setState({tags: newTags})
+    }
+
     render() {
-        var { content, header } = this.state;
+        var { content, header, tags } = this.state;
 
         return (
             <Card name="note-edit">
@@ -71,6 +80,9 @@ class NoteEdit extends React.Component {
                     name="note-content-input"
                     onChange={this.handleContentChange}
                 />
+                <TagsControl
+                    tags={tags}
+                    onTagsChange={this.handleTagsChange}/>
                 <ButtonGroup buttons={[
                     {
                         label: "Save",
