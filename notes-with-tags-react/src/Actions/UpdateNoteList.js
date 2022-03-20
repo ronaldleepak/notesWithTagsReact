@@ -126,6 +126,9 @@ export const deleteNote = (note) => async (dispatch, getState) => {
             variables: { input: { id: note.id }},
             authMode: "AMAZON_COGNITO_USER_POOLS",
         });
+
+        // Delete unused tag
+        dispatch(deleteUnusedTags());
         
         const deletedNote = deletedNoteData.data.deleteNote
         dispatch(deleteNoteSuccess(deletedNote))
@@ -137,7 +140,7 @@ export const deleteNote = (note) => async (dispatch, getState) => {
     }
 }
 
-const createTag = (tag) => async (dispatch, getState) => {
+const createTag = (tag) => async () => {
     await API.graphql(
     {
         query: CreateTag,
@@ -148,7 +151,7 @@ const createTag = (tag) => async (dispatch, getState) => {
     });
 }
 
-const deleteTag = (tagID) => async (dispatch, getState) => {
+const deleteTag = (tagID) => async () => {
     await API.graphql(
     {
         query: DeleteTag,
@@ -157,7 +160,7 @@ const deleteTag = (tagID) => async (dispatch, getState) => {
     });
 }
 
-const createNoteTag = (noteTagID, noteID, tagID) => async (dispatch, getState) => {
+const createNoteTag = (noteTagID, noteID, tagID) => async () => {
     await API.graphql(
     {
         query: CreateNoteTags,
@@ -172,7 +175,7 @@ const createNoteTag = (noteTagID, noteID, tagID) => async (dispatch, getState) =
     });
 }
 
-const deleteNoteTag = (noteTagID) => async (dispatch, getState) => {
+const deleteNoteTag = (noteTagID) => async () => {
     await API.graphql(
     {
         query: DeleteNoteTags,
@@ -181,7 +184,7 @@ const deleteNoteTag = (noteTagID) => async (dispatch, getState) => {
     });
 }
 
-const deleteUnusedTags = () => async (dispatch, getState) => {
+const deleteUnusedTags = () => async (dispatch) => {
     // delete unused tag
     const tagList = (await API.graphql({
         query: ListTags,
