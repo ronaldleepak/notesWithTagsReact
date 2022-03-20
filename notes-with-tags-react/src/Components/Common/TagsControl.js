@@ -26,16 +26,19 @@ export default class TagsControl extends React.Component {
 
     handleNewTagSubmit = (textInput) => {
         const { noteTags, onTagAdded } = this.props;
-        const existingTag = _.find(noteTags, function(noteTag) { return noteTag.tag.name === textInput });
 
-        this.clearTextField();
-        if (existingTag == null) {
-            const newNoteTag = new NoteTags({
-                tag: new Tag({
-                    name: textInput
+        if (textInput !== "") {
+            const existingTag = _.find(noteTags, function(noteTag) { return noteTag.tag.name === textInput });
+
+            this.clearTextField();
+            if (existingTag == null) {
+                const newNoteTag = new NoteTags({
+                    tag: new Tag({
+                        name: textInput
+                    })
                 })
-            })
-            onTagAdded(newNoteTag);
+                onTagAdded(newNoteTag);
+            }
         }
     }
 
