@@ -5,14 +5,13 @@ import App from './App';
 import store from './store';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux'
-import { fetchNoteList } from './Actions';
+import { fetchUserData } from './Actions';
 
 import Amplify from "aws-amplify";
 import awsExports from "./aws-exports";
 Amplify.configure(awsExports);
 
-
-store.dispatch(fetchNoteList());
+store.dispatch(fetchUserData());
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
