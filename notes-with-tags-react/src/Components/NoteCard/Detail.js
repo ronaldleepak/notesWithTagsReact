@@ -7,6 +7,7 @@ import {
     TagsControl,
 } from "../Common"
 import { VIEW_STATUS } from "../../Util/Constants"
+import { copyTextToClipboard } from "../../Util/Util"
 
 export default class NoteDetail extends React.Component {
 
@@ -20,13 +21,10 @@ export default class NoteDetail extends React.Component {
         onViewChange(VIEW_STATUS.EDIT);
     }
 
-    buttons = [
-        {
-            label: "Edit",
-            name: "edit-note",
-            action: this.handleEditButtonClick
-        },
-    ]
+    handleCopyButtonClick = () => {
+        const { note } = this.props;
+        copyTextToClipboard(note.content)
+    }
 
     render() {
         const { note } = this.props;
@@ -52,7 +50,18 @@ export default class NoteDetail extends React.Component {
                     allowEdit={false}
                     onTagAdded={this.handleTagAdded}
                     onTagDeleted={this.handleTagDeleted}/>
-                <ButtonGroup buttons={this.buttons}/>
+                <ButtonGroup buttons={[
+                    {
+                        label: "Edit",
+                        name: "edit-note",
+                        action: this.handleEditButtonClick
+                    },
+                    {
+                        label: "Copy Content",
+                        name: "copy-note",
+                        action: this.handleCopyButtonClick
+                    },
+                ]}/>
             </Card>
         );
     };

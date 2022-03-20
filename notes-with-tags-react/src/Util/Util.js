@@ -27,3 +27,10 @@ const downloadFile = ({ data, fileName, fileType }) => {
     a.dispatchEvent(clickEvt);
     a.remove();
 };
+
+export const copyTextToClipboard = (text) => {
+    navigator.clipboard.writeText(text)
+        .then(() => {
+            // Success!
+        });
+}
