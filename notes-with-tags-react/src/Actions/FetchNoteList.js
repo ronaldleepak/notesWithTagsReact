@@ -2,7 +2,7 @@ import { createAction } from "redux-actions";
 import { API } from 'aws-amplify'
 import {
     listNotes as ListNotes,
-} from '../graphql/queries'
+} from '../graphql/noteWithTagsQueries'
 
 const FETCH_NOTE_LIST_START = 'FETCH_NOTE_LIST_START';
 const FETCH_NOTE_LIST_SUCCESS = 'FETCH_NOTE_LIST_SUCCESS';
@@ -16,11 +16,10 @@ const fetchNoteList = () => async (dispatch, getState) => {
     dispatch(fetchStart());
 
     try {
-        const noteListData = await API.graphql({
+        const noteList = (await API.graphql({
             query: ListNotes,
             authMode: 'AMAZON_COGNITO_USER_POOLS',
-        });
-        const noteList = noteListData.data.listNotes.items;
+        })).data.listNotes.items;
 
         dispatch(fetchSuccess(noteList));
     } catch (error) {

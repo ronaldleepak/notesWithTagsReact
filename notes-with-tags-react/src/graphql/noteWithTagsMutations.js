@@ -12,6 +12,9 @@ export const createNote = /* GraphQL */ `
       content
       tags {
         items {
+          id
+          createdAt
+          updatedAt
           tag {
             id
             name
@@ -39,6 +42,9 @@ export const updateNote = /* GraphQL */ `
       content
       tags {
         items {
+          id
+          createdAt
+          updatedAt
           tag {
             id
             name

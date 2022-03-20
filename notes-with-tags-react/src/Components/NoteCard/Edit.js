@@ -16,6 +16,8 @@ class NoteEdit extends React.Component {
             content: props.note.content,
             header: props.note.header,
             tags: (props.note.tags.items != null) ? props.note.tags.items : [],
+            newTags: [],
+            deleteTags: [],
         };
     }
 
@@ -29,16 +31,18 @@ class NoteEdit extends React.Component {
         const {
             content,
             header,
-            tags,
+            newTags,
+            deleteTags,
         } = this.state;
 
         onSaveNoteClick({
-            id: note.id,
-            header: header,
-            content: content,
-            tags: {
-                items: tags,
+            note: {
+                id: note.id,
+                header: header,
+                content: content,
             },
+            newTags: newTags,
+            deleteTags: deleteTags,
         });
         onViewChange(VIEW_STATUS.DETAIL);
     }
@@ -61,8 +65,25 @@ class NoteEdit extends React.Component {
         this.setState({content: e.target.value})
     }
 
-    handleTagsChange = (newTags) => {
-        this.setState({tags: newTags})
+    handleTagAdded = (newNoteTag) => {
+        this.setState({
+            tags: [ newNoteTag, ...this.state.tags ],
+            newTags: [ newNoteTag, ...this.state.newTags ],
+        })
+    }
+
+    handleTagDeleted = (deletedNoteTag) => {
+
+        var newDeleteTags = this.state.deleteTags;
+        if (deletedNoteTag.createdAt !== null) {
+            newDeleteTags = [ deletedNoteTag, ...this.state.deleteTags ];
+        }
+
+        this.setState({
+            tags: this.state.tags.filter( noteTag => noteTag.id !== deletedNoteTag.id ),
+            newTags: this.state.newTags.filter( noteTag => noteTag.id !== deletedNoteTag.id ),
+            deleteTags: newDeleteTags,
+        })
     }
 
     render() {
@@ -81,8 +102,9 @@ class NoteEdit extends React.Component {
                     onChange={this.handleContentChange}
                 />
                 <TagsControl
-                    tags={tags}
-                    onTagsChange={this.handleTagsChange}/>
+                    noteTags={tags}
+                    onTagAdded={this.handleTagAdded}
+                    onTagDeleted={this.handleTagDeleted}/>
                 <ButtonGroup buttons={[
                     {
                         label: "Save",

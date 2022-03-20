@@ -3,17 +3,18 @@ import PropTypes from 'prop-types'
 
 export default class TagElement extends React.Component {
     static propTypes = {
-        tag: PropTypes.object,
+        noteTag: PropTypes.object,
         onDelete: PropTypes.func,
     }
 
     handleDeleteButtonClick = () => {
-        var { tag, onDelete } = this.props;
-        onDelete(tag);
+        const { noteTag, onDelete } = this.props;
+        onDelete(noteTag);
     }
 
     render() {
-        var { tag } = this.props;
+        const { noteTag } = this.props;
+        const tag = noteTag.tag;
         return (
             <div className="control">
                 <div className="tags has-addons">

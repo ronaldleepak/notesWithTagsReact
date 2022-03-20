@@ -9,6 +9,9 @@ export const getNote = /* GraphQL */ `
       content
       tags {
         items {
+          id
+          createdAt
+          updatedAt
           tag {
             id
             name
@@ -27,9 +30,8 @@ export const listNotes = /* GraphQL */ `
   query ListNotes(
     $filter: ModelNoteFilterInput
     $limit: Int
-    $nextToken: String
   ) {
-    listNotes(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listNotes(filter: $filter, limit: $limit) {
       items {
         id
         owner
@@ -37,6 +39,9 @@ export const listNotes = /* GraphQL */ `
         content
         tags {
           items {
+            id
+            createdAt
+            updatedAt
             tag {
               id
               name
@@ -49,7 +54,6 @@ export const listNotes = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      nextToken
     }
   }
 `;
@@ -59,17 +63,6 @@ export const getTag = /* GraphQL */ `
       id
       owner
       name
-      notes {
-        items {
-          id
-          noteID
-          tagID
-          createdAt
-          updatedAt
-          owner
-        }
-        nextToken
-      }
       createdAt
       updatedAt
     }
@@ -79,27 +72,15 @@ export const listTags = /* GraphQL */ `
   query ListTags(
     $filter: ModelTagFilterInput
     $limit: Int
-    $nextToken: String
   ) {
-    listTags(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listTags(filter: $filter, limit: $limit) {
       items {
         id
         owner
         name
-        notes {
-          items {
-            id
-            noteID
-            tagID
-            createdAt
-            updatedAt
-            owner
-          }
-        }
         createdAt
         updatedAt
       }
-      nextToken
     }
   }
 `;
@@ -134,9 +115,8 @@ export const listNoteTags = /* GraphQL */ `
   query ListNoteTags(
     $filter: ModelNoteTagsFilterInput
     $limit: Int
-    $nextToken: String
   ) {
-    listNoteTags(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listNoteTags(filter: $filter, limit: $limit) {
       items {
         id
         noteID
@@ -160,7 +140,6 @@ export const listNoteTags = /* GraphQL */ `
         updatedAt
         owner
       }
-      nextToken
     }
   }
 `;

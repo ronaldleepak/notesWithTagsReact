@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from 'prop-types'
 import { Textfield } from "."
 import TagElement from "./TagElement"
-import { Tag } from "../../models";
+import { NoteTags, Tag } from "../../models";
 
 export default class TagsControl extends React.Component {
     constructor(props) {
@@ -14,8 +14,9 @@ export default class TagsControl extends React.Component {
     }
 
     static propTypes = {
-        tags: PropTypes.array,
-        onTagsChange: PropTypes.func,
+        noteTags: PropTypes.array,
+        onTagAdded: PropTypes.func,
+        onTagDeleted: PropTypes.func,
     }
 
     handleTextInputChange = (e) => {
@@ -23,23 +24,23 @@ export default class TagsControl extends React.Component {
     }
 
     handleNewTagSubmit = (textInput) => {
-        const { onTagsChange, tags } = this.props;
-        const newTag = new Tag({
-            name: textInput
+        const { onTagAdded } = this.props;
+        const newNoteTag = new NoteTags({
+            tag: new Tag({
+                name: textInput
+            })
         })
-        const newTags = [newTag, ...tags];
         this.setState({textInput: ""})
-        onTagsChange(newTags);
+        onTagAdded(newNoteTag);
     }
 
-    handleDeleteTag = (deleteTag) => {
-        const { onTagsChange, tags } = this.props;
-        const newTags = tags.filter( tag => tag.id !== deleteTag.id )
-        onTagsChange(newTags);
+    handleDeleteTag = (deletedNoteTag) => {
+        const { onTagDeleted } = this.props;
+        onTagDeleted(deletedNoteTag);
     }
 
     render() {
-        const { tags } = this.props;
+        const { noteTags } = this.props;
         const { textInput } = this.state;
         
         return (
@@ -52,9 +53,9 @@ export default class TagsControl extends React.Component {
                 />
                 <div className="field is-grouped is-grouped-multiline">
                 {
-                    tags.map(tag => {
+                    noteTags.map(noteTag => {
                         return (
-                            <TagElement tag={tag} key={tag.id} onDelete={this.handleDeleteTag}/>
+                            <TagElement noteTag={noteTag} key={noteTag.id} onDelete={this.handleDeleteTag}/>
                         )
                     })
                 }

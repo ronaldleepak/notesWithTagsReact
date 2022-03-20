@@ -2,10 +2,16 @@ import { createAction } from "redux-actions";
 import { API } from 'aws-amplify'
 import {
     createNote as CreateNote,
-    updateNote as UpdateNote,
     deleteNote as DeleteNote,
-} from '../graphql/mutations'
-import { Note } from '../models/'
+    updateNote as UpdateNote,
+    createTag as CreateTag,
+    deleteTag as DeleteTag,
+    updateTag as UpdateTag,
+    createNoteTags as CreateNoteTags,
+    deleteNoteTags as DeleteNoteTags,
+    updateNoteTags as UpdateNoteTags,
+} from '../graphql/noteWithTagsMutations'
+import { Note, Tag, NoteTags } from '../models/'
 
 const NEW_NOTE_START = 'NEW_NOTE_START';
 const NEW_NOTE_SUCCESS = 'NEW_NOTE_SUCCESS';
@@ -31,7 +37,7 @@ export const newNote = () => async (dispatch, getState) => {
     dispatch(newNoteStart())
 
     try {
-        const newNoteData = await API.graphql(
+        const newNote = (await API.graphql(
         {
             query: CreateNote,
             variables: {
@@ -41,8 +47,8 @@ export const newNote = () => async (dispatch, getState) => {
                 }),
             },
             authMode: "AMAZON_COGNITO_USER_POOLS",
-        });
-        const newNote = newNoteData.data.createNote;
+        })).data.createNote;
+
         dispatch(newNoteSuccess(newNote))
     } catch (error) {
         const errorMessage = `Failed to new note: ${error.toString()}`;
@@ -52,19 +58,62 @@ export const newNote = () => async (dispatch, getState) => {
     }
 }
 
-export const saveNote = (note) => async (dispatch, getState) => {
+export const saveNote = (saveData) => async (dispatch, getState) => {
     dispatch(saveNoteStart())
 
     try {
-        const updatedNoteData = await API.graphql(
+
+        // delete note tag data
+        await saveData.deleteTags.forEach((noteTag) => {
+            API.graphql(
+            {
+                query: DeleteNoteTags,
+                variables: {
+                    input: {
+                        id: noteTag.id
+                    }
+                },
+                authMode: "AMAZON_COGNITO_USER_POOLS",
+            });
+        });
+
+        // create new tags
+        await saveData.newTags.forEach((noteTag) => {
+            // create tag data
+            API.graphql(
+            {
+                query: CreateTag,
+                variables: {
+                    input: noteTag.tag,
+                },
+                authMode: "AMAZON_COGNITO_USER_POOLS",
+            });
+
+            // create note tag data
+            API.graphql(
+            {
+                query: CreateNoteTags,
+                variables: {
+                    input: {
+                        id: noteTag.id,
+                        noteID: saveData.note.id,
+                        tagID: noteTag.tag.id,
+                    },
+                },
+                authMode: "AMAZON_COGNITO_USER_POOLS",
+            });
+        })
+
+        // update note
+        const updatedNote = (await API.graphql(
         {
             query: UpdateNote,
             variables: {
-                input: note,
+                input: saveData.note,
             },
             authMode: "AMAZON_COGNITO_USER_POOLS",
-        });
-        const updatedNote = updatedNoteData.data.updateNote
+        })).data.updateNote;
+
         dispatch(saveNoteSuccess(updatedNote))
     } catch (error) {
         const errorMessage = `Failed to save note: ${error.toString()}`;
