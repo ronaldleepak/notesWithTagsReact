@@ -40,22 +40,31 @@ export default class TagsControl extends React.Component {
     }
 
     render() {
-        const { noteTags } = this.props;
+        const { noteTags, allowEdit } = this.props;
         const { textInput } = this.state;
         
         return (
             <div className="block">
-                <Textfield
-                    value={textInput}
-                    name="new-tag-input"
-                    onChange={this.handleTextInputChange}
-                    onEnterKeyDown={this.handleNewTagSubmit}
-                />
+                {
+                    (allowEdit) ?
+                    <Textfield
+                        value={textInput}
+                        name="new-tag-input"
+                        onChange={this.handleTextInputChange}
+                        onEnterKeyDown={this.handleNewTagSubmit}
+                    /> :
+                    ""
+                }
                 <div className="field is-grouped is-grouped-multiline">
                 {
                     noteTags.map(noteTag => {
                         return (
-                            <TagElement noteTag={noteTag} key={noteTag.id} onDelete={this.handleDeleteTag}/>
+                            <TagElement
+                                noteTag={noteTag}
+                                allowEdit={allowEdit}
+                                key={noteTag.id}
+                                onDelete={this.handleDeleteTag}
+                            />
                         )
                     })
                 }

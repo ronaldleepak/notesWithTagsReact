@@ -4,6 +4,7 @@ import {
     CreatedModifiedDate,
     ButtonGroup,
     Card,
+    TagsControl,
 } from "../Common"
 import { VIEW_STATUS } from "../../Util/Constants"
 
@@ -28,7 +29,8 @@ export default class NoteDetail extends React.Component {
     ]
 
     render() {
-        var { note } = this.props;
+        const { note } = this.props;
+        const tags = (note.tags.items != null) ? note.tags.items : [];
 
         return (
             <Card name="note-detail">
@@ -45,6 +47,11 @@ export default class NoteDetail extends React.Component {
                     </div>
                 </div>
                 <NewLineText text={note.content}/>
+                <TagsControl
+                    noteTags={tags}
+                    allowEdit={false}
+                    onTagAdded={this.handleTagAdded}
+                    onTagDeleted={this.handleTagDeleted}/>
                 <ButtonGroup buttons={this.buttons}/>
             </Card>
         );

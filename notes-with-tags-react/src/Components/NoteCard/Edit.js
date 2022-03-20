@@ -1,6 +1,12 @@
 import React from "react"
 import { connect } from 'react-redux'
-import { ButtonGroup, Card, Textfield, Textarea, TagsControl } from "../Common"
+import {
+    ButtonGroup,
+    Card,
+    Textfield,
+    Textarea,
+    TagsControl
+} from "../Common"
 import { deleteNote, saveNote } from "../../Actions"
 import {
     VIEW_STATUS,
@@ -103,6 +109,7 @@ class NoteEdit extends React.Component {
                 />
                 <TagsControl
                     noteTags={tags}
+                    allowEdit={true}
                     onTagAdded={this.handleTagAdded}
                     onTagDeleted={this.handleTagDeleted}/>
                 <ButtonGroup buttons={[

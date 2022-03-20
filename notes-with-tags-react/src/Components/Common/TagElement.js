@@ -13,13 +13,20 @@ export default class TagElement extends React.Component {
     }
 
     render() {
-        const { noteTag } = this.props;
+        const { noteTag, allowEdit } = this.props;
         const tag = noteTag.tag;
         return (
             <div className="control">
                 <div className="tags has-addons">
                     <span className="tag is-info">{tag.name}</span>
-                    <a className="tag is-delete" onClick={this.handleDeleteButtonClick}></a>
+                    {
+                        (allowEdit) ?
+                        <a
+                            className="tag is-delete"
+                            onClick={this.handleDeleteButtonClick}></a> :
+                        ""
+                    }
+                    
                 </div>
             </div>
         );
