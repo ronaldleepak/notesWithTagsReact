@@ -63,7 +63,7 @@ export const saveNote = (saveData) => async (dispatch, getState) => {
 
     try {
 
-        // delete note tag data
+        // delete tags
         await saveData.deleteTags.forEach((noteTag) => {
             API.graphql(
             {
@@ -75,11 +75,21 @@ export const saveNote = (saveData) => async (dispatch, getState) => {
                 },
                 authMode: "AMAZON_COGNITO_USER_POOLS",
             });
+
+            API.graphql(
+            {
+                query: DeleteTag,
+                variables: {
+                    input: {
+                        id: noteTag.tag.id
+                    }
+                },
+                authMode: "AMAZON_COGNITO_USER_POOLS",
+            });
         });
 
         // create new tags
         await saveData.newTags.forEach((noteTag) => {
-            // create tag data
             API.graphql(
             {
                 query: CreateTag,
@@ -89,7 +99,6 @@ export const saveNote = (saveData) => async (dispatch, getState) => {
                 authMode: "AMAZON_COGNITO_USER_POOLS",
             });
 
-            // create note tag data
             API.graphql(
             {
                 query: CreateNoteTags,
