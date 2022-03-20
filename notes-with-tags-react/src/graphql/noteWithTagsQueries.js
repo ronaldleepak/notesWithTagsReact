@@ -1,0 +1,166 @@
+/* eslint-disable */
+
+export const getNote = /* GraphQL */ `
+  query GetNote($id: ID!) {
+    getNote(id: $id) {
+      id
+      owner
+      header
+      content
+      tags {
+        items {
+          tag {
+            id
+            name
+            owner
+            createdAt
+            updatedAt
+          }
+        }
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listNotes = /* GraphQL */ `
+  query ListNotes(
+    $filter: ModelNoteFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listNotes(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        owner
+        header
+        content
+        tags {
+          items {
+            tag {
+              id
+              name
+              owner
+              createdAt
+              updatedAt
+            }
+          }
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getTag = /* GraphQL */ `
+  query GetTag($id: ID!) {
+    getTag(id: $id) {
+      id
+      owner
+      name
+      notes {
+        items {
+          id
+          noteID
+          tagID
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listTags = /* GraphQL */ `
+  query ListTags(
+    $filter: ModelTagFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listTags(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        owner
+        name
+        notes {
+          items {
+            id
+            noteID
+            tagID
+            createdAt
+            updatedAt
+            owner
+          }
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getNoteTags = /* GraphQL */ `
+  query GetNoteTags($id: ID!) {
+    getNoteTags(id: $id) {
+      id
+      noteID
+      tagID
+      note {
+        id
+        owner
+        header
+        content
+        createdAt
+        updatedAt
+      }
+      tag {
+        id
+        owner
+        name
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const listNoteTags = /* GraphQL */ `
+  query ListNoteTags(
+    $filter: ModelNoteTagsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listNoteTags(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        noteID
+        tagID
+        note {
+          id
+          owner
+          header
+          content
+          createdAt
+          updatedAt
+        }
+        tag {
+          id
+          owner
+          name
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+    }
+  }
+`;
