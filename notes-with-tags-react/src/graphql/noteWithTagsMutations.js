@@ -84,20 +84,6 @@ export const createTag = /* GraphQL */ `
     }
   }
 `;
-export const updateTag = /* GraphQL */ `
-  mutation UpdateTag(
-    $input: UpdateTagInput!
-    $condition: ModelTagConditionInput
-  ) {
-    updateTag(input: $input, condition: $condition) {
-      id
-      owner
-      name
-      createdAt
-      updatedAt
-    }
-  }
-`;
 export const deleteTag = /* GraphQL */ `
   mutation DeleteTag(
     $input: DeleteTagInput!
@@ -114,36 +100,6 @@ export const createNoteTags = /* GraphQL */ `
     $condition: ModelNoteTagsConditionInput
   ) {
     createNoteTags(input: $input, condition: $condition) {
-      id
-      noteID
-      tagID
-      note {
-        id
-        owner
-        header
-        content
-        createdAt
-        updatedAt
-      }
-      tag {
-        id
-        owner
-        name
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-      owner
-    }
-  }
-`;
-export const updateNoteTags = /* GraphQL */ `
-  mutation UpdateNoteTags(
-    $input: UpdateNoteTagsInput!
-    $condition: ModelNoteTagsConditionInput
-  ) {
-    updateNoteTags(input: $input, condition: $condition) {
       id
       noteID
       tagID

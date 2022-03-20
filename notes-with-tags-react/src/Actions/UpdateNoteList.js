@@ -6,12 +6,10 @@ import {
     updateNote as UpdateNote,
     createTag as CreateTag,
     deleteTag as DeleteTag,
-    updateTag as UpdateTag,
     createNoteTags as CreateNoteTags,
     deleteNoteTags as DeleteNoteTags,
-    updateNoteTags as UpdateNoteTags,
 } from '../graphql/noteWithTagsMutations'
-import { Note, Tag, NoteTags } from '../models/'
+import { Note } from '../models/'
 
 const NEW_NOTE_START = 'NEW_NOTE_START';
 const NEW_NOTE_SUCCESS = 'NEW_NOTE_SUCCESS';
