@@ -12,7 +12,7 @@ const {
     EDIT,
 } = VIEW_STATUS;
 
-class NoteCard extends React.Component {
+export default class NoteCard extends React.Component {
     constructor(props) {
         super(props);
 
@@ -22,13 +22,6 @@ class NoteCard extends React.Component {
     }
 
     handleViewChange = (viewStatus) => {
-        const {
-            onLoadNoteDetail, note,
-        } = this.props;
-        
-        // always update the note detail
-        onLoadNoteDetail(note.id)
-        
         this.setState({
             viewStatus: viewStatus,
         })
@@ -52,11 +45,3 @@ class NoteCard extends React.Component {
         );
     };
 }
-
-const mapDispatchToProps = {
-    onLoadNoteDetail: fetchNote,
-};
-
-const enhancer = connect(null, mapDispatchToProps);
-
-export default enhancer(NoteCard)

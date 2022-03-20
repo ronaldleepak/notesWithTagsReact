@@ -1,10 +1,4 @@
 export { 
-    FETCH_NOTE_START,
-    FETCH_NOTE_SUCCESS,
-    FETCH_NOTE_FAILURE,
-    default as fetchNote,
-} from './FetchNote';
-export { 
     FETCH_NOTE_LIST_START,
     FETCH_NOTE_LIST_SUCCESS,
     FETCH_NOTE_LIST_FAILURE,
