@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Textfield } from "."
 import TagElement from "./TagElement"
 import { NoteTags, Tag } from "../../models";
+import _ from 'lodash-es'
 
 export default class TagsControl extends React.Component {
     constructor(props) {
@@ -24,19 +25,27 @@ export default class TagsControl extends React.Component {
     }
 
     handleNewTagSubmit = (textInput) => {
-        const { onTagAdded } = this.props;
-        const newNoteTag = new NoteTags({
-            tag: new Tag({
-                name: textInput
+        const { noteTags, onTagAdded } = this.props;
+        const existingTag = _.find(noteTags, function(noteTag) { return noteTag.tag.name === textInput });
+
+        this.clearTextField();
+        if (existingTag == null) {
+            const newNoteTag = new NoteTags({
+                tag: new Tag({
+                    name: textInput
+                })
             })
-        })
-        this.setState({textInput: ""})
-        onTagAdded(newNoteTag);
+            onTagAdded(newNoteTag);
+        }
     }
 
     handleDeleteTag = (deletedNoteTag) => {
         const { onTagDeleted } = this.props;
         onTagDeleted(deletedNoteTag);
+    }
+
+    clearTextField = () => {
+        this.setState({textInput: ""})
     }
 
     render() {
@@ -52,6 +61,7 @@ export default class TagsControl extends React.Component {
                         name="new-tag-input"
                         onChange={this.handleTextInputChange}
                         onEnterKeyDown={this.handleNewTagSubmit}
+                        onFocusout={this.handleNewTagSubmit}
                     /> :
                     ""
                 }
