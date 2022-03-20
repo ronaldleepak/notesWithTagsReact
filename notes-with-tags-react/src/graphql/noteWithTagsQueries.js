@@ -78,6 +78,13 @@ export const listTags = /* GraphQL */ `
         id
         owner
         name
+        notes {
+          items {
+            id
+            createdAt
+            updatedAt
+          }
+        }
         createdAt
         updatedAt
       }

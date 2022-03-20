@@ -60,7 +60,7 @@ class NoteEdit extends React.Component {
 
     handleDeleteButtonClick = () => {
         const { onDeleteNoteClick, note } = this.props;
-        onDeleteNoteClick(note.id)
+        onDeleteNoteClick(note)
     }
 
     handleHeaderChange = (e) => {
