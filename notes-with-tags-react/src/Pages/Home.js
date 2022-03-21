@@ -5,18 +5,13 @@ import ImportExport from "../Components/ImportExport";
 import { getNotes } from "../Selectors/GetNotes";
 
 class HomePage extends React.Component { 
-
-    state = {
-        message: "Welcome to NotesWithTags!",
-    };
-
     render() {
         var { notes } = this.props;
         return (
-            <div>
+            <div className="pt-5">
                 <div className="block has-text-centered">
                     <h1 className="title is-1">
-                        {this.state.message}
+                        Welcome to NotesWithTags!
                     </h1>
                 </div>
                 <div>
