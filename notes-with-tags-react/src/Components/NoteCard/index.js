@@ -35,10 +35,12 @@ export default class NoteCard extends React.Component {
         } = this.state;
         
         return (
-            <div className="box is-light">
-                {(viewStatus === THUMBNAIL) ? <Thumbnail note={note} onViewChange={this.handleViewChange}/> : null}
-                {(viewStatus === DETAIL) ? <Detail note={note} onViewChange={this.handleViewChange}/> : null}
-                {(viewStatus === EDIT) ? <Edit note={note} onViewChange={this.handleViewChange}/> : null}
+            <div className="card my-5">
+                <div className="card-content">
+                    {(viewStatus === THUMBNAIL) ? <Thumbnail note={note} onViewChange={this.handleViewChange}/> : null}
+                    {(viewStatus === DETAIL) ? <Detail note={note} onViewChange={this.handleViewChange}/> : null}
+                    {(viewStatus === EDIT) ? <Edit note={note} onViewChange={this.handleViewChange}/> : null}
+                </div>
             </div>
         );
     };
