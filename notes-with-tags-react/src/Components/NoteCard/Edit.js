@@ -123,7 +123,7 @@ class NoteEdit extends React.Component {
                         action: this.handleSaveButtonClick,
                     },
                     {
-                        label: "Close Without Saving",
+                        label: "Cancel",
                         name: "close-note",
                         action: this.handleCloseButtonClick,
                     },
