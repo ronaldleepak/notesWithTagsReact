@@ -99,11 +99,13 @@ class NoteEdit extends React.Component {
             <Card name="note-edit">
                 <Textfield
                     value={header}
+                    placeholder="Title"
                     name="note-header-input"
                     onChange={this.handleHeaderChange}
                 />
                 <Textarea
                     value={content}
+                    placeholder="Content"
                     name="note-content-input"
                     onChange={this.handleContentChange}
                 />

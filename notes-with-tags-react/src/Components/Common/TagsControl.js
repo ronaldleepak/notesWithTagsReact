@@ -61,6 +61,7 @@ export default class TagsControl extends React.Component {
                     (allowEdit) ?
                     <Textfield
                         value={textInput}
+                        placeholder="Add New Tag Here"
                         name="new-tag-input"
                         onChange={this.handleTextInputChange}
                         onEnterKeyDown={this.handleNewTagSubmit}
