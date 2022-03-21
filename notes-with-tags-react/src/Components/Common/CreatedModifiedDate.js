@@ -6,13 +6,9 @@ export default class CreatedModifiedDate extends React.Component {
         createdDate = new Date(createdDate);
         modifiedDate = new Date(modifiedDate);
         return (
-            <div className="block">
-                <p>
-                    Created Time: {createdDate.toLocaleString('en-GB')}
-                </p>
-                <p>
-                    Last Modified Time: {modifiedDate.toLocaleString('en-GB')}
-                </p>
+            <div className="content has-text-grey-light is-small">
+                <div>Created Time: {createdDate.toLocaleString('en-GB')}</div>
+                <div>Last Modified Time: {modifiedDate.toLocaleString('en-GB')}</div>
             </div>
         );
     };
