@@ -12,14 +12,16 @@ export default class Textfield extends React.Component {
 
     handleKeyDown = (e) => {
         var { value, onEnterKeyDown } = this.props;
-        if (e.key === 'Enter') {
+        if (e.key === 'Enter' && onEnterKeyDown) {
             onEnterKeyDown(value);
         }
     }
 
     handleBlur = (e) => {
         var { value, onFocusout } = this.props;
-        onFocusout(value);
+        if (onFocusout) {
+            onFocusout(value);
+        }
     }
 
     render() {
