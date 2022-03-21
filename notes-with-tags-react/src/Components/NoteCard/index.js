@@ -1,10 +1,8 @@
 import React from "react"
-import { connect } from 'react-redux'
 import Thumbnail from "./Thumbnail"
 import Edit from "./Edit"
 import Detail from "./Detail"
 import { VIEW_STATUS } from "../../Util/Constants"
-import { fetchNote } from '../../Actions';
 
 const {
     THUMBNAIL,

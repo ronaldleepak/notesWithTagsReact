@@ -10,7 +10,6 @@ import {
     deleteNoteTags as DeleteNoteTags,
 } from '../graphql/noteWithTagsMutations'
 import {
-    listNoteTags as ListNoteTags,
     listTags as ListTags,
 } from '../graphql/noteWithTagsQueries'
 import {
