@@ -48,8 +48,8 @@ export const newNote = () => async (dispatch, getState) => {
             query: CreateNote,
             variables: {
                 input: new Note({
-                    header: "Write your header here",
-                    content: "Write your contents here",
+                    header: "",
+                    content: "",
                 }),
             },
             authMode: "AMAZON_COGNITO_USER_POOLS",
