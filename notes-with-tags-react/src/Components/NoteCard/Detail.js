@@ -35,7 +35,7 @@ export default class NoteDetail extends React.Component {
                 <div className="columns">
                     <div className="column is-8">
                         <h2 className="title is-2" onClick={this.handleTitleClick}>
-                            {note.header}
+                            {(note.header === "") ? "Untitled" : note.header}
                         </h2>
                     </div>
                     <div className="column is-4">
