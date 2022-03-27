@@ -1,0 +1,24 @@
+type Note
+  @model
+  @auth(
+    rules: [
+      { allow: owner, ownerField: "owner", operations: [create, update, delete, read] },
+    ]) {
+  id: ID!
+  owner: String
+  header: String!
+  content: String!
+  tags: [Tag] @manyToMany(relationName: "NoteTags")
+}
+
+type Tag
+  @model
+  @auth(
+    rules: [
+      { allow: owner, ownerField: "owner", operations: [create, update, delete, read] },
+    ]) {
+  id: ID!
+  owner: String
+  name: String!
+  notes: [Note] @manyToMany(relationName: "NoteTags")
+}

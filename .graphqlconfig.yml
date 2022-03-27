@@ -14,7 +14,7 @@ projects:
         apiId: 6izg6otu2van5dgw2fwfc2huxe
         maxDepth: 2
   noteswithtagsreact:
-    schemaPath: amplify/backend/api/NotesWithTagsReact/build/schema.graphql
+    schemaPath: amplify/backend/api/noteswithtagsreact/build/schema.graphql
     includes:
       - src/graphql/**/*.js
     excludes:
