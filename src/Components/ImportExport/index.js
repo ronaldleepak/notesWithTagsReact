@@ -1,16 +1,19 @@
 import React from "react"
 import { Button } from "../Common"
 import { LOADING_STATUS } from "../../Util/Constants"
+import { connect } from 'react-redux'
+import { exportNotes, importNotes } from "../../Actions"
 
-export default class ImportExport extends React.Component {
-    state = {
-        notes: [],
-    };
+class ImportExport extends React.Component {
 
     handleImportButtonClick = (e) => {
+        const { onImportButtonClick } = this.props;
+        onImportButtonClick()
     }
 
     handleExportButtonClick = (e) => {
+        const { onExportButtonClick } = this.props;
+        onExportButtonClick()
     }
 
     render() {
@@ -35,3 +38,12 @@ export default class ImportExport extends React.Component {
         );
     };
 }
+
+const mapDispatchToProps = {
+    onImportButtonClick: importNotes,
+    onExportButtonClick: exportNotes,
+};
+
+const enhancer = connect(null, mapDispatchToProps);
+
+export default enhancer(ImportExport)
