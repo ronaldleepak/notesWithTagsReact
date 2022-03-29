@@ -36,25 +36,50 @@ export default class Button extends React.Component {
         return isLoading ? "is-loading" : "";
     }
 
+    handleButtonClick = (event) => {
+        const { action, isFileImport } = this.props;
+
+        event.stopPropagation();
+        event.preventDefault();
+
+        if (isFileImport) {
+            const file = event.target.files[0];
+            event.file = file;
+        }
+
+        action(event);
+    }
+
     render() {
         var {
             label,
             name,
-            action,
             buttonStyle,
             isLoading,
             isFileImport,
         } = this.props;
 
-        const className = `button is-light
+        const className = `button is-light mr-4
                         ${this.buttonStyleToBulmaClass(buttonStyle)}
                         ${this.buttonIsLoading(isLoading)}`;
 
-        return <button
-            aria-label={name}
-            className={className}
-            onClick={action}>
-            {label}
-        </button>
+        return (
+            <div>
+                {(isFileImport) ? (
+                    <input
+                        type="file"
+                        ref={(ref) => this.upload = ref}
+                        style={{display: "none"}}
+                        onChange={this.handleButtonClick.bind(this)}
+                    />
+                ) : null}
+                <button
+                    aria-label={name}
+                    className={className}
+                    onClick={(isFileImport) ? () => {this.upload.click()} : this.handleButtonClick}>
+                    {label}
+                </button>
+            </div>
+        );
     };
 }
