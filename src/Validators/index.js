@@ -1,0 +1,3 @@
+export { 
+    validateNoteContents,
+} from './Notes';
