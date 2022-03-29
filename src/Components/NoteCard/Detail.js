@@ -2,7 +2,7 @@ import React from "react"
 import {
     NewLineText,
     CreatedModifiedDate,
-    ButtonGroup,
+    Button,
     Card,
     TagsControl,
 } from "../Common"
@@ -50,18 +50,16 @@ export default class NoteDetail extends React.Component {
                     allowEdit={false}
                     onTagAdded={this.handleTagAdded}
                     onTagDeleted={this.handleTagDeleted}/>
-                <ButtonGroup buttons={[
-                    {
-                        label: "Edit",
-                        name: "edit-note",
-                        action: this.handleEditButtonClick
-                    },
-                    {
-                        label: "Copy Content",
-                        name: "copy-note",
-                        action: this.handleCopyButtonClick
-                    },
-                ]}/>
+                <div className="block buttons">
+                    <Button
+                        label="Edit"
+                        name="edit-note"
+                        action={this.handleEditButtonClick}/>
+                    <Button
+                        label="Copy Content"
+                        name="copy-note"
+                        action={this.handleCopyButtonClick}/>
+                </div>
             </Card>
         );
     };

@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from 'react-redux'
 import {
-    ButtonGroup,
+    Button,
     Card,
     Textfield,
     Textarea,
@@ -114,27 +114,24 @@ class NoteEdit extends React.Component {
                     allowEdit={true}
                     onTagAdded={this.handleTagAdded}
                     onTagDeleted={this.handleTagDeleted}/>
-                <ButtonGroup buttons={[
-                    {
-                        label: "Save",
-                        name: "save-note",
-                        buttonStyle: BUTTON_STYLE.SUBMIT,
-                        isLoading: this.props.loadingStatus === LOADING_STATUS.LOADING,
-                        action: this.handleSaveButtonClick,
-                    },
-                    {
-                        label: "Cancel",
-                        name: "close-note",
-                        action: this.handleCloseButtonClick,
-                    },
-                    {
-                        label: "Delete",
-                        name: "delete-note",
-                        buttonStyle: BUTTON_STYLE.DANGER,
-                        isLoading: this.props.loadingStatus === LOADING_STATUS.LOADING,
-                        action: this.handleDeleteButtonClick,
-                    },
-                ]}/>
+                <div className="block buttons">
+                    <Button
+                        label="Save"
+                        name="save-note"
+                        buttonStyle={BUTTON_STYLE.SUBMIT}
+                        isLoading={this.props.loadingStatus === LOADING_STATUS.LOADING}
+                        action={this.handleSaveButtonClick}/>
+                    <Button
+                        label="Cancel"
+                        name="close-note"
+                        action={this.handleCloseButtonClick}/>
+                    <Button
+                        label="Delete"
+                        name="delete-note"
+                        buttonStyle={BUTTON_STYLE.DANGER}
+                        isLoading={this.props.loadingStatus === LOADING_STATUS.LOADING}
+                        action={this.handleDeleteButtonClick}/>
+                </div>
             </Card>
         );
     };

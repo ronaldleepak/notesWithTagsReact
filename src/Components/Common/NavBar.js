@@ -1,5 +1,5 @@
 import React from "react"
-import { ButtonGroup } from "../Common"
+import { Button } from "../Common"
 import { BUTTON_STYLE } from "../../Util/Constants"
 import { Auth } from 'aws-amplify';
 
@@ -29,14 +29,13 @@ export default class NavBar extends React.Component {
                     </a>
                 </div>
                 <div className="navbar-end">
-                    <ButtonGroup buttons={[
-                        {
-                            label: "Logout",
-                            name: "logout",
-                            buttonStyle: BUTTON_STYLE.DANGER,
-                            action: this.handleLogoutButtonClick,
-                        },
-                    ]}/>
+                    <div className="block buttons">
+                        <Button
+                            label="Logout"
+                            name="logout"
+                            buttonStyle={BUTTON_STYLE.DANGER}
+                            action={this.handleLogoutButtonClick}/>
+                    </div>
                 </div>
             </nav>
         );

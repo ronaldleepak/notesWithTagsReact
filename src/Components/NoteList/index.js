@@ -1,26 +1,21 @@
 import React from "react"
 import { connect } from 'react-redux'
-import { ButtonGroup } from "../Common"
+import { Button } from "../Common"
 import { newNote } from "../../Actions"
 import NoteCard from "../NoteCard"
 import { LOADING_STATUS } from '../../Util/Constants';
 class NoteList extends React.Component {
 
     render() {
-        var {notes} = this.props
+        var {notes, onNewNoteClick} = this.props
         return (
             <div className="columns is-centered is-mobile">
                 <div className="column is-9">
-                    <ButtonGroup buttons={[
-                        {
-                            label: "New Note",
-                            name: "new-note",
-                            isLoading: this.props.loadingStatus === LOADING_STATUS.LOADING,
-                            action: () => {
-                                this.props.onNewNoteClick();
-                            }
-                        },
-                    ]}/>
+                    <Button
+                        label="New Note"
+                        name="new-note"
+                        isLoading={this.props.loadingStatus === LOADING_STATUS.LOADING}
+                        action={onNewNoteClick}/>
                     <div className="list">
                     {
                         notes.map(note => {

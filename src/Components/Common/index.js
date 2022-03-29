@@ -1,4 +1,4 @@
-export { default as ButtonGroup } from './ButtonGroup';
+export { default as Button } from './Button';
 export { default as NewLineText } from './NewLineText';
 export { default as Textarea } from './Textarea';
 export { default as Textfield } from './Textfield';
