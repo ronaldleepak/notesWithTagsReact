@@ -22,13 +22,13 @@ class ImportExport extends React.Component {
                 <div className="column is-9">
                     <div className="block buttons">
                         <Button
-                            label="Import .NWT file"
+                            label="Import .json file"
                             name="import-notes"
                             isLoading={this.props.loadingStatus === LOADING_STATUS.LOADING}
                             isFileImport={true}
                             action={this.handleImportButtonClick}/>
                         <Button
-                            label="Export .NWT file"
+                            label="Export .json file"
                             name="export-notes"
                             isLoading={this.props.loadingStatus === LOADING_STATUS.LOADING}
                             action={this.handleExportButtonClick}/>

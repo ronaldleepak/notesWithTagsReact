@@ -4,11 +4,11 @@ export const uid = () => {
         + Date.now().toString(16).slice(4);
 };
 
-export const exportNotesAsNTWFile = (notes) => {
+export const exportNotesAsJSONFile = (notes) => {
     downloadFile({
         data: JSON.stringify(notes),
-        fileName: "notes.ntw",
-        fileType: "text/json",
+        fileName: "notes.json",
+        fileType: "application/json",
     });
 };
 

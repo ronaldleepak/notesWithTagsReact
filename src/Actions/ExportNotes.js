@@ -1,7 +1,7 @@
 
 import { createAction } from "redux-actions";
 import _ from 'lodash-es'
-import { exportNotesAsNTWFile } from '../Util/Util.js'
+import { exportNotesAsJSONFile } from '../Util/Util.js'
 
 const EXPORT_NOTES_START = 'EXPORT_NOTES_START';
 const EXPORT_NOTES_SUCCESS = 'EXPORT_NOTES_SUCCESS';
@@ -11,8 +11,9 @@ const exportStart = createAction(EXPORT_NOTES_START);
 const exportSuccess = createAction(EXPORT_NOTES_SUCCESS);
 const exportFailure = createAction(EXPORT_NOTES_FAILURE);
 
-function simplifyNotesObj(notes) {
-    return _.map(notes, (note) => {
+function simplifyNotesObj(noteObj) {
+    const notes = noteObj.notes;
+    const simplifiedNotes = _.map(notes, (note) => {
         const simplifiedNote = _.omit(note, ['id', 'owner', 'createdAt', 'updatedAt'])
 
         // simplify tag list
@@ -23,15 +24,19 @@ function simplifyNotesObj(notes) {
 
         return simplifiedNote;
     })
+
+    return {
+        notes: simplifiedNotes
+    }
 }
 
 const exportNotes = () => async (dispatch, getState) => {
     dispatch(exportStart)
 
     try {
-        const notes = simplifyNotesObj(getState().note.notes);
+        const notes = simplifyNotesObj(getState().note);
         
-        exportNotesAsNTWFile(notes)
+        exportNotesAsJSONFile(notes)
 
         dispatch(exportSuccess())
     } catch (error) {
