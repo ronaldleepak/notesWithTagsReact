@@ -6,12 +6,12 @@ import { exportNotes, importNotes } from "../../Actions"
 
 class ImportExport extends React.Component {
 
-    handleImportButtonClick = (e) => {
+    handleImportButtonClick = (event) => {
         const { onImportButtonClick } = this.props;
-        onImportButtonClick()
+        onImportButtonClick(event.file)
     }
 
-    handleExportButtonClick = (e) => {
+    handleExportButtonClick = (event) => {
         const { onExportButtonClick } = this.props;
         onExportButtonClick()
     }
