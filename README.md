@@ -1,6 +1,6 @@
 A Demostration of React & Redux usage with Amplify and GraphQL.
 
-Link to the demo web application: <a></a>
+Link to the demo web application: <a>https://main.d2rmt4hjoafnuc.amplifyapp.com/</a>
 
 # Features
 
