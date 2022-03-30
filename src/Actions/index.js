@@ -39,4 +39,28 @@ export {
     EXPORT_NOTES_FAILURE,
     default as exportNotes,
 } from './ExportNotes';
+export {
+    LOGIN_START,
+    LOGIN_SUCCESS,
+    LOGIN_FAILURE,
+    LOGOUT_START,
+    LOGOUT_SUCCESS,
+    LOGOUT_FAILURE,
+    login,
+    logout,
+} from './UserAuth';
+export {
+    SIGN_UP_START,
+    SIGN_UP_SUCCESS,
+    SIGN_UP_FAILURE,
+    CONFIRM_SIGNUP_START,
+    CONFIRM_SIGNUP_SUCCESS,
+    CONFIRM_SIGNUP_FAILURE,
+    CONFIRM_RESEND_START,
+    CONFIRM_RESEND_SUCCESS,
+    CONFIRM_RESEND_FAILURE,
+    signUp,
+    confirmSignUp,
+    resendConfirmationCode,
+} from './UserSignUp';
 
