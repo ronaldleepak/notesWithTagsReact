@@ -9,6 +9,12 @@ import { fetchUserData } from './Actions';
 
 import Amplify from "aws-amplify";
 import awsExports from "./aws-exports";
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+
+library.add(fas)
+
 Amplify.configure(awsExports);
 
 store.dispatch(fetchUserData());
