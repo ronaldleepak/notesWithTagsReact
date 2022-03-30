@@ -21,7 +21,7 @@ export default class NavBar extends React.Component {
         return (
             <nav className="navbar">
                 <div className="navbar-start">
-                    <a className="navbar-item">
+                    <a className="navbar-item" href="https://main.d2rmt4hjoafnuc.amplifyapp.com">
                         Notes With Tags
                     </a>
                     <a className="navbar-item" href="https://pakholeeronald.net">
