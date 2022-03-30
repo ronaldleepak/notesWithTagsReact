@@ -1,5 +1,4 @@
 import React from "react"
-import { uid } from '../../Util/Util'
 
 export default class NewLineText extends React.Component {
 
@@ -12,10 +11,12 @@ export default class NewLineText extends React.Component {
         return (
             <div className="block">
             {
-                this.splitNextLine(text).map(paragraphContent => {
-                    const key = "paragraph_" + uid();
+                this.splitNextLine(text).map((paragraphContent, i) => {
+                    const key = "paragraph_" + i;
                     return (
-                        <p key={key}>{paragraphContent}</p>
+                        <p key={key}>
+                            {paragraphContent}
+                        </p>
                     )
                 })
             }

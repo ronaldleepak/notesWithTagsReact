@@ -1,6 +1,5 @@
 import React from "react"
 import PropTypes from 'prop-types'
-import { uid } from '../../Util/Util'
 import { BUTTON_STYLE } from "../../Util/Constants"
 
 const {
