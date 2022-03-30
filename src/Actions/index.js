@@ -50,9 +50,9 @@ export {
     logout,
 } from './UserAuth';
 export {
-    SIGN_UP_START,
-    SIGN_UP_SUCCESS,
-    SIGN_UP_FAILURE,
+    SIGNUP_START,
+    SIGNUP_SUCCESS,
+    SIGNUP_FAILURE,
     CONFIRM_SIGNUP_START,
     CONFIRM_SIGNUP_SUCCESS,
     CONFIRM_SIGNUP_FAILURE,
