@@ -36,7 +36,6 @@ export default class Textfield extends React.Component {
     }
 
     handlePasswordVisibleClick = (e) => {
-        console.log("test")
         const { isPasswordVisible } = this.state;
         this.setState({isPasswordVisible: !isPasswordVisible});
     }
