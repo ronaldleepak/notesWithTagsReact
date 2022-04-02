@@ -46,8 +46,12 @@ export {
     LOGOUT_START,
     LOGOUT_SUCCESS,
     LOGOUT_FAILURE,
+    FETCH_CURRENT_USER_START,
+    FETCH_CURRENT_USER_SUCCESS,
+    FETCH_CURRENT_USER_FAILURE,
     login,
     logout,
+    fetchCurrentUserData,
 } from './UserAuth';
 export {
     SIGNUP_START,
