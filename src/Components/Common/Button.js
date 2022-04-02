@@ -39,12 +39,12 @@ export default class Button extends React.Component {
     handleButtonClick = (event) => {
         const { action, isFileImport } = this.props;
 
-        event.stopPropagation();
-        event.preventDefault();
-
         if (isFileImport) {
             const file = event.target.files[0];
             event.file = file;
+        } else {
+            event.stopPropagation();
+            event.preventDefault();
         }
 
         action(event);
