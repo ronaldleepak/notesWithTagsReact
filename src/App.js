@@ -1,19 +1,42 @@
 import React from "react"
-import HomePage from "./Pages/Home";
+import { connect } from 'react-redux'
+import { HomePage, SigninPage } from "./Pages";
 import { NavBar } from "./Components/Common"
-import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
-export default class App extends React.Component {
+import { LOADING_STATUS } from "./Util/Constants";
+class App extends React.Component {
+
+    loadMainPage = () => {
+        const { isUserSignedIn, isUserLoading } = this.props;
+
+        if (isUserLoading) {
+            return null;
+        } else {
+            return (isUserSignedIn) ? (
+                <HomePage/>
+            ) : (
+                <SigninPage/>
+            );
+        }
+    }
+
     render() {
         return (
             <div>
                 <NavBar/>
-                <Authenticator>
-                    {({ signOut, user }) => (
-                        <HomePage/>
-                    )}
-                </Authenticator>
+                {this.loadMainPage()}
             </div>
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        isUserSignedIn: state.userAuth.user !== null,
+        isUserLoading: state.userAuth.loadingStatus === LOADING_STATUS.LOADING,
+    }
+}
+
+const enhancer = connect(mapStateToProps, null);
+
+export default enhancer(App)

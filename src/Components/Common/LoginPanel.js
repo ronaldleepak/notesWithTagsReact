@@ -1,4 +1,5 @@
 import React from "react"
+import { connect } from 'react-redux'
 import {
     Button,
     LinkButton,
@@ -11,7 +12,7 @@ import {
     LOGIN_PANEL_STATUS,
 } from "../../Util/Constants"
 
-export default class LoginPanel extends React.Component {
+class LoginPanel extends React.Component {
     constructor(props) {
         super(props);
 
@@ -35,7 +36,16 @@ export default class LoginPanel extends React.Component {
     }
 
     handleSigninButtonClick = () => {
+        const {
+            onSigninClick,
+        } = this.props;
 
+        const {
+            username,
+            password,
+        } = this.state;
+
+        onSigninClick(username, password);
     }
 
     handleSignupButtonClick = () => {
@@ -44,7 +54,7 @@ export default class LoginPanel extends React.Component {
     }
 
     render() {
-        var {
+        const {
             username,
             password,
             isShowPasswordField,
@@ -100,3 +110,11 @@ export default class LoginPanel extends React.Component {
         );
     };
 }
+
+const mapDispatchToProps = {
+    onSigninClick: login,
+};
+
+const enhancer = connect(null, mapDispatchToProps);
+
+export default enhancer(LoginPanel)

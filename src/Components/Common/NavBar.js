@@ -1,26 +1,21 @@
 import React from "react"
+import { connect } from 'react-redux'
 import {
     Button,
     LinkButton,
 } from "../Common"
+import { logout } from "../../Actions"
 import { BUTTON_STYLE } from "../../Util/Constants"
-import { Auth } from 'aws-amplify';
 
-async function signOut() {
-    try {
-        await Auth.signOut();
-    } catch (error) {
-        console.log('error signing out: ', error);
-    }
-}
-
-export default class NavBar extends React.Component {
+class NavBar extends React.Component {
     
-    handleLogoutButtonClick = () => {
-        signOut()
+    handleSignoutButtonClick = () => {
+        const { onSignout } = this.props;
+        onSignout();
     }
 
     render() {
+        const { isUserSignedIn } = this.props;
         return (
             <nav className="navbar">
                 <div className="navbar-start">
@@ -35,16 +30,32 @@ export default class NavBar extends React.Component {
                         className="navbar-item"
                     />
                 </div>
-                <div className="navbar-end">
-                    <div className="block buttons">
-                        <Button
-                            label="Logout"
-                            name="logout"
-                            buttonStyle={BUTTON_STYLE.DANGER}
-                            action={this.handleLogoutButtonClick}/>
+                {(isUserSignedIn) ? (
+                    <div className="navbar-end">
+                        <div className="block buttons">
+                            <Button
+                                label="Sign out"
+                                name="signout"
+                                buttonStyle={BUTTON_STYLE.DANGER}
+                                action={this.handleSignoutButtonClick}/>
+                        </div>
                     </div>
-                </div>
+                ) : null}
             </nav>
         );
     };
 }
+
+const mapDispatchToProps = {
+    onSignout: logout,
+};
+
+const mapStateToProps = (state) => {
+    return {
+        isUserSignedIn: (state.userAuth.user) !== null,
+    }
+}
+
+const enhancer = connect(mapStateToProps, mapDispatchToProps);
+
+export default enhancer(NavBar)
