@@ -1,8 +1,40 @@
 import React from "react"
-import { LoginPanel } from "../Components/Common"
+import { LoginPanel, SignupPanel } from "../Components/Common"
+import { LOGIN_PANEL_STATUS } from "../Util/Constants"
 
-class SigninPage extends React.Component { 
+const {
+    LOGIN,
+    SIGNUP,
+} = LOGIN_PANEL_STATUS;
+
+class SigninPage extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            panelStatus: LOGIN,
+        };
+    }
+
+    handlePanelChange = (panelStatus) => {
+        this.setState({
+            panelStatus: panelStatus,
+        })
+    }
+
+    loadPanel = (panelStatus) => {
+        switch (panelStatus) {
+            case LOGIN:
+                return <LoginPanel onPanelChange={this.handlePanelChange}/>
+            case SIGNUP:
+                return <SignupPanel onPanelChange={this.handlePanelChange}/>
+            default:
+                return null;
+        }
+    }
+
     render() {
+        const { panelStatus } = this.state;
         return (
             <div className="pt-5">
                 <div className="block has-text-centered">
@@ -11,7 +43,7 @@ class SigninPage extends React.Component {
                     </h1>
                 </div>
                 <div>
-                    <LoginPanel/>
+                    {this.loadPanel(panelStatus)}
                 </div>
             </div>
         );
