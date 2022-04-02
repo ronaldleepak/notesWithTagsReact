@@ -21,7 +21,7 @@ const confirmResendStart = createAction(CONFIRM_RESEND_START);
 const confirmResendSuccess = createAction(CONFIRM_RESEND_SUCCESS);
 const confirmResendFailure = createAction(CONFIRM_RESEND_FAILURE);
 
-const signUp = async (username, password, email) => async (dispatch, getState) => {
+const signUp = (username, password, email) => async (dispatch, getState) => {
     dispatch(signUpStart())
 
     try {
@@ -42,7 +42,7 @@ const signUp = async (username, password, email) => async (dispatch, getState) =
     }
 }
 
-const confirmSignUp = async (username, code) => async (dispatch, getState) => {
+const confirmSignUp = (username, code) => async (dispatch, getState) => {
     dispatch(confirmSignUpStart())
 
     try {
@@ -57,7 +57,7 @@ const confirmSignUp = async (username, code) => async (dispatch, getState) => {
     }
 }
 
-const resendConfirmationCode = async (username) => async (dispatch, getState) => {
+const resendConfirmationCode = (username) => async (dispatch, getState) => {
     dispatch(confirmResendStart())
 
     try {
