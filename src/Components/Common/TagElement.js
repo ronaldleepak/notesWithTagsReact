@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from 'prop-types'
+import { LinkButton } from "../Common"
 
 export default class TagElement extends React.Component {
     static propTypes = {
@@ -21,9 +22,10 @@ export default class TagElement extends React.Component {
                     <span className="tag is-info">{tag.name}</span>
                     {
                         (allowEdit) ?
-                        <a
+                        <LinkButton
                             className="tag is-delete"
-                            onClick={this.handleDeleteButtonClick}></a> :
+                            action={this.handleDeleteButtonClick}
+                        /> :
                         ""
                     }
                     

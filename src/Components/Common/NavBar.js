@@ -1,5 +1,8 @@
 import React from "react"
-import { Button } from "../Common"
+import {
+    Button,
+    LinkButton,
+} from "../Common"
 import { BUTTON_STYLE } from "../../Util/Constants"
 import { Auth } from 'aws-amplify';
 
@@ -21,12 +24,16 @@ export default class NavBar extends React.Component {
         return (
             <nav className="navbar">
                 <div className="navbar-start">
-                    <a className="navbar-item" href="https://main.d2rmt4hjoafnuc.amplifyapp.com">
-                        Notes With Tags
-                    </a>
-                    <a className="navbar-item" href="https://pakholeeronald.net">
-                        About Me
-                    </a>
+                    <LinkButton
+                        label="Notes With Tags"
+                        href="https://main.d2rmt4hjoafnuc.amplifyapp.com"
+                        className="navbar-item"
+                    />
+                    <LinkButton
+                        label="About Me"
+                        href="https://pakholeeronald.net"
+                        className="navbar-item"
+                    />
                 </div>
                 <div className="navbar-end">
                     <div className="block buttons">
