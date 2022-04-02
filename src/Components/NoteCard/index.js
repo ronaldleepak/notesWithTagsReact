@@ -25,6 +25,19 @@ export default class NoteCard extends React.Component {
         })
     }
 
+    loadCardContent = (viewStatus, note) => {
+        switch (viewStatus) {
+            case THUMBNAIL:
+                return <Thumbnail note={note} onViewChange={this.handleViewChange}/>
+            case DETAIL:
+                return <Detail note={note} onViewChange={this.handleViewChange}/>
+            case EDIT:
+                return <Edit note={note} onViewChange={this.handleViewChange}/>
+            default:
+                return null;
+        }
+    }
+
     render() {
         const {
             note,
@@ -37,9 +50,7 @@ export default class NoteCard extends React.Component {
         return (
             <div className="card my-5">
                 <div className="card-content">
-                    {(viewStatus === THUMBNAIL) ? <Thumbnail note={note} onViewChange={this.handleViewChange}/> : null}
-                    {(viewStatus === DETAIL) ? <Detail note={note} onViewChange={this.handleViewChange}/> : null}
-                    {(viewStatus === EDIT) ? <Edit note={note} onViewChange={this.handleViewChange}/> : null}
+                    {this.loadCardContent(viewStatus, note)}
                 </div>
             </div>
         );
