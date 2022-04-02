@@ -12,6 +12,7 @@ export default class Button extends React.Component {
     static propTypes = {
         label: PropTypes.string,
         name: PropTypes.string,
+        className: PropTypes.string,
         action: PropTypes.func,
         buttonStyle: PropTypes.string,
         isLoading: PropTypes.bool,
@@ -50,17 +51,19 @@ export default class Button extends React.Component {
     }
 
     render() {
-        var {
+        const {
             label,
             name,
+            className,
             buttonStyle,
             isLoading,
             isFileImport,
         } = this.props;
 
-        const className = `button is-light mr-4
+        const buttonClassName = `button is-light mr-4
                         ${this.buttonStyleToBulmaClass(buttonStyle)}
-                        ${this.buttonIsLoading(isLoading)}`;
+                        ${this.buttonIsLoading(isLoading)}
+                        ${className}`;
 
         return (
             <div>
@@ -74,7 +77,7 @@ export default class Button extends React.Component {
                 ) : null}
                 <button
                     aria-label={name}
-                    className={className}
+                    className={buttonClassName}
                     onClick={(isFileImport) ? () => {this.upload.click()} : this.handleButtonClick}>
                     {label}
                 </button>
