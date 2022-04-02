@@ -4,6 +4,11 @@ export const VIEW_STATUS = {
     EDIT: 'EDIT',
 }
 
+export const LOGIN_PANEL_STATUS = {
+    LOGIN: 'LOGIN',
+    SIGNUP: 'SIGNUP',
+}
+
 export const BUTTON_STYLE = {
     NORMAL: 'NORMAL',
     SUBMIT: 'SUBMIT',
