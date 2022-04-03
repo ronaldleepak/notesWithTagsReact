@@ -42,6 +42,7 @@ export {
 export {
     LOGIN_START,
     LOGIN_SUCCESS,
+    LOGIN_CONFIRM_USER,
     LOGIN_FAILURE,
     LOGOUT_START,
     LOGOUT_SUCCESS,
@@ -57,6 +58,9 @@ export {
     SIGNUP_START,
     SIGNUP_SUCCESS,
     SIGNUP_FAILURE,
+    CANCEL_CONFIRM_START,
+    CANCEL_CONFIRM_SUCCESS,
+    CANCEL_CONFIRM_FAILURE,
     CONFIRM_SIGNUP_START,
     CONFIRM_SIGNUP_SUCCESS,
     CONFIRM_SIGNUP_FAILURE,
@@ -64,7 +68,8 @@ export {
     CONFIRM_RESEND_SUCCESS,
     CONFIRM_RESEND_FAILURE,
     signUp,
+    cancelConfirmSignup,
     confirmSignUp,
-    resendConfirmationCode,
+    resendConfirmationEmail,
 } from './UserSignUp';
 

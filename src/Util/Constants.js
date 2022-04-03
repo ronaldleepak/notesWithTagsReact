@@ -7,6 +7,7 @@ export const VIEW_STATUS = {
 export const LOGIN_PANEL_STATUS = {
     LOGIN: 'LOGIN',
     SIGNUP: 'SIGNUP',
+    CONFIRM: 'CONFIRM',
 }
 
 export const BUTTON_STYLE = {

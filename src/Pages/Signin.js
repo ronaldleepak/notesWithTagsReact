@@ -1,10 +1,16 @@
 import React from "react"
-import { LoginPanel, SignupPanel } from "../Components/User"
+import { connect } from 'react-redux'
+import {
+    LoginPanel,
+    SignupPanel,
+    ConfirmPanel,
+} from "../Components/User"
 import { LOGIN_PANEL_STATUS } from "../Util/Constants"
 
 const {
     LOGIN,
     SIGNUP,
+    CONFIRM,
 } = LOGIN_PANEL_STATUS;
 
 class SigninPage extends React.Component {
@@ -23,11 +29,19 @@ class SigninPage extends React.Component {
     }
 
     loadPanel = (panelStatus) => {
+        const { confirmUser } = this.props;
+
+        if (confirmUser && panelStatus !== CONFIRM) {
+            return <ConfirmPanel onPanelChange={this.handlePanelChange}/>
+        }
+
         switch (panelStatus) {
             case LOGIN:
                 return <LoginPanel onPanelChange={this.handlePanelChange}/>
             case SIGNUP:
                 return <SignupPanel onPanelChange={this.handlePanelChange}/>
+            case CONFIRM:
+                return <ConfirmPanel onPanelChange={this.handlePanelChange}/>
             default:
                 return null;
         }
@@ -49,4 +63,11 @@ class SigninPage extends React.Component {
         );
     };
 }
-export default SigninPage
+const mapStateToProps = (state) => {
+    return {
+        confirmUser: state.userAuth.confirmUser,
+    }
+}
+const enhancer = connect(mapStateToProps, null);
+
+export default enhancer(SigninPage)
