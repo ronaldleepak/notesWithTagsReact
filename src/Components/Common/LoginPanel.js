@@ -37,7 +37,7 @@ class LoginPanel extends React.Component {
 
     handleSigninButtonClick = () => {
         const {
-            onSigninClick,
+            onSignin,
         } = this.props;
 
         const {
@@ -45,7 +45,7 @@ class LoginPanel extends React.Component {
             password,
         } = this.state;
 
-        onSigninClick(username, password);
+        onSignin(username, password);
     }
 
     handleSignupButtonClick = () => {
@@ -112,7 +112,7 @@ class LoginPanel extends React.Component {
 }
 
 const mapDispatchToProps = {
-    onSigninClick: login,
+    onSignin: login,
 };
 
 const enhancer = connect(null, mapDispatchToProps);
