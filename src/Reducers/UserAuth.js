@@ -32,7 +32,6 @@ const userAuth = handleActions({
     [LOGIN_SUCCESS]: (state, { payload }) => {
         return {
             ...state,
-            user: payload,
             loadingStatus: IDLE,
             error: null,
         }

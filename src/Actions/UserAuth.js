@@ -26,8 +26,8 @@ const login = (username, password) => async (dispatch, getState) => {
     dispatch(loginStart())
 
     try {
-        const user = await Auth.signIn(username, password);
-        dispatch(loginSuccess(user));
+        await Auth.signIn(username, password);
+        dispatch(loginSuccess());
         dispatch(fetchUserData());
     } catch (error) {
         const errorMessage = `Failed to login: ${error.toString()}`;

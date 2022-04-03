@@ -25,15 +25,15 @@ const signUp = (username, password, email) => async (dispatch, getState) => {
     dispatch(signUpStart())
 
     try {
-        const { user } = await Auth.signUp({
+        await Auth.signUp({
             username,
             password,
             attributes: {
                 email
             }
         });
-        
-        dispatch(signUpSuccess(user))
+
+        dispatch(signUpSuccess())
     } catch (error) {
         const errorMessage = `Failed to sign up: ${error.toString()}`;
         console.log(error)
