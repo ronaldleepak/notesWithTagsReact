@@ -7,5 +7,3 @@ export { default as CreatedModifiedDate } from './CreatedModifiedDate';
 export { default as Card } from './Card';
 export { default as NavBar } from './NavBar';
 export { default as TagsControl } from './TagsControl';
-export { default as LoginPanel } from './LoginPanel';
-export { default as SignupPanel } from './SignupPanel';

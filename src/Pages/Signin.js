@@ -1,5 +1,5 @@
 import React from "react"
-import { LoginPanel, SignupPanel } from "../Components/Common"
+import { LoginPanel, SignupPanel } from "../Components/User"
 import { LOGIN_PANEL_STATUS } from "../Util/Constants"
 
 const {
