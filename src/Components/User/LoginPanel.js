@@ -53,6 +53,11 @@ class LoginPanel extends React.Component {
         onPanelChange(LOGIN_PANEL_STATUS.SIGNUP);
     }
 
+    handleForgotPasswordButtonClick = () => {
+        const { onPanelChange } = this.props;
+        onPanelChange(LOGIN_PANEL_STATUS.FORGOT_PASSWORD);
+    }
+
     render() {
         const {
             username,
@@ -85,6 +90,14 @@ class LoginPanel extends React.Component {
                                     buttonStyle={BUTTON_STYLE.SUBMIT}
                                     isLoading={this.props.loadingStatus === LOADING_STATUS.LOADING}
                                     action={this.handleSigninButtonClick}/>
+
+                                <div className="mt-6">
+                                    <LinkButton
+                                        label="Forgot password?"
+                                        name="forgot-password"
+                                        action={this.handleForgotPasswordButtonClick}
+                                    />
+                                </div>
                             </div>
                         ) : (
                             <Button

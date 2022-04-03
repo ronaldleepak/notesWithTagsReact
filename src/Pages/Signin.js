@@ -4,6 +4,7 @@ import {
     LoginPanel,
     SignupPanel,
     ConfirmPanel,
+    ForgotPasswordPanel,
 } from "../Components/User"
 import { LOGIN_PANEL_STATUS } from "../Util/Constants"
 
@@ -11,6 +12,7 @@ const {
     LOGIN,
     SIGNUP,
     CONFIRM,
+    FORGOT_PASSWORD,
 } = LOGIN_PANEL_STATUS;
 
 class SigninPage extends React.Component {
@@ -42,6 +44,8 @@ class SigninPage extends React.Component {
                 return <SignupPanel onPanelChange={this.handlePanelChange}/>
             case CONFIRM:
                 return <ConfirmPanel onPanelChange={this.handlePanelChange}/>
+            case FORGOT_PASSWORD:
+                return <ForgotPasswordPanel onPanelChange={this.handlePanelChange}/>
             default:
                 return null;
         }
