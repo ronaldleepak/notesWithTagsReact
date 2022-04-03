@@ -1,4 +1,5 @@
 import React from "react"
+import { connect } from 'react-redux'
 import {
     Button,
     LinkButton,
@@ -11,12 +12,13 @@ import {
     LOGIN_PANEL_STATUS,
 } from "../../Util/Constants"
 
-export default class SignupPanel extends React.Component {
+class SignupPanel extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
             username: "",
+            email: "",
             password: "",
             confirm: "",
         };
@@ -26,6 +28,10 @@ export default class SignupPanel extends React.Component {
         this.setState({username: e.target.value})
     }
 
+    handleEmailChange = (e) => {
+        this.setState({email: e.target.value})
+    }
+
     handlePasswordChange = (e) => {
         this.setState({password: e.target.value})
     }
@@ -33,24 +39,29 @@ export default class SignupPanel extends React.Component {
     handleConfirmPasswordChange = (e) => {
         this.setState({confirm: e.target.value})
     }
-
-    handleContinueButtonClick = () => {
-        this.setState({isShowPasswordField: true})
-    }
-
+    
     handleSigninButtonClick = () => {
         const { onPanelChange } = this.props;
         onPanelChange(LOGIN_PANEL_STATUS.LOGIN);
     }
 
     handleSignupButtonClick = () => {
+        const {
+            username,
+            email,
+            password,
+        } = this.state;
 
+        const { onSignup } = this.props;
+
+        onSignup(username, password, email);
     }
 
     render() {
-        var {
+        const {
             username,
             password,
+            email,
             confirm,
         } = this.state;
 
@@ -63,6 +74,12 @@ export default class SignupPanel extends React.Component {
                             placeholder="User name"
                             name="username-input"
                             onChange={this.handleUserNameChange}
+                        />
+                        <Textfield
+                            value={email}
+                            placeholder="Email"
+                            name="email-input"
+                            onChange={this.handleEmailChange}
                         />
                         <Textfield
                             value={password}
@@ -79,10 +96,10 @@ export default class SignupPanel extends React.Component {
                             onChange={this.handleConfirmPasswordChange}
                         />
                         <Button
-                            label="Continue"
-                            name="continue"
+                            label="Sign Up"
+                            name="signup"
                             buttonStyle={BUTTON_STYLE.SUBMIT}
-                            action={this.handleContinueButtonClick}/>
+                            action={this.handleSignupButtonClick}/>
 
                         <div className="mt-6">
                             <p>
@@ -99,3 +116,11 @@ export default class SignupPanel extends React.Component {
         );
     };
 }
+
+const mapDispatchToProps = {
+    onSignup: signUp,
+};
+
+const enhancer = connect(null, mapDispatchToProps);
+
+export default enhancer(SignupPanel)
