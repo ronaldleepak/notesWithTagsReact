@@ -54,15 +54,13 @@ export default class LinkButton extends React.Component {
                         ${className}`;
 
         return (
-            <div>
-                <a
-                    href={href}
-                    aria-label={name}
-                    className={linkClassName}
-                    onClick={this.handleLinkButtonClick}>
-                    {label}
-                </a>
-            </div>
+            <a
+                href={href}
+                aria-label={name}
+                className={linkClassName}
+                onClick={this.handleLinkButtonClick}>
+                {label}
+            </a>
         );
     };
 }
