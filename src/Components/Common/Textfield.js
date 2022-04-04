@@ -86,8 +86,33 @@ export default class Textfield extends React.Component {
         }
     }
 
+    loadMessage = () => {
+        const {
+            errorMessage,
+            verifiedMessage,
+        } = this.props;
+
+        if (verifiedMessage) {
+            return (
+                <p className="content is-small ml-1 has-text-success">
+                    {verifiedMessage}
+                </p>
+            )
+        }
+
+        if (errorMessage) {
+            return (
+                <p className="content is-small ml-1 has-text-danger">
+                    {errorMessage}
+                </p>
+            )
+        }
+
+        return null;
+    }
+
     render() {
-        var {
+        const {
             value,
             placeholder,
             name,
@@ -108,9 +133,10 @@ export default class Textfield extends React.Component {
                         onChange={onChange}
                         onKeyDown={this.handleKeyDown}
                         onBlur={this.handleBlur}/>
+                    {this.loadMessage()} 
                 </div>
                 {this.loadPasswordVisibleButton()}
-            </div>    
+            </div>
         );
     };
 }
