@@ -23,12 +23,8 @@ class LoginPanel extends React.Component {
         };
     }
 
-    handleUserNameChange = (e) => {
-        this.setState({username: e.target.value})
-    }
-
-    handlePasswordChange = (e) => {
-        this.setState({password: e.target.value})
+    handleInputChange = (field) => (event) => {
+        this.setState({[field]: event.target.value});
     }
 
     handleContinueButtonClick = () => {
@@ -73,7 +69,7 @@ class LoginPanel extends React.Component {
                             value={username}
                             placeholder="User name"
                             name="username-input"
-                            onChange={this.handleUserNameChange}
+                            onChange={this.handleInputChange("username")}
                         />
                         {(isShowPasswordField) ? (
                             <div>
@@ -82,7 +78,7 @@ class LoginPanel extends React.Component {
                                     placeholder="Password"
                                     name="password-input"
                                     isPassword={true}
-                                    onChange={this.handlePasswordChange}
+                                    onChange={this.handleInputChange("password")}
                                 />
                                 <Button
                                     label="Sign in"

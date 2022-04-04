@@ -20,8 +20,8 @@ export default class TagsControl extends React.Component {
         onTagDeleted: PropTypes.func,
     }
 
-    handleTextInputChange = (e) => {
-        this.setState({textInput: e.target.value})
+    handleInputChange = (field) => (event) => {
+        this.setState({[field]: event.target.value});
     }
 
     handleNewTagSubmit = (textInput) => {
@@ -63,7 +63,7 @@ export default class TagsControl extends React.Component {
                         value={textInput}
                         placeholder="Add New Tag Here"
                         name="new-tag-input"
-                        onChange={this.handleTextInputChange}
+                        onChange={this.handleInputChange("textInput")}
                         onEnterKeyDown={this.handleNewTagSubmit}
                         onFocusout={this.handleNewTagSubmit}
                     /> :

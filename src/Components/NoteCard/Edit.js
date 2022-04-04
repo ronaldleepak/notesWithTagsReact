@@ -63,12 +63,8 @@ class NoteEdit extends React.Component {
         onDeleteNoteClick(note)
     }
 
-    handleHeaderChange = (e) => {
-        this.setState({header: e.target.value})
-    }
-
-    handleContentChange = (e) => {
-        this.setState({content: e.target.value})
+    handleInputChange = (field) => (event) => {
+        this.setState({[field]: event.target.value});
     }
 
     handleTagAdded = (newNoteTag) => {
@@ -80,15 +76,16 @@ class NoteEdit extends React.Component {
 
     handleTagDeleted = (deletedNoteTag) => {
 
-        var newDeleteTags = this.state.deleteTags;
-        if (deletedNoteTag.createdAt !== null) {
-            newDeleteTags = [ deletedNoteTag, ...this.state.deleteTags ];
-        }
+        const {
+            deleteTags,
+            tags,
+            newTags,
+        } = this.state;
 
         this.setState({
-            tags: this.state.tags.filter( noteTag => noteTag.id !== deletedNoteTag.id ),
-            newTags: this.state.newTags.filter( noteTag => noteTag.id !== deletedNoteTag.id ),
-            deleteTags: newDeleteTags,
+            tags: tags.filter( noteTag => noteTag.id !== deletedNoteTag.id ),
+            newTags: newTags.filter( noteTag => noteTag.id !== deletedNoteTag.id ),
+            deleteTags: (deletedNoteTag.createdAt !== null) ? [ deletedNoteTag, ...deleteTags ] : deleteTags,
         })
     }
 
@@ -101,13 +98,13 @@ class NoteEdit extends React.Component {
                     value={header}
                     placeholder="Title"
                     name="note-header-input"
-                    onChange={this.handleHeaderChange}
+                    onChange={this.handleInputChange("header")}
                 />
                 <Textarea
                     value={content}
                     placeholder="Content"
                     name="note-content-input"
-                    onChange={this.handleContentChange}
+                    onChange={this.handleInputChange("content")}
                 />
                 <TagsControl
                     noteTags={tags}

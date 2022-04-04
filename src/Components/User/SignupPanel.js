@@ -24,22 +24,10 @@ class SignupPanel extends React.Component {
         };
     }
 
-    handleUserNameChange = (e) => {
-        this.setState({username: e.target.value})
+    handleInputChange = (field) => (event) => {
+        this.setState({[field]: event.target.value});
     }
 
-    handleEmailChange = (e) => {
-        this.setState({email: e.target.value})
-    }
-
-    handlePasswordChange = (e) => {
-        this.setState({password: e.target.value})
-    }
-
-    handleConfirmPasswordChange = (e) => {
-        this.setState({confirm: e.target.value})
-    }
-    
     handleSigninButtonClick = () => {
         const { onPanelChange } = this.props;
         onPanelChange(LOGIN_PANEL_STATUS.LOGIN);
@@ -73,27 +61,27 @@ class SignupPanel extends React.Component {
                             value={username}
                             placeholder="User name"
                             name="username-input"
-                            onChange={this.handleUserNameChange}
+                            onChange={this.handleInputChange("username")}
                         />
                         <Textfield
                             value={email}
                             placeholder="Email"
                             name="email-input"
-                            onChange={this.handleEmailChange}
+                            onChange={this.handleInputChange("email")}
                         />
                         <Textfield
                             value={password}
                             placeholder="Password"
                             name="password-input"
                             isPassword={true}
-                            onChange={this.handlePasswordChange}
+                            onChange={this.handleInputChange("password")}
                         />
                         <Textfield
                             value={confirm}
                             placeholder="Confirm Password"
                             name="confirm-password-input"
                             isPassword={true}
-                            onChange={this.handleConfirmPasswordChange}
+                            onChange={this.handleInputChange("confirm")}
                         />
                         <Button
                             label="Sign Up"
