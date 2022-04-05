@@ -25,4 +25,5 @@ export const BUTTON_STYLE = {
 export const LOADING_STATUS = {
     LOADING: 'LOADING',
     IDLE: 'IDLE',
+    ERROR: 'ERROR',
 }
