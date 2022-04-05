@@ -10,7 +10,7 @@ const {
 
 export default class LinkButton extends React.Component {
     static propTypes = {
-        label: PropTypes.string,
+        label: PropTypes.object,
         name: PropTypes.string,
         className: PropTypes.string,
         href: PropTypes.string,
@@ -49,7 +49,7 @@ export default class LinkButton extends React.Component {
             buttonStyle,
         } = this.props;
 
-        const linkClassName = `is-light mr-4
+        const linkClassName = `is-light
                         ${this.buttonStyleToBulmaClass(buttonStyle)}
                         ${className}`;
 
