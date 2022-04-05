@@ -50,18 +50,20 @@ export {
     FETCH_CURRENT_USER_START,
     FETCH_CURRENT_USER_SUCCESS,
     FETCH_CURRENT_USER_FAILURE,
+    login,
+    logout,
+    fetchCurrentUserData,
+} from './UserAuth';
+export {
     FORGOT_PASSWORD_START,
     FORGOT_PASSWORD_SUCCESS,
     FORGOT_PASSWORD_FAILURE,
     FORGOT_PASSWORD_SUBMIT_START,
     FORGOT_PASSWORD_SUBMIT_SUCCESS,
     FORGOT_PASSWORD_SUBMIT_FAILURE,
-    login,
-    logout,
-    fetchCurrentUserData,
     forgotPassword,
     forgotPasswordNewPasswordSubmit,
-} from './UserAuth';
+} from './UserForgotPassword';
 export {
     SIGNUP_START,
     SIGNUP_SUCCESS,

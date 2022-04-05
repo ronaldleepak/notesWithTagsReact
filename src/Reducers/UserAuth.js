@@ -11,19 +11,6 @@ import {
     FETCH_CURRENT_USER_START,
     FETCH_CURRENT_USER_SUCCESS,
     FETCH_CURRENT_USER_FAILURE,
-
-    SIGNUP_START,
-    SIGNUP_SUCCESS,
-    SIGNUP_FAILURE,
-    CANCEL_CONFIRM_START,
-    CANCEL_CONFIRM_SUCCESS,
-    CANCEL_CONFIRM_FAILURE,
-    CONFIRM_SIGNUP_START,
-    CONFIRM_SIGNUP_SUCCESS,
-    CONFIRM_SIGNUP_FAILURE,
-    CONFIRM_RESEND_START,
-    CONFIRM_RESEND_SUCCESS,
-    CONFIRM_RESEND_FAILURE,
 } from '../Actions'
 
 const {
@@ -42,32 +29,20 @@ const userAuth = handleActions({
     [LOGIN_START]: (state) => ({
         ...state,
         loadingStatus: LOADING,
+        confirmUser: null,
         error: null,
     }),
-    [LOGIN_SUCCESS]: (state, { payload }) => {
-        return {
-            ...state,
-            loadingStatus: IDLE,
-            confirmUser: null,
-            error: null,
-        }
-    },
-    [LOGIN_CONFIRM_USER]: (state, { payload }) => {
-        return {
-            ...state,
-            loadingStatus: IDLE,
-            confirmUser: payload,
-            error: null,
-        }
-    },
-    [CANCEL_CONFIRM_SUCCESS]: (state, { payload }) => {
-        return {
-            ...state,
-            loadingStatus: IDLE,
-            confirmUser: null,
-            error: null,
-        }
-    },
+    [LOGIN_SUCCESS]: (state, { payload }) => ({
+        ...state,
+        loadingStatus: IDLE,
+        error: null,
+    }),
+    [LOGIN_CONFIRM_USER]: (state, { payload }) => ({
+        ...state,
+        loadingStatus: IDLE,
+        confirmUser: payload,
+        error: null,
+    }),
     [LOGIN_FAILURE]: (state, { payload }) => ({
         ...state,
         loadingStatus: IDLE,
@@ -78,14 +53,12 @@ const userAuth = handleActions({
         loadingStatus: LOADING,
         error: null,
     }),
-    [LOGOUT_SUCCESS]: (state) => {
-        return {
-            ...state,
-            user: null,
-            loadingStatus: IDLE,
-            error: null,
-        }
-    },
+    [LOGOUT_SUCCESS]: (state) => ({
+        ...state,
+        user: null,
+        loadingStatus: IDLE,
+        error: null,
+    }),
     [LOGOUT_FAILURE]: (state, { payload }) => ({
         ...state,
         loadingStatus: IDLE,
@@ -96,14 +69,12 @@ const userAuth = handleActions({
         loadingStatus: LOADING,
         error: null,
     }),
-    [FETCH_CURRENT_USER_SUCCESS]: (state, { payload }) => {
-        return {
-            ...state,
-            user: payload,
-            loadingStatus: IDLE,
-            error: null,
-        }
-    },
+    [FETCH_CURRENT_USER_SUCCESS]: (state, { payload }) => ({
+        ...state,
+        user: payload,
+        loadingStatus: IDLE,
+        error: null,
+    }),
     [FETCH_CURRENT_USER_FAILURE]: (state, { payload }) => ({
         ...state,
         loadingStatus: IDLE,

@@ -12,12 +12,6 @@ const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
 const FETCH_CURRENT_USER_START = 'FETCH_CURRENT_USER_START';
 const FETCH_CURRENT_USER_SUCCESS = 'FETCH_CURRENT_USER_SUCCESS';
 const FETCH_CURRENT_USER_FAILURE = 'FETCH_CURRENT_USER_FAILURE';
-const FORGOT_PASSWORD_START = 'FORGOT_PASSWORD_START';
-const FORGOT_PASSWORD_SUCCESS = 'FORGOT_PASSWORD_SUCCESS';
-const FORGOT_PASSWORD_FAILURE = 'FORGOT_PASSWORD_FAILURE';
-const FORGOT_PASSWORD_SUBMIT_START = 'FORGOT_PASSWORD_SUBMIT_START';
-const FORGOT_PASSWORD_SUBMIT_SUCCESS = 'FORGOT_PASSWORD_SUBMIT_SUCCESS';
-const FORGOT_PASSWORD_SUBMIT_FAILURE = 'FORGOT_PASSWORD_SUBMIT_FAILURE';
 
 const loginStart = createAction(LOGIN_START);
 const loginSuccess = createAction(LOGIN_SUCCESS);
@@ -29,12 +23,6 @@ const logoutFailure = createAction(LOGOUT_FAILURE);
 const fetchCurrentUserStart = createAction(FETCH_CURRENT_USER_START);
 const fetchCurrentUserSuccess = createAction(FETCH_CURRENT_USER_SUCCESS);
 const fetchCurrentUserFailure = createAction(FETCH_CURRENT_USER_FAILURE);
-const forgotPasswordStart = createAction(FORGOT_PASSWORD_START);
-const forgotPasswordSuccess = createAction(FORGOT_PASSWORD_SUCCESS);
-const forgotPasswordFailure = createAction(FORGOT_PASSWORD_FAILURE);
-const forgotPasswordSubmitStart = createAction(FORGOT_PASSWORD_SUBMIT_START);
-const forgotPasswordSubmitSuccess = createAction(FORGOT_PASSWORD_SUBMIT_SUCCESS);
-const forgotPasswordSubmitFailure = createAction(FORGOT_PASSWORD_SUBMIT_FAILURE);
 
 const login = (username, password) => async (dispatch, getState) => {
     dispatch(loginStart())
@@ -48,6 +36,7 @@ const login = (username, password) => async (dispatch, getState) => {
         const errorMessage = `Failed to login: ${error.toString()}`;
 
         if (error.name === "UserNotConfirmedException") {
+            // user is still not confirmed -> go to confirmation page
             dispatch(loginConfirmUser({
                 username,
                 password,
@@ -87,36 +76,6 @@ const fetchCurrentUserData = () => async (dispatch, getState) => {
     }
 }
 
-const forgotPassword = (username) => async (dispatch, getState) => {
-    dispatch(forgotPasswordStart())
-
-    try {
-        await Auth.forgotPassword(username);
-
-        dispatch(forgotPasswordSuccess())
-    } catch (error) {
-        const errorMessage = `Failed to send forgot password code: ${error.toString()}`;
-        console.log(error)
-
-        dispatch(forgotPasswordFailure(errorMessage))
-    }
-}
-
-const forgotPasswordNewPasswordSubmit = (username, code, newPassword) => async (dispatch, getState) => {
-    dispatch(forgotPasswordSubmitStart())
-
-    try {
-        await Auth.forgotPasswordSubmit(username, code, newPassword);
-
-        dispatch(forgotPasswordSubmitSuccess())
-    } catch (error) {
-        const errorMessage = `Failed to update new password: ${error.toString()}`;
-        console.log(error)
-
-        dispatch(forgotPasswordSubmitSuccess(errorMessage))
-    }
-}
-
 export {
     LOGIN_START,
     LOGIN_SUCCESS,
@@ -128,17 +87,9 @@ export {
     FETCH_CURRENT_USER_START,
     FETCH_CURRENT_USER_SUCCESS,
     FETCH_CURRENT_USER_FAILURE,
-    FORGOT_PASSWORD_START,
-    FORGOT_PASSWORD_SUCCESS,
-    FORGOT_PASSWORD_FAILURE,
-    FORGOT_PASSWORD_SUBMIT_START,
-    FORGOT_PASSWORD_SUBMIT_SUCCESS,
-    FORGOT_PASSWORD_SUBMIT_FAILURE,
 }
 export {
     login,
     logout,
     fetchCurrentUserData,
-    forgotPassword,
-    forgotPasswordNewPasswordSubmit,
 }
