@@ -42,7 +42,7 @@ const signUp = (username, password, email) => async (dispatch, getState) => {
 
         dispatch(signUpSuccess())
     } catch (error) {
-        const errorMessage = `Failed to sign up: ${error.toString()}`;
+        const errorMessage = `Failed to sign up: ${error.message.toString()}`;
         console.log(error)
 
         dispatch(signUpFailure(errorMessage))
@@ -55,7 +55,7 @@ const cancelConfirmSignup = () => async (dispatch, getState) => {
     try {
         dispatch(cancelConfirmSuccess())
     } catch (error) {
-        const errorMessage = `Failed to cancel confirm: ${error.toString()}`;
+        const errorMessage = `Failed to cancel confirm: ${error.message.toString()}`;
         console.log(error)
 
         dispatch(cancelConfirmFailure(errorMessage))
@@ -72,7 +72,7 @@ const confirmSignUp = (username, password, code) => async (dispatch, getState) =
 
         dispatch(confirmSignUpSuccess())
     } catch (error) {
-        const errorMessage = `Failed to confirm sign up: ${error.toString()}`;
+        const errorMessage = `Failed to confirm sign up: ${error.message.toString()}`;
         console.log(error)
 
         dispatch(confirmSignUpFailure(errorMessage))
@@ -87,7 +87,7 @@ const resendConfirmationEmail = (username) => async (dispatch, getState) => {
 
         dispatch(confirmResendSuccess())
     } catch (error) {
-        const errorMessage = `Failed to resend confirmation code: ${error.toString()}`;
+        const errorMessage = `Failed to resend confirmation code: ${error.message.toString()}`;
         console.log(error)
 
         dispatch(confirmResendFailure(errorMessage))
