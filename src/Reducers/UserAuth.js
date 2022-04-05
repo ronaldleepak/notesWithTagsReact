@@ -16,6 +16,7 @@ import {
 const {
     LOADING,
     IDLE,
+    ERROR,
 } = LOADING_STATUS;
 
 const initialState = {
@@ -45,7 +46,7 @@ const userAuth = handleActions({
     }),
     [LOGIN_FAILURE]: (state, { payload }) => ({
         ...state,
-        loadingStatus: IDLE,
+        loadingStatus: ERROR,
         error: payload,
     }),
     [LOGOUT_START]: (state) => ({
@@ -61,7 +62,7 @@ const userAuth = handleActions({
     }),
     [LOGOUT_FAILURE]: (state, { payload }) => ({
         ...state,
-        loadingStatus: IDLE,
+        loadingStatus: ERROR,
         error: payload,
     }),
     [FETCH_CURRENT_USER_START]: (state) => ({
@@ -77,7 +78,7 @@ const userAuth = handleActions({
     }),
     [FETCH_CURRENT_USER_FAILURE]: (state, { payload }) => ({
         ...state,
-        loadingStatus: IDLE,
+        loadingStatus: ERROR,
         error: payload,
     }),
 }, initialState);

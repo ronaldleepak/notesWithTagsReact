@@ -17,6 +17,7 @@ import {
 
 const {
     LOADING,
+    ERROR,
     IDLE,
 } = LOADING_STATUS;
 
@@ -29,15 +30,23 @@ const initialState = {
 const userSignup = handleActions({
     [SIGNUP_START]: (state, { payload }) => ({
         ...state,
+        loadingStatus: LOADING,
+        error: null,
     }),
     [SIGNUP_SUCCESS]: (state, { payload }) => ({
         ...state,
+        loadingStatus: IDLE,
+        error: null,
     }),
     [SIGNUP_FAILURE]: (state, { payload }) => ({
         ...state,
+        loadingStatus: ERROR,
+        error: payload,
     }),
     [CANCEL_CONFIRM_START]: (state, { payload }) => ({
         ...state,
+        loadingStatus: LOADING,
+        error: null,
     }),
     [CANCEL_CONFIRM_SUCCESS]: (state, { payload }) => ({
         ...state,
@@ -46,24 +55,38 @@ const userSignup = handleActions({
     }),
     [CANCEL_CONFIRM_FAILURE]: (state, { payload }) => ({
         ...state,
+        loadingStatus: ERROR,
+        error: payload,
     }),
     [CONFIRM_SIGNUP_START]: (state, { payload }) => ({
         ...state,
+        loadingStatus: LOADING,
+        error: null,
     }),
     [CONFIRM_SIGNUP_SUCCESS]: (state, { payload }) => ({
         ...state,
+        loadingStatus: IDLE,
+        error: null,
     }),
     [CONFIRM_SIGNUP_FAILURE]: (state, { payload }) => ({
         ...state,
+        loadingStatus: ERROR,
+        error: payload,
     }),
     [CONFIRM_RESEND_START]: (state, { payload }) => ({
         ...state,
+        loadingStatus: LOADING,
+        error: null,
     }),
     [CONFIRM_RESEND_SUCCESS]: (state, { payload }) => ({
         ...state,
+        loadingStatus: IDLE,
+        error: null,
     }),
     [CONFIRM_RESEND_FAILURE]: (state, { payload }) => ({
         ...state,
+        loadingStatus: ERROR,
+        error: payload,
     }),
 }, initialState);
 

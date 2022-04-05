@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import {
     Button,
     LinkButton,
+    MessageBox,
     Textfield,
 } from "../Common"
 import { login } from "../../Actions"
@@ -20,6 +21,8 @@ class LoginPanel extends React.Component {
             username: "",
             password: "",
             isShowPasswordField: false,
+            errorMessage: props.errorMessage,
+            isSigninError: props.isSigninError,
         };
     }
 
@@ -54,17 +57,31 @@ class LoginPanel extends React.Component {
         onPanelChange(LOGIN_PANEL_STATUS.FORGOT_PASSWORD);
     }
 
+    handleMessageBoxClose = () => {
+        this.setState({
+            isSigninError: false,
+            errorMessage: "",
+        })
+    }
+
     render() {
         const {
             username,
             password,
             isShowPasswordField,
+            errorMessage,
+            isSigninError,
         } = this.state;
 
         return (
             <div className="columns is-centered is-mobile">
                 <div className="column is-4">
                     <div className="box">
+                        {(isSigninError) ?
+                            <MessageBox
+                                message={errorMessage}
+                                onMessageBoxClose={this.handleMessageBoxClose}
+                            /> : null}
                         <Textfield
                             value={username}
                             placeholder="User name"
@@ -124,6 +141,13 @@ const mapDispatchToProps = {
     onSignin: login,
 };
 
-const enhancer = connect(null, mapDispatchToProps);
+const mapStateToProps = (state) => {
+    return {
+        isSigninError: state.userAuth.loadingStatus === LOADING_STATUS.ERROR,
+        errorMessage: state.userAuth.error,
+    }
+}
+
+const enhancer = connect(mapStateToProps, mapDispatchToProps);
 
 export default enhancer(LoginPanel)

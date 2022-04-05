@@ -21,6 +21,7 @@ import {
 const {
     LOADING,
     IDLE,
+    ERROR,
 } = LOADING_STATUS;
 
 const initialState = {
@@ -36,17 +37,15 @@ const note = handleActions({
         loadingStatus: LOADING,
         error: null,
     }),
-    [FETCH_NOTE_LIST_SUCCESS]: (state, { payload }) => {
-        return {
-            ...state,
-            notes: payload,
-            loadingStatus: IDLE,
-            error: null,
-        }
-    },
+    [FETCH_NOTE_LIST_SUCCESS]: (state, { payload }) => ({
+        ...state,
+        notes: payload,
+        loadingStatus: IDLE,
+        error: null,
+    }),
     [FETCH_NOTE_LIST_FAILURE]: (state, { payload }) => ({
         ...state,
-        loadingStatus: IDLE,
+        loadingStatus: ERROR,
         error: payload,
     }),
     [FETCH_TAG_LIST_START]: (state) => ({
@@ -54,17 +53,15 @@ const note = handleActions({
         loadingStatus: LOADING,
         error: null,
     }),
-    [FETCH_TAG_LIST_SUCCESS]: (state, { payload }) => {
-        return {
-            ...state,
-            tags: payload,
-            loadingStatus: IDLE,
-            error: null,
-        }
-    },
+    [FETCH_TAG_LIST_SUCCESS]: (state, { payload }) => ({
+        ...state,
+        tags: payload,
+        loadingStatus: IDLE,
+        error: null,
+    }),
     [FETCH_TAG_LIST_FAILURE]: (state, { payload }) => ({
         ...state,
-        loadingStatus: IDLE,
+        loadingStatus: ERROR,
         error: payload,
     }),
     [NEW_NOTE_START]: (state, { payload }) => ({
@@ -89,7 +86,7 @@ const note = handleActions({
     },
     [NEW_NOTE_FAILURE]: (state, { payload }) => ({
         ...state,
-        loadingStatus: IDLE,
+        loadingStatus: ERROR,
         error: payload,
     }),
     [SAVE_NOTE_START]: (state, { payload }) => ({
@@ -112,7 +109,7 @@ const note = handleActions({
     },
     [SAVE_NOTE_FAILURE]: (state, { payload }) => ({
         ...state,
-        loadingStatus: IDLE,
+        loadingStatus: ERROR,
         error: payload,
     }),
     [DELETE_NOTE_START]: (state, { payload }) => ({
@@ -133,7 +130,7 @@ const note = handleActions({
     },
     [DELETE_NOTE_FAILURE]: (state, { payload }) => ({
         ...state,
-        loadingStatus: IDLE,
+        loadingStatus: ERROR,
         error: payload,
     }),
 }, initialState);

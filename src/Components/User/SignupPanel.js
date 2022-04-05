@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import {
     Button,
     LinkButton,
+    MessageBox,
     Textfield,
 } from "../Common"
 import { signUp } from "../../Actions"
@@ -21,6 +22,8 @@ class SignupPanel extends React.Component {
             email: "",
             password: "",
             confirm: "",
+            errorMessage: props.errorMessage,
+            isSignupError: props.isSignupError,
         };
     }
 
@@ -45,18 +48,32 @@ class SignupPanel extends React.Component {
         onSignup(username, password, email);
     }
 
+    handleMessageBoxClose = () => {
+        this.setState({
+            isSignupError: false,
+            errorMessage: "",
+        })
+    }
+
     render() {
         const {
             username,
             password,
             email,
             confirm,
+            errorMessage,
+            isSignupError,
         } = this.state;
 
         return (
             <div className="columns is-centered is-mobile">
                 <div className="column is-4">
                     <div className="box">
+                        {(isSignupError) ?
+                            <MessageBox
+                                message={errorMessage}
+                                onMessageBoxClose={this.handleMessageBoxClose}
+                            /> : null}
                         <Textfield
                             value={username}
                             placeholder="User name"
@@ -109,6 +126,13 @@ const mapDispatchToProps = {
     onSignup: signUp,
 };
 
-const enhancer = connect(null, mapDispatchToProps);
+const mapStateToProps = (state) => {
+    return {
+        isSignupError: state.userSignup.loadingStatus === LOADING_STATUS.ERROR,
+        errorMessage: state.userSignup.error,
+    }
+}
+
+const enhancer = connect(mapStateToProps, mapDispatchToProps);
 
 export default enhancer(SignupPanel)
