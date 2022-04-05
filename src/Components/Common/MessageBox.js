@@ -4,7 +4,7 @@ import LinkButton from "./LinkButton";
 
 export default class MessageBox extends React.Component {
 
-    handleMessageBoxClose = (event) => {
+    handleMessageBoxClose = () => {
         const { onMessageBoxClose } = this.props;
         onMessageBoxClose();
     }
@@ -19,7 +19,7 @@ export default class MessageBox extends React.Component {
                 <div className="control">
                     <LinkButton
                         className="mr-2"
-                        onClick={this.handleMessageBoxClose}
+                        action={this.handleMessageBoxClose}
                         label={(
                             <FontAwesomeIcon className="has-text-danger" icon="xmark"/>
                         )}/>
