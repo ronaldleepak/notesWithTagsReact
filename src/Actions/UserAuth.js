@@ -33,7 +33,7 @@ const login = (username, password) => async (dispatch, getState) => {
         dispatch(loginSuccess());
         dispatch(fetchUserData());
     } catch (error) {
-        const errorMessage = `Failed to login: ${error.toString()}`;
+        const errorMessage = `Failed to sign in: ${error.message.toString()}`;
 
         if (error.name === "UserNotConfirmedException") {
             // user is still not confirmed -> go to confirmation page
@@ -55,7 +55,7 @@ const logout = () => async (dispatch, getState) => {
         dispatch(logoutSuccess());
         dispatch(fetchUserData());
     } catch (error) {
-        const errorMessage = `Failed to logout: ${error.toString()}`;
+        const errorMessage = `Failed to logout: ${error.message.toString()}`;
         console.log(error)
 
         dispatch(logoutFailure(errorMessage));
@@ -69,7 +69,7 @@ const fetchCurrentUserData = () => async (dispatch, getState) => {
         const user = await Auth.currentUserInfo();
         dispatch(fetchCurrentUserSuccess(user));
     } catch (error) {
-        const errorMessage = `Failed to fetch current user data: ${error.toString()}`;
+        const errorMessage = `Failed to fetch current user data: ${error.message.toString()}`;
         console.log(error)
 
         dispatch(fetchCurrentUserFailure(errorMessage));
