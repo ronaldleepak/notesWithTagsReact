@@ -1,4 +1,6 @@
-export { 
+export {
+    FETCH_USER_START,
+    FETCH_USER_DONE,
     default as fetchUserData,
 } from './FetchUserData';
 export { 
@@ -52,7 +54,7 @@ export {
     FETCH_CURRENT_USER_FAILURE,
     login,
     logout,
-    fetchCurrentUserData,
+    fetchCurrentUserInfo,
 } from './UserAuth';
 export {
     FORGOT_PASSWORD_START,

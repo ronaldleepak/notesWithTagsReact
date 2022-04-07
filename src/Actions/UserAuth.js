@@ -62,14 +62,14 @@ const logout = () => async (dispatch, getState) => {
     }
 }
 
-const fetchCurrentUserData = () => async (dispatch, getState) => {
+const fetchCurrentUserInfo = () => async (dispatch, getState) => {
     dispatch(fetchCurrentUserStart())
 
     try {
         const user = await Auth.currentUserInfo();
-        dispatch(fetchCurrentUserSuccess(user));
+        dispatch(fetchCurrentUserSuccess(user))
     } catch (error) {
-        const errorMessage = `Failed to fetch current user data: ${error.message.toString()}`;
+        const errorMessage = `Failed to fetch current user information: ${error.message.toString()}`;
         console.log(error)
 
         dispatch(fetchCurrentUserFailure(errorMessage));
@@ -91,5 +91,5 @@ export {
 export {
     login,
     logout,
-    fetchCurrentUserData,
+    fetchCurrentUserInfo,
 }

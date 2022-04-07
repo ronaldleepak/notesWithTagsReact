@@ -7,9 +7,9 @@ import { LOADING_STATUS } from "./Util/Constants";
 class App extends React.Component {
 
     loadMainPage = () => {
-        const { isUserSignedIn, isUserLoading } = this.props;
+        const { isUserSignedIn, isFetchUserLoading } = this.props;
 
-        if (isUserLoading) {
+        if (isFetchUserLoading) {
             return null;
         } else {
             return (isUserSignedIn) ? (
@@ -33,7 +33,7 @@ class App extends React.Component {
 const mapStateToProps = (state) => {
     return {
         isUserSignedIn: state.userAuth.user !== null,
-        isUserLoading: state.userAuth.loadingStatus === LOADING_STATUS.LOADING,
+        isFetchUserLoading: state.fetchUserData.loadingStatus === LOADING_STATUS.LOADING,
     }
 }
 
