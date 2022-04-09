@@ -1,6 +1,5 @@
 import { createAction } from "redux-actions";
 import { Auth } from 'aws-amplify'
-import { fetchUserData } from "."
 
 const FORGOT_PASSWORD_START = 'FORGOT_PASSWORD_START';
 const FORGOT_PASSWORD_SUCCESS = 'FORGOT_PASSWORD_SUCCESS';

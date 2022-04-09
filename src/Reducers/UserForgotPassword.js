@@ -16,7 +16,6 @@ const {
 } = LOADING_STATUS;
 
 const initialState = {
-    user: null,
     loadingStatus: IDLE,
     error: null,
 };
