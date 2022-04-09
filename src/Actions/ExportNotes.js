@@ -2,14 +2,13 @@
 import { createAction } from "redux-actions";
 import _ from 'lodash-es'
 import { exportNotesAsJSONFile } from '../Util/Util.js'
+import { updateError } from ".";
 
 const EXPORT_NOTES_START = 'EXPORT_NOTES_START';
 const EXPORT_NOTES_SUCCESS = 'EXPORT_NOTES_SUCCESS';
-const EXPORT_NOTES_FAILURE = 'EXPORT_NOTES_FAILURE';
 
 const exportStart = createAction(EXPORT_NOTES_START);
 const exportSuccess = createAction(EXPORT_NOTES_SUCCESS);
-const exportFailure = createAction(EXPORT_NOTES_FAILURE);
 
 function simplifyNotesObj(noteObj) {
     const notes = noteObj.notes;
@@ -43,14 +42,13 @@ const exportNotes = () => async (dispatch, getState) => {
         const errorMessage = `Failed to export notes: ${error.toString()}`;
         console.log(error)
 
-        dispatch(exportFailure(errorMessage))
+        dispatch(updateError("importExport", errorMessage))
     }
 }
 
 export {
     EXPORT_NOTES_START,
     EXPORT_NOTES_SUCCESS,
-    EXPORT_NOTES_FAILURE,
 }
 export default exportNotes;
 

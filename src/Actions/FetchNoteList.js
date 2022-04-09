@@ -3,14 +3,13 @@ import { API } from 'aws-amplify'
 import {
     listNotes as ListNotes,
 } from '../graphql/noteWithTagsQueries'
+import { updateError } from ".";
 
 const FETCH_NOTE_LIST_START = 'FETCH_NOTE_LIST_START';
 const FETCH_NOTE_LIST_SUCCESS = 'FETCH_NOTE_LIST_SUCCESS';
-const FETCH_NOTE_LIST_FAILURE = 'FETCH_NOTE_LIST_FAILURE';
 
 const fetchStart = createAction(FETCH_NOTE_LIST_START);
 const fetchSuccess = createAction(FETCH_NOTE_LIST_SUCCESS);
-const fetchFailure = createAction(FETCH_NOTE_LIST_FAILURE);
 
 const fetchNoteList = () => async (dispatch, getState) => {
     dispatch(fetchStart());
@@ -24,15 +23,13 @@ const fetchNoteList = () => async (dispatch, getState) => {
         dispatch(fetchSuccess(noteList));
     } catch (error) {
         const errorMessage = `Failed to get note list: ${error.toString()}`;
-        console.log(error)
-        dispatch(fetchFailure(errorMessage))
+        dispatch(updateError("fetchUserData", errorMessage))
     }
 }
 
 export {
     FETCH_NOTE_LIST_START,
     FETCH_NOTE_LIST_SUCCESS,
-    FETCH_NOTE_LIST_FAILURE,
 }
 export default fetchNoteList;
 

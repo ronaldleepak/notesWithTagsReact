@@ -13,14 +13,13 @@ import {
 import {
     fetchUserData,
 } from '.'
+import { updateError } from ".";
 
 const IMPORT_NOTES_START = 'IMPORT_NOTES_START';
 const IMPORT_NOTES_SUCCESS = 'IMPORT_NOTES_SUCCESS';
-const IMPORT_NOTES_FAILURE = 'IMPORT_NOTES_FAILURE';
 
 const importStart = createAction(IMPORT_NOTES_START);
 const importSuccess = createAction(IMPORT_NOTES_SUCCESS);
-const importFailure = createAction(IMPORT_NOTES_FAILURE);
 
 const getContentFromFile = async (file) => {
     return new Promise((resolve, reject) => {
@@ -65,7 +64,7 @@ const importNotes = (file) => async (dispatch, getState) => {
         const errorMessage = `Failed to import notes: ${error.toString()}`;
         console.log(error)
 
-        dispatch(importFailure(errorMessage))
+        dispatch(updateError("importExport", errorMessage))
     }
 }
 
@@ -138,7 +137,6 @@ const importNoteTag = (noteTagID, noteID, tagID) => async () => {
 export {
     IMPORT_NOTES_START,
     IMPORT_NOTES_SUCCESS,
-    IMPORT_NOTES_FAILURE,
 }
 export default importNotes;
 
