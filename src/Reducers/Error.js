@@ -12,19 +12,23 @@ const error = handleActions({
     [UPDATE_ERROR_SUCCESS]: (state, { payload }) => {
         var { errors } = state;
         const { componentName, error } = payload;
-        errors[componentName] = error;
+        const newErrors = {
+            ...errors,
+            [componentName]: error,
+        };
         return {
             ...state,
-            errors,
+            errors: newErrors,
         }
     },
     [CLEAR_ERROR_SUCCESS]: (state, { payload }) => {
-        var { errors } = state;
+        const { errors } = state;
         const { componentName } = payload;
-        delete errors[componentName];
+        const newErrors = { ...errors };
+        delete newErrors[componentName];
         return {
             ...state,
-            errors: (componentName) ? errors : {},
+            errors: (componentName) ? newErrors : {},
         }
     },
 }, initialState);
