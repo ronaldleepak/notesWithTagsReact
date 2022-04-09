@@ -1,20 +1,27 @@
 import React from "react"
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import LinkButton from "./LinkButton";
+import { clearError } from "../../Actions";
 
-export default class MessageBox extends React.Component {
-
+class MessageBox extends React.Component {
+    static propTypes = {
+        component: PropTypes.string,
+    }
+    
     handleMessageBoxClose = () => {
-        const { onMessageBoxClose } = this.props;
-        onMessageBoxClose();
+        const { onClearError, component } = this.props;
+        onClearError(component)
     }
 
     render() {
-        const { message } = this.props;
+        const { errors, component } = this.props;
         return (
-            <div className="field has-addons has-background-danger-light py-2">
+            (errors[component]) ? 
+            (<div className="field has-addons has-background-danger-light py-2">
                 <div className="control is-expanded has-text-danger ml-2">
-                    {message}
+                    {errors[component]}
                 </div>
                 <div className="control">
                     <LinkButton
@@ -24,7 +31,22 @@ export default class MessageBox extends React.Component {
                             <FontAwesomeIcon className="has-text-danger" icon="xmark"/>
                         )}/>
                 </div>
-            </div>
+            </div>) : null
         );
     };
 }
+
+const mapDispatchToProps = {
+    onClearError: clearError,
+};
+
+const mapStateToProps = (state) => {
+    return {
+        errors: state.error.errors,
+    }
+}
+
+const enhancer = connect(mapStateToProps, mapDispatchToProps);
+
+export default enhancer(MessageBox)
+
