@@ -34,20 +34,8 @@ class ForgotPasswordPanel extends React.Component {
         };
     }
 
-    handleUsernameChange = (e) => {
-        this.setState({username: e.target.value})
-    }
-
-    handleConfirmationCodeChange = (e) => {
-        this.setState({confirmationCode: e.target.value})
-    }
-
-    handleNewPasswordChange = (e) => {
-        this.setState({newPassword: e.target.value})
-    }
-
-    handleConfirmNewPasswordChange = (e) => {
-        this.setState({confirmNewPassword: e.target.value})
+    handleInputChange = (field) => (event) => {
+        this.setState({[field]: event.target.value})
     }
 
     handleSendButtonClick = () => {
@@ -102,7 +90,7 @@ class ForgotPasswordPanel extends React.Component {
                             value={username}
                             placeholder="User Name"
                             name="username-input"
-                            onChange={this.handleUsernameChange}
+                            onChange={this.handleInputChange("username")}
                         />
                         <Button
                             label="Continue"
@@ -129,27 +117,27 @@ class ForgotPasswordPanel extends React.Component {
                             value={username}
                             placeholder="User Name"
                             name="username-input"
-                            onChange={this.handleUsernameChange}
+                            onChange={this.handleInputChange("username")}
                         />
                         <Textfield
                             value={confirmationCode}
                             placeholder="Confirmation Code"
                             name="confirmation-code-input"
-                            onChange={this.handleConfirmationCodeChange}
+                            onChange={this.handleInputChange("confirmationCode")}
                         />
                         <Textfield
                             value={newPassword}
                             placeholder="New Password"
                             isPassword={true}
                             name="confirmation-code-input"
-                            onChange={this.handleNewPasswordChange}
+                            onChange={this.handleInputChange("newPassword")}
                         />
                         <Textfield
                             value={confirmNewPassword}
                             placeholder="Confirm New Password"
                             isPassword={true}
                             name="confirmation-code-input"
-                            onChange={this.handleConfirmNewPasswordChange}
+                            onChange={this.handleInputChange("confirmNewPassword")}
                         />
                         <Button
                             label="Submit"

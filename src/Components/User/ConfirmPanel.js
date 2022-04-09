@@ -25,8 +25,8 @@ class ConfirmPanel extends React.Component {
         };
     }
 
-    handleConfirmationCodeChange = (e) => {
-        this.setState({confirmationCode: e.target.value})
+    handleInputChange = (field) => (event) => {
+        this.setState({[field]: event.target.value})
     }
 
     handleConfirmationCodeSubmit = () => {
@@ -77,7 +77,7 @@ class ConfirmPanel extends React.Component {
                             value={confirmationCode}
                             placeholder="Confirmation Code"
                             name="confirmation-code-input"
-                            onChange={this.handleConfirmationCodeChange}
+                            onChange={this.handleInputChange("confirmationCode")}
                         />
                         <Button
                             label="Submit"
