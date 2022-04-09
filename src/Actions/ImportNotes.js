@@ -11,7 +11,7 @@ import {
     createNoteTags as CreateNoteTags,
 } from '../graphql/noteWithTagsMutations'
 import {
-    fetchTagList, fetchNoteList,
+    fetchUserData,
 } from '.'
 
 const IMPORT_NOTES_START = 'IMPORT_NOTES_START';
@@ -60,8 +60,7 @@ const importNotes = (file) => async (dispatch, getState) => {
         dispatch(importNotesWithTags(notes, existingTags))
 
         dispatch(importSuccess())
-        dispatch(fetchNoteList())
-        dispatch(fetchTagList())
+        dispatch(fetchUserData())
     } catch (error) {
         const errorMessage = `Failed to import notes: ${error.toString()}`;
         console.log(error)
