@@ -6,7 +6,7 @@ import {
     ConfirmPanel,
     ForgotPasswordPanel,
 } from "../Components/User"
-import { LOGIN_PANEL_STATUS } from "../Util/Constants"
+import { LOGIN_PANEL_STATUS, LOADING_STATUS } from "../Util/Constants"
 
 const {
     LOGIN,
@@ -51,7 +51,7 @@ class SigninPage extends React.Component {
         }
     }
 
-    render() {
+    loadSigninPage = () => {
         const { panelStatus } = this.state;
         return (
             <div className="pt-5">
@@ -65,13 +65,22 @@ class SigninPage extends React.Component {
                 </div>
             </div>
         );
+    }
+
+    render() {
+        const { user, isFetchUserLoading } = this.props;
+
+        return (user === null && !isFetchUserLoading) ? this.loadSigninPage() : null
     };
 }
 const mapStateToProps = (state) => {
     return {
         confirmUser: state.userAuth.confirmUser,
+        user: state.userAuth.user,
+        isFetchUserLoading: state.fetchUserData.loadingStatus === LOADING_STATUS.LOADING,
     }
 }
+
 const enhancer = connect(mapStateToProps, null);
 
 export default enhancer(SigninPage)
