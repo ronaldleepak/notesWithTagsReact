@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import {
     Button,
     LinkButton,
+    MessageBox,
     Textfield,
 } from "../Common"
 import {
@@ -73,6 +74,7 @@ class ConfirmPanel extends React.Component {
                         <p>
                             Welcome {confirmUser.username}! Please input confirmation code from confirmation email
                         </p>
+                        <MessageBox component="signup"/>
                         <Textfield
                             value={confirmationCode}
                             placeholder="Confirmation Code"

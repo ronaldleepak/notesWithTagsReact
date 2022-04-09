@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import {
     Button,
     LinkButton,
+    MessageBox,
     Textfield,
 } from "../Common"
 import {
@@ -86,6 +87,7 @@ class ForgotPasswordPanel extends React.Component {
                         <p>
                             Please input user name
                         </p>
+                        <MessageBox component="forgotPassword"/>
                         <Textfield
                             value={username}
                             placeholder="User Name"
@@ -113,6 +115,7 @@ class ForgotPasswordPanel extends React.Component {
                         <p>
                             Please input confirmation code and new password
                         </p>
+                        <MessageBox component="forgotPasswordSubmit"/>
                         <Textfield
                             value={username}
                             placeholder="User Name"

@@ -34,7 +34,7 @@ const forgotPasswordNewPasswordSubmit = (username, code, newPassword) => async (
         dispatch(forgotPasswordSubmitSuccess())
     } catch (error) {
         const errorMessage = `Failed to update new password: ${error.message.toString()}`;
-        dispatch(updateError("forgotPassword", errorMessage))
+        dispatch(updateError("forgotPasswordSubmit", errorMessage))
     }
 }
 

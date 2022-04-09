@@ -1,5 +1,5 @@
 import React from "react"
-import { Button } from "../Common"
+import { Button, MessageBox } from "../Common"
 import { LOADING_STATUS } from "../../Util/Constants"
 import { connect } from 'react-redux'
 import { exportNotes, importNotes } from "../../Actions"
@@ -20,6 +20,7 @@ class ImportExport extends React.Component {
         return (
             <div className="columns is-centered is-mobile">
                 <div className="column is-9">
+                    <MessageBox component="importExport"/>
                     <div className="block buttons">
                         <Button
                             label="Import .json file"
