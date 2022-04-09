@@ -4,6 +4,12 @@ export {
     default as startApp,
 } from './StartApp';
 export {
+    UPDATE_ERROR_SUCCESS,
+    CLEAR_ERROR_SUCCESS,
+    updateError,
+    clearError,
+} from './Error';
+export {
     FETCH_USER_START,
     FETCH_USER_DONE,
     default as fetchUserData,
@@ -89,4 +95,3 @@ export {
     confirmSignUp,
     resendConfirmationEmail,
 } from './UserSignUp';
-
