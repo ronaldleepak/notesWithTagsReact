@@ -1,10 +1,10 @@
 import { handleActions } from 'redux-actions';
 import { LOADING_STATUS } from '../Util/Constants';
 import {
-    FETCH_NOTE_LIST_START,
-    FETCH_NOTE_LIST_SUCCESS,
-    FETCH_TAG_LIST_START,
-    FETCH_TAG_LIST_SUCCESS,
+    FETCH_NOTES_START,
+    FETCH_NOTES_SUCCESS,
+    FETCH_TAGS_START,
+    FETCH_TAGS_SUCCESS,
     NEW_NOTE_START,
     NEW_NOTE_SUCCESS,
     SAVE_NOTE_START,
@@ -25,20 +25,20 @@ const initialState = {
 };
 
 const note = handleActions({
-    [FETCH_NOTE_LIST_START]: (state) => ({
+    [FETCH_NOTES_START]: (state) => ({
         ...state,
         loadingStatus: LOADING,
     }),
-    [FETCH_NOTE_LIST_SUCCESS]: (state, { payload }) => ({
+    [FETCH_NOTES_SUCCESS]: (state, { payload }) => ({
         ...state,
         notes: payload,
         loadingStatus: IDLE,
     }),
-    [FETCH_TAG_LIST_START]: (state) => ({
+    [FETCH_TAGS_START]: (state) => ({
         ...state,
         loadingStatus: LOADING,
     }),
-    [FETCH_TAG_LIST_SUCCESS]: (state, { payload }) => ({
+    [FETCH_TAGS_SUCCESS]: (state, { payload }) => ({
         ...state,
         tags: payload,
         loadingStatus: IDLE,

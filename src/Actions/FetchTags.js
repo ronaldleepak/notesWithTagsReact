@@ -5,13 +5,13 @@ import {
 } from '../graphql/noteWithTagsQueries'
 import { addComponentError } from ".";
 
-const FETCH_TAG_LIST_START = 'FETCH_TAG_LIST_START';
-const FETCH_TAG_LIST_SUCCESS = 'FETCH_TAG_LIST_SUCCESS';
+const FETCH_TAGS_START = 'FETCH_TAGS_START';
+const FETCH_TAGS_SUCCESS = 'FETCH_TAGS_SUCCESS';
 
-const fetchStart = createAction(FETCH_TAG_LIST_START);
-const fetchSuccess = createAction(FETCH_TAG_LIST_SUCCESS);
+const fetchStart = createAction(FETCH_TAGS_START);
+const fetchSuccess = createAction(FETCH_TAGS_SUCCESS);
 
-const fetchTagList = () => async (dispatch, getState) => {
+const fetchTags = () => async (dispatch, getState) => {
     dispatch(fetchStart());
 
     try {
@@ -28,8 +28,8 @@ const fetchTagList = () => async (dispatch, getState) => {
 }
 
 export {
-    FETCH_TAG_LIST_START,
-    FETCH_TAG_LIST_SUCCESS,
+    FETCH_TAGS_START,
+    FETCH_TAGS_SUCCESS,
 }
-export default fetchTagList;
+export default fetchTags;
 

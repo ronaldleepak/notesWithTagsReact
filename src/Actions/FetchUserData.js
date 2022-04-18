@@ -1,7 +1,7 @@
 import { createAction } from "redux-actions";
 import {
-    fetchNoteList,
-    fetchTagList,
+    fetchNotes,
+    fetchTags,
     fetchCurrentUserInfo,
 } from "./";
 
@@ -15,8 +15,8 @@ const fetchUserData = () => async (dispatch, getState) => {
     dispatch(fetchUserDataStart());
 
     await dispatch(fetchCurrentUserInfo());
-    await dispatch(fetchNoteList());
-    await dispatch(fetchTagList());
+    await dispatch(fetchNotes());
+    await dispatch(fetchTags());
 
     dispatch(fetchUserDataDone());
 }

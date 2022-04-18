@@ -15,15 +15,15 @@ export {
     default as fetchUserData,
 } from './FetchUserData';
 export { 
-    FETCH_NOTE_LIST_START,
-    FETCH_NOTE_LIST_SUCCESS,
-    default as fetchNoteList,
-} from './FetchNoteList';
+    FETCH_NOTES_START,
+    FETCH_NOTES_SUCCESS,
+    default as fetchNotes,
+} from './FetchNotes';
 export { 
-    FETCH_TAG_LIST_START,
-    FETCH_TAG_LIST_SUCCESS,
-    default as fetchTagList,
-} from './FetchTagList';
+    FETCH_TAGS_START,
+    FETCH_TAGS_SUCCESS,
+    default as fetchTags,
+} from './FetchTags';
 export { 
     NEW_NOTE_START,
     NEW_NOTE_SUCCESS,

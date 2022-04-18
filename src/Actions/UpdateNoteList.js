@@ -13,7 +13,7 @@ import {
     listTags as ListTags,
 } from '../graphql/noteWithTagsQueries'
 import {
-    fetchTagList
+    fetchTags
 } from '.'
 import { Note } from '../models/'
 import _ from 'lodash-es'
@@ -97,7 +97,7 @@ export const saveNote = (saveData) => async (dispatch, getState) => {
         })).data.updateNote;
 
         dispatch(saveNoteSuccess(updatedNote))
-        dispatch(fetchTagList())
+        dispatch(fetchTags())
     } catch (error) {
         const errorMessage = `Failed to save note: ${error.toString()}`;
         dispatch(addComponentError("note", errorMessage))
@@ -126,7 +126,7 @@ export const deleteNote = (note) => async (dispatch, getState) => {
         
         const deletedNote = deletedNoteData.data.deleteNote
         dispatch(deleteNoteSuccess(deletedNote))
-        dispatch(fetchTagList())
+        dispatch(fetchTags())
     } catch (error) {
         const errorMessage = `Failed to delete note: ${error.toString()}`;
         dispatch(addComponentError("note", errorMessage))
