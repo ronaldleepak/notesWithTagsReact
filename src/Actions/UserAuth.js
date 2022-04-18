@@ -27,10 +27,7 @@ const login = (username, password) => async (dispatch, getState) => {
 
         if (error.name === "UserNotConfirmedException") {
             // user is still not confirmed -> go to confirmation page
-            dispatch(loginConfirmUser({
-                username,
-                password,
-            }));
+            dispatch(loginConfirmUser());
         } else {
             dispatch(addComponentError("login", errorMessage))
         }
