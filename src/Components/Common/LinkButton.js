@@ -10,7 +10,10 @@ const {
 
 export default class LinkButton extends React.Component {
     static propTypes = {
-        label: PropTypes.object,
+        label: PropTypes.oneOfType([
+            PropTypes.object,
+            PropTypes.string,
+        ]),
         name: PropTypes.string,
         className: PropTypes.string,
         href: PropTypes.string,
