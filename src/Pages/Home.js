@@ -36,7 +36,7 @@ const mapStateToProps = (state) => {
     return {
         notes: getNotes(state),
         user: state.userAuth.user,
-        isFetchUserLoading: state.fetchUserData.loadingStatus === LOADING_STATUS.LOADING,
+        isFetchUserLoading: state.fetchUserDataProgress.loadingStatus === LOADING_STATUS.LOADING,
     }
 }
 

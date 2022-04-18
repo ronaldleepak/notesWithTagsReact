@@ -77,7 +77,7 @@ const mapStateToProps = (state) => {
     return {
         confirmUser: state.userAuth.confirmUser,
         user: state.userAuth.user,
-        isFetchUserLoading: state.fetchUserData.loadingStatus === LOADING_STATUS.LOADING,
+        isFetchUserLoading: state.fetchUserDataProgress.loadingStatus === LOADING_STATUS.LOADING,
     }
 }
 
