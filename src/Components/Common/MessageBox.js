@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import LinkButton from "./LinkButton";
-import { clearError } from "../../Actions";
+import { clearComponentError } from "../../Actions";
 
 class MessageBox extends React.Component {
     static propTypes = {
@@ -37,12 +37,12 @@ class MessageBox extends React.Component {
 }
 
 const mapDispatchToProps = {
-    onClearError: clearError,
+    onClearError: clearComponentError,
 };
 
 const mapStateToProps = (state) => {
     return {
-        errors: state.error.errors,
+        errors: state.componentError.errors,
     }
 }
 

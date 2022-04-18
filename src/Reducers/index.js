@@ -5,7 +5,7 @@ import note from './Note';
 import userAuth from './UserAuth';
 import userSignup from './UserSignup';
 import userForgotPassword from './UserForgotPassword';
-import error from './Error';
+import componentError from './Error';
 
 const reducer = combineReducers({
     note,
@@ -13,7 +13,7 @@ const reducer = combineReducers({
     userAuth,
     userSignup,
     userForgotPassword,
-    error,
+    componentError,
 });
 
 export default reducer;

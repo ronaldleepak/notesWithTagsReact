@@ -1,6 +1,6 @@
 import { createAction } from "redux-actions";
 import { Auth } from 'aws-amplify'
-import { updateError } from ".";
+import { addComponentError } from ".";
 
 const FORGOT_PASSWORD_START = 'FORGOT_PASSWORD_START';
 const FORGOT_PASSWORD_SUCCESS = 'FORGOT_PASSWORD_SUCCESS';
@@ -21,7 +21,7 @@ const forgotPassword = (username) => async (dispatch, getState) => {
         dispatch(forgotPasswordSuccess())
     } catch (error) {
         const errorMessage = `Failed to send forgot password code: ${error.message.toString()}`;
-        dispatch(updateError("forgotPassword", errorMessage))
+        dispatch(addComponentError("forgotPassword", errorMessage))
     }
 }
 
@@ -34,7 +34,7 @@ const forgotPasswordNewPasswordSubmit = (username, code, newPassword) => async (
         dispatch(forgotPasswordSubmitSuccess())
     } catch (error) {
         const errorMessage = `Failed to update new password: ${error.message.toString()}`;
-        dispatch(updateError("forgotPasswordSubmit", errorMessage))
+        dispatch(addComponentError("forgotPasswordSubmit", errorMessage))
     }
 }
 

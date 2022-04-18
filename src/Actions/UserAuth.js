@@ -1,6 +1,6 @@
 import { createAction } from "redux-actions";
 import { Auth } from 'aws-amplify'
-import { fetchUserData, updateError } from "."
+import { fetchUserData, addComponentError } from "."
 
 const LOGIN_START = 'LOGIN_START';
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -36,7 +36,7 @@ const login = (username, password) => async (dispatch, getState) => {
                 password,
             }));
         } else {
-            dispatch(updateError("login", errorMessage))
+            dispatch(addComponentError("login", errorMessage))
         }
     }
 }
@@ -51,7 +51,7 @@ const logout = () => async (dispatch, getState) => {
     } catch (error) {
         const errorMessage = `Failed to logout: ${error.message.toString()}`;
 
-        dispatch(updateError("logout", errorMessage));
+        dispatch(addComponentError("logout", errorMessage));
     }
 }
 
@@ -64,7 +64,7 @@ const fetchCurrentUserInfo = () => async (dispatch, getState) => {
     } catch (error) {
         const errorMessage = `Failed to fetch current user information: ${error.message.toString()}`;
 
-        dispatch(updateError("fetchCurrentUser", errorMessage));
+        dispatch(addComponentError("fetchCurrentUser", errorMessage));
     }
 }
 

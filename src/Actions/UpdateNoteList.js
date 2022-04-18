@@ -17,7 +17,7 @@ import {
 } from '.'
 import { Note } from '../models/'
 import _ from 'lodash-es'
-import { updateError } from ".";
+import { addComponentError } from ".";
 
 const NEW_NOTE_START = 'NEW_NOTE_START';
 const NEW_NOTE_SUCCESS = 'NEW_NOTE_SUCCESS';
@@ -52,7 +52,7 @@ export const newNote = () => async (dispatch, getState) => {
         dispatch(newNoteSuccess(newNote))
     } catch (error) {
         const errorMessage = `Failed to new note: ${error.toString()}`;
-        dispatch(updateError("note", errorMessage))
+        dispatch(addComponentError("note", errorMessage))
     }
 }
 
@@ -100,7 +100,7 @@ export const saveNote = (saveData) => async (dispatch, getState) => {
         dispatch(fetchTagList())
     } catch (error) {
         const errorMessage = `Failed to save note: ${error.toString()}`;
-        dispatch(updateError("note", errorMessage))
+        dispatch(addComponentError("note", errorMessage))
     }
 }
 
@@ -129,7 +129,7 @@ export const deleteNote = (note) => async (dispatch, getState) => {
         dispatch(fetchTagList())
     } catch (error) {
         const errorMessage = `Failed to delete note: ${error.toString()}`;
-        dispatch(updateError("note", errorMessage))
+        dispatch(addComponentError("note", errorMessage))
     }
 }
 

@@ -4,10 +4,10 @@ export {
     default as startApp,
 } from './StartApp';
 export {
-    UPDATE_ERROR_SUCCESS,
-    CLEAR_ERROR_SUCCESS,
-    updateError,
-    clearError,
+    ADD_COMPONENT_ERROR_SUCCESS,
+    CLEAR_COMPONENT_ERROR_SUCCESS,
+    addComponentError,
+    clearComponentError,
 } from './Error';
 export {
     FETCH_USER_START,

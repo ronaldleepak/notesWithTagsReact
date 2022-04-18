@@ -1,7 +1,7 @@
 import { createAction } from "redux-actions";
 import { Auth } from 'aws-amplify'
 import { login } from "."
-import { updateError } from ".";
+import { addComponentError } from ".";
 
 const SIGNUP_START = 'SIGNUP_START';
 const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
@@ -36,7 +36,7 @@ const signUp = (username, password, email) => async (dispatch, getState) => {
         dispatch(signUpSuccess())
     } catch (error) {
         const errorMessage = `Failed to sign up: ${error.message.toString()}`;
-        dispatch(updateError("signup", errorMessage))
+        dispatch(addComponentError("signup", errorMessage))
     }
 }
 
@@ -49,7 +49,7 @@ const cancelConfirmSignup = () => async (dispatch, getState) => {
         const errorMessage = `Failed to cancel confirm: ${error.message.toString()}`;
         console.log(error)
 
-        dispatch(updateError("confirmSignup", errorMessage))
+        dispatch(addComponentError("confirmSignup", errorMessage))
     }
 }
 
@@ -66,7 +66,7 @@ const confirmSignUp = (username, password, code) => async (dispatch, getState) =
         const errorMessage = `Failed to confirm sign up: ${error.message.toString()}`;
         console.log(error)
 
-        dispatch(updateError("confirmSignup", errorMessage))
+        dispatch(addComponentError("confirmSignup", errorMessage))
     }
 }
 
@@ -81,7 +81,7 @@ const resendConfirmationEmail = (username) => async (dispatch, getState) => {
         const errorMessage = `Failed to resend confirmation code: ${error.message.toString()}`;
         console.log(error)
 
-        dispatch(updateError("confirmSignup", errorMessage))
+        dispatch(addComponentError("confirmSignup", errorMessage))
     }
 }
 

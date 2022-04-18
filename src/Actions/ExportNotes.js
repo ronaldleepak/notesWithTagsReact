@@ -2,7 +2,7 @@
 import { createAction } from "redux-actions";
 import _ from 'lodash-es'
 import { exportNotesAsJSONFile } from '../Util/Util.js'
-import { updateError } from ".";
+import { addComponentError } from ".";
 
 const EXPORT_NOTES_START = 'EXPORT_NOTES_START';
 const EXPORT_NOTES_SUCCESS = 'EXPORT_NOTES_SUCCESS';
@@ -42,7 +42,7 @@ const exportNotes = () => async (dispatch, getState) => {
         const errorMessage = `Failed to export notes: ${error.toString()}`;
         console.log(error)
 
-        dispatch(updateError("importExport", errorMessage))
+        dispatch(addComponentError("importExport", errorMessage))
     }
 }
 

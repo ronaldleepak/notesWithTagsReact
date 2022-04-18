@@ -1,35 +1,35 @@
 
 import { createAction } from "redux-actions";
 
-const UPDATE_ERROR_SUCCESS = 'UPDATE_ERROR_SUCCESS';
-const CLEAR_ERROR_SUCCESS = 'CLEAR_ERROR_SUCCESS';
+const ADD_COMPONENT_ERROR_SUCCESS = 'ADD_COMPONENT_ERROR_SUCCESS';
+const CLEAR_COMPONENT_ERROR_SUCCESS = 'CLEAR_COMPONENT_ERROR_SUCCESS';
 
-const updateErrorSuccess = createAction(UPDATE_ERROR_SUCCESS);
-const clearErrorSuccess = createAction(CLEAR_ERROR_SUCCESS);
+const addComponentErrorSuccess = createAction(ADD_COMPONENT_ERROR_SUCCESS);
+const clearComponentErrorSuccess = createAction(CLEAR_COMPONENT_ERROR_SUCCESS);
 
-const updateError = (componentName, error) => async (dispatch, getState) => {
+const addComponentError = (componentName, error) => async (dispatch, getState) => {
     try {
         const errorObj = {
             componentName,
             error,
         }
 
-        dispatch(updateErrorSuccess(errorObj))
+        dispatch(addComponentErrorSuccess(errorObj))
     } catch (error) {
         const errorMessage = `Failed to update error: ${error.toString()}`;
         console.log(errorMessage)
     }
 }
 
-const clearError = (componentName) => async (dispatch, getState) => {
+const clearComponentError = (componentName) => async (dispatch, getState) => {
     try {
         if (componentName) {
             const errorObj = {
                 componentName,
             }
-            dispatch(clearErrorSuccess(errorObj))
+            dispatch(clearComponentErrorSuccess(errorObj))
         } else {
-            dispatch(clearErrorSuccess())
+            dispatch(clearComponentErrorSuccess())
         }
         
     } catch (error) {
@@ -39,11 +39,11 @@ const clearError = (componentName) => async (dispatch, getState) => {
 }
 
 export {
-    UPDATE_ERROR_SUCCESS,
-    CLEAR_ERROR_SUCCESS,
+    ADD_COMPONENT_ERROR_SUCCESS,
+    CLEAR_COMPONENT_ERROR_SUCCESS,
 }
 export {
-    updateError,
-    clearError,
+    addComponentError,
+    clearComponentError,
 };
 

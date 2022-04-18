@@ -3,7 +3,7 @@ import { API } from 'aws-amplify'
 import {
     listTags as ListTags,
 } from '../graphql/noteWithTagsQueries'
-import { updateError } from ".";
+import { addComponentError } from ".";
 
 const FETCH_TAG_LIST_START = 'FETCH_TAG_LIST_START';
 const FETCH_TAG_LIST_SUCCESS = 'FETCH_TAG_LIST_SUCCESS';
@@ -23,7 +23,7 @@ const fetchTagList = () => async (dispatch, getState) => {
         dispatch(fetchSuccess(tagList));
     } catch (error) {
         const errorMessage = `Failed to get tag list: ${error.toString()}`;
-        dispatch(updateError("fetchUserData", errorMessage))
+        dispatch(addComponentError("fetchUserData", errorMessage))
     }
 }
 

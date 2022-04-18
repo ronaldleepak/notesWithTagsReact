@@ -13,7 +13,7 @@ import {
 import {
     fetchUserData,
 } from '.'
-import { updateError } from ".";
+import { addComponentError } from ".";
 
 const IMPORT_NOTES_START = 'IMPORT_NOTES_START';
 const IMPORT_NOTES_SUCCESS = 'IMPORT_NOTES_SUCCESS';
@@ -64,7 +64,7 @@ const importNotes = (file) => async (dispatch, getState) => {
         const errorMessage = `Failed to import notes: ${error.toString()}`;
         console.log(error)
 
-        dispatch(updateError("importExport", errorMessage))
+        dispatch(addComponentError("importExport", errorMessage))
     }
 }
 
