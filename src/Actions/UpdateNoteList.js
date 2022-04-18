@@ -8,14 +8,14 @@ import {
     deleteTag as DeleteTag,
     createNoteTags as CreateNoteTags,
     deleteNoteTags as DeleteNoteTags,
-} from '../graphql/noteWithTagsMutations'
+} from 'graphql/noteWithTagsMutations'
 import {
     listTags as ListTags,
-} from '../graphql/noteWithTagsQueries'
+} from 'graphql/noteWithTagsQueries'
 import {
     fetchTags
 } from '.'
-import { Note } from '../models/'
+import { Note } from 'models/'
 import _ from 'lodash-es'
 import { addComponentError } from ".";
 

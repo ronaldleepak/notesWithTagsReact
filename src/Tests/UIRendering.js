@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux'
-import App from '../App';
-import { createTestStore } from '../store';
+import App from 'App';
+import { createTestStore } from 'store';
 
 let store
 

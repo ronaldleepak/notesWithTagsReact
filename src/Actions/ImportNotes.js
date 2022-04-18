@@ -1,15 +1,15 @@
 
 import { createAction } from "redux-actions";
 import { API } from 'aws-amplify'
-import { validateNoteContents } from "../Validators";
-import { Note, Tag, NoteTags } from '../models/'
+import { validateNoteContents } from "Validators";
+import { Note, Tag, NoteTags } from 'models/'
 import _ from 'lodash-es'
 
 import {
     createNote as CreateNote,
     createTag as CreateTag,
     createNoteTags as CreateNoteTags,
-} from '../graphql/noteWithTagsMutations'
+} from 'graphql/noteWithTagsMutations'
 import {
     fetchUserData,
 } from '.'

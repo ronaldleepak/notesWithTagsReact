@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from 'prop-types'
 import { Textfield } from "."
 import TagElement from "./TagElement"
-import { NoteTags, Tag } from "../../models";
+import { NoteTags, Tag } from "models";
 import _ from 'lodash-es'
 
 export default class TagsControl extends React.Component {

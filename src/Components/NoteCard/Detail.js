@@ -5,9 +5,9 @@ import {
     Button,
     Card,
     TagsControl,
-} from "../Common"
-import { VIEW_STATUS } from "../../Util/Constants"
-import { copyTextToClipboard } from "../../Util/Util"
+} from "Components/Common"
+import { VIEW_STATUS } from "Util/Constants"
+import { copyTextToClipboard } from "Util/Util"
 
 export default class NoteDetail extends React.Component {
 

@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions';
-import { LOADING_STATUS } from '../Util/Constants';
+import { LOADING_STATUS } from 'Util/Constants';
 import {
     FETCH_NOTES_START,
     FETCH_NOTES_SUCCESS,
@@ -11,7 +11,7 @@ import {
     SAVE_NOTE_SUCCESS,
     DELETE_NOTE_START,
     DELETE_NOTE_SUCCESS,
-} from '../Actions'
+} from 'Actions'
 
 const {
     LOADING,

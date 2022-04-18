@@ -5,17 +5,17 @@ import {
     LinkButton,
     MessageBox,
     Textfield,
-} from "../Common"
+} from "Components/Common"
 import {
     forgotPassword,
     forgotPasswordNewPasswordSubmit,
-} from "../../Actions"
+} from "Actions"
 import {
     BUTTON_STYLE,
     LOADING_STATUS,
     LOGIN_PANEL_STATUS,
     FORGOT_PASSWORD_PANEL_STATUS,
-} from "../../Util/Constants"
+} from "Util/Constants"
 
 const {
     SEND_CONFIRM,

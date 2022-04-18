@@ -1,10 +1,10 @@
 import { handleActions } from 'redux-actions';
-import { LOADING_STATUS } from '../Util/Constants';
+import { LOADING_STATUS } from 'Util/Constants';
 import {
     LOGIN_START,
     LOGIN_SUCCESS,
     LOGIN_CONFIRM_USER,
-} from '../Actions'
+} from 'Actions'
 
 const {
     LOADING,

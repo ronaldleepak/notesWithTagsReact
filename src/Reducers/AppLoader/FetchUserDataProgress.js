@@ -1,9 +1,9 @@
 import { handleActions } from 'redux-actions';
-import { LOADING_STATUS } from '../Util/Constants';
+import { LOADING_STATUS } from 'Util/Constants';
 import {
     FETCH_USER_DATA_START,
     FETCH_USER_DATA_DONE,
-} from '../Actions'
+} from 'Actions'
 
 const {
     LOADING,

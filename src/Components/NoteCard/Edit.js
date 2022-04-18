@@ -6,13 +6,13 @@ import {
     Textfield,
     Textarea,
     TagsControl
-} from "../Common"
-import { deleteNote, saveNote } from "../../Actions"
+} from "Components/Common"
+import { deleteNote, saveNote } from "Actions"
 import {
     VIEW_STATUS,
     BUTTON_STYLE,
     LOADING_STATUS,
-} from "../../Util/Constants"
+} from "Util/Constants"
 
 class NoteEdit extends React.Component {
     constructor(props) {

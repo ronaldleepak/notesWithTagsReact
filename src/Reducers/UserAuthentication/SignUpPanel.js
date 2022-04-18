@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions';
-import { LOADING_STATUS } from '../Util/Constants';
+import { LOADING_STATUS } from 'Util/Constants';
 import {
     SIGNUP_START,
     SIGNUP_SUCCESS,
@@ -9,7 +9,7 @@ import {
     CONFIRM_SIGNUP_SUCCESS,
     CONFIRM_RESEND_START,
     CONFIRM_RESEND_SUCCESS,
-} from '../Actions'
+} from 'Actions'
 
 const {
     LOADING,

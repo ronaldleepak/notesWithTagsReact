@@ -1,8 +1,8 @@
 import React from "react"
-import { Button, MessageBox } from "../Common"
-import { LOADING_STATUS } from "../../Util/Constants"
+import { Button, MessageBox } from "Components/Common"
+import { LOADING_STATUS } from "Util/Constants"
 import { connect } from 'react-redux'
-import { exportNotes, importNotes } from "../../Actions"
+import { exportNotes, importNotes } from "Actions"
 
 class ImportExport extends React.Component {
 

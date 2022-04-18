@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import {
     Button,
     LinkButton,
-} from "../Common"
-import { logout } from "../../Actions"
-import { BUTTON_STYLE } from "../../Util/Constants"
+} from "."
+import { logout } from "Actions"
+import { BUTTON_STYLE } from "Util/Constants"
 
 class NavBar extends React.Component {
     

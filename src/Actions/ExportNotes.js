@@ -1,6 +1,6 @@
 
 import { createAction } from "redux-actions";
-import { exportNotesAsJSONFile, simplifyNotesObject } from '../Util/Util.js'
+import { exportNotesAsJSONFile, simplifyNotesObject } from 'Util/Util.js'
 import { addComponentError } from ".";
 
 const EXPORT_NOTES_START = 'EXPORT_NOTES_START';

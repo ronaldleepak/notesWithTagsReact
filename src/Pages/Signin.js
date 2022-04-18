@@ -5,8 +5,8 @@ import {
     SignupPanel,
     ConfirmPanel,
     ForgotPasswordPanel,
-} from "../Components/User"
-import { LOGIN_PANEL_STATUS, LOADING_STATUS } from "../Util/Constants"
+} from "Components/User"
+import { LOGIN_PANEL_STATUS, LOADING_STATUS } from "Util/Constants"
 
 const {
     LOGIN,

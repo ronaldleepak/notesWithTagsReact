@@ -2,7 +2,7 @@ import { handleActions } from 'redux-actions';
 import {
     ADD_COMPONENT_ERROR_SUCCESS,
     CLEAR_COMPONENT_ERROR_SUCCESS,
-} from '../Actions'
+} from 'Actions'
 
 const initialState = {
     errors: {},

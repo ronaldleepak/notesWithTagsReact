@@ -1,6 +1,6 @@
 import React from "react"
-import { CreatedModifiedDate, Card } from "../Common"
-import { VIEW_STATUS } from "../../Util/Constants"
+import { CreatedModifiedDate, Card } from "Components/Common"
+import { VIEW_STATUS } from "Util/Constants"
 
 export default class NoteThumbnail extends React.Component {
 

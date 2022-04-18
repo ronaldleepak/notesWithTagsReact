@@ -1,11 +1,11 @@
 import { handleActions } from 'redux-actions';
-import { LOADING_STATUS } from '../Util/Constants';
+import { LOADING_STATUS } from 'Util/Constants';
 import {
     FORGOT_PASSWORD_START,
     FORGOT_PASSWORD_SUCCESS,
     FORGOT_PASSWORD_SUBMIT_START,
     FORGOT_PASSWORD_SUBMIT_SUCCESS,
-} from '../Actions'
+} from 'Actions'
 
 const {
     LOADING,

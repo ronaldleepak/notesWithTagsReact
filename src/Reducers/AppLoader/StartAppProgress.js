@@ -1,9 +1,9 @@
 import { handleActions } from 'redux-actions';
-import { LOADING_STATUS } from '../Util/Constants';
+import { LOADING_STATUS } from 'Util/Constants';
 import {
     APP_START_SUCCESS,
     APP_START_FAILURE,
-} from '../Actions'
+} from 'Actions'
 
 const {
     LOADING,

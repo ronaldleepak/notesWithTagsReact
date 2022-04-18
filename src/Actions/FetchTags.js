@@ -2,7 +2,7 @@ import { createAction } from "redux-actions";
 import { API } from 'aws-amplify'
 import {
     listTags as ListTags,
-} from '../graphql/noteWithTagsQueries'
+} from 'graphql/noteWithTagsQueries'
 import { addComponentError } from ".";
 
 const FETCH_TAGS_START = 'FETCH_TAGS_START';

@@ -1,9 +1,9 @@
 import React from "react"
 import { connect } from 'react-redux'
-import { Button, MessageBox } from "../Common"
-import { newNote } from "../../Actions"
-import NoteCard from "../NoteCard"
-import { LOADING_STATUS } from '../../Util/Constants';
+import { Button, MessageBox } from "Components/Common"
+import { newNote } from "Actions"
+import NoteCard from "Components/NoteCard"
+import { LOADING_STATUS } from 'Util/Constants';
 class NoteList extends React.Component {
 
     render() {

@@ -5,13 +5,13 @@ import {
     LinkButton,
     MessageBox,
     Textfield,
-} from "../Common"
-import { signUp } from "../../Actions"
+} from "Components/Common"
+import { signUp } from "Actions"
 import {
     BUTTON_STYLE,
     LOADING_STATUS,
     LOGIN_PANEL_STATUS,
-} from "../../Util/Constants"
+} from "Util/Constants"
 
 class SignupPanel extends React.Component {
     constructor(props) {

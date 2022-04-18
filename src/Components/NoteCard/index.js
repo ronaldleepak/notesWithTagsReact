@@ -2,7 +2,7 @@ import React from "react"
 import Thumbnail from "./Thumbnail"
 import Edit from "./Edit"
 import Detail from "./Detail"
-import { VIEW_STATUS } from "../../Util/Constants"
+import { VIEW_STATUS } from "Util/Constants"
 
 const {
     THUMBNAIL,

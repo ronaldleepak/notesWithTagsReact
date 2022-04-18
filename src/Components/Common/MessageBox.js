@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import LinkButton from "./LinkButton";
-import { clearComponentError } from "../../Actions";
+import { clearComponentError } from "Actions";
 
 class MessageBox extends React.Component {
     static propTypes = {

@@ -1,11 +1,11 @@
 import { handleActions } from 'redux-actions';
-import { LOADING_STATUS } from '../Util/Constants';
+import { LOADING_STATUS } from 'Util/Constants';
 import {
     IMPORT_NOTES_START,
     IMPORT_NOTES_SUCCESS,
     EXPORT_NOTES_START,
     EXPORT_NOTES_SUCCESS,
-} from '../Actions'
+} from 'Actions'
 
 const {
     LOADING,

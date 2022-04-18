@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from 'prop-types'
-import { LinkButton } from "../Common"
+import { LinkButton } from "."
 
 export default class TagElement extends React.Component {
     static propTypes = {

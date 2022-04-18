@@ -5,17 +5,17 @@ import {
     LinkButton,
     MessageBox,
     Textfield,
-} from "../Common"
+} from "Components/Common"
 import {
     confirmSignUp,
     resendConfirmationEmail,
     cancelConfirmSignup,
-} from "../../Actions"
+} from "Actions"
 import {
     BUTTON_STYLE,
     LOADING_STATUS,
     LOGIN_PANEL_STATUS,
-} from "../../Util/Constants"
+} from "Util/Constants"
 
 class ConfirmPanel extends React.Component {
     constructor(props) {

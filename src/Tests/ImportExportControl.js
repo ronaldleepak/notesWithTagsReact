@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux'
-import Home from '../Pages/Home';
-import { createTestStore } from '../store';
+import Home from 'Pages/Home';
+import { createTestStore } from 'store';
 
 let store
 
