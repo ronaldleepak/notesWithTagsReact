@@ -1,13 +1,15 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
-import fetchUserDataProgress from './FetchUserData';
 import note from './Note';
 
 import startAppProgress from './StartAppProgress';
 import fetchUserDataProgress from './FetchUserDataProgress';
 import userAuth from './UserAuth';
-import userSignup from './UserSignup';
-import userForgotPassword from './UserForgotPassword';
+
+import loginPanel from './LoginPanel';
+import signUpPanel from './SignUpPanel';
+import forgotPasswordPanel from './ForgotPasswordPanel';
+
 import componentError from './Error';
 
 const reducer = combineReducers({
@@ -16,8 +18,11 @@ const reducer = combineReducers({
     startAppProgress,
     fetchUserDataProgress,
     userAuth,
-    userSignup,
-    userForgotPassword,
+
+    loginPanel,
+    signUpPanel,
+    forgotPasswordPanel,
+
     componentError,
 });
 

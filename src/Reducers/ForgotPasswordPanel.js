@@ -16,7 +16,7 @@ const initialState = {
     loadingStatus: IDLE,
 };
 
-const userSignup = handleActions({
+const forgotPasswordPanel = handleActions({
     [FORGOT_PASSWORD_START]: (state, { payload }) => ({
         ...state,
         loadingStatus: LOADING,
@@ -35,4 +35,4 @@ const userSignup = handleActions({
     }),
 }, initialState);
 
-export default userSignup;
+export default forgotPasswordPanel;
