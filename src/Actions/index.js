@@ -14,6 +14,11 @@ export {
     FETCH_USER_DATA_DONE,
     default as fetchUserData,
 } from './FetchUserData';
+export {
+    FETCH_CURRENT_USER_START,
+    FETCH_CURRENT_USER_SUCCESS,
+    default as fetchCurrentUserInfo,
+} from './FetchUserAuth';
 export { 
     FETCH_NOTES_START,
     FETCH_NOTES_SUCCESS,
@@ -51,11 +56,8 @@ export {
     LOGIN_CONFIRM_USER,
     LOGOUT_START,
     LOGOUT_SUCCESS,
-    FETCH_CURRENT_USER_START,
-    FETCH_CURRENT_USER_SUCCESS,
     login,
     logout,
-    fetchCurrentUserInfo,
 } from './UserAuth';
 export {
     FORGOT_PASSWORD_START,
