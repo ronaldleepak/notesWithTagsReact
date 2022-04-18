@@ -10,8 +10,8 @@ export {
     clearComponentError,
 } from './Error';
 export {
-    FETCH_USER_START,
-    FETCH_USER_DONE,
+    FETCH_USER_DATA_START,
+    FETCH_USER_DATA_DONE,
     default as fetchUserData,
 } from './FetchUserData';
 export { 

@@ -1,6 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
-import fetchUserData from './FetchUserData';
+import fetchUserDataProgress from './FetchUserData';
 import note from './Note';
 import userAuth from './UserAuth';
 import userSignup from './UserSignup';
@@ -9,7 +9,7 @@ import componentError from './Error';
 
 const reducer = combineReducers({
     note,
-    fetchUserData,
+    fetchUserDataProgress,
     userAuth,
     userSignup,
     userForgotPassword,

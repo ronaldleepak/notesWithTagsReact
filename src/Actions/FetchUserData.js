@@ -5,11 +5,11 @@ import {
     fetchCurrentUserInfo,
 } from "./";
 
-const FETCH_USER_START = 'FETCH_USER_START';
-const FETCH_USER_DONE = 'FETCH_USER_DONE';
+const FETCH_USER_DATA_START = 'FETCH_USER_DATA_START';
+const FETCH_USER_DATA_DONE = 'FETCH_USER_DATA_DONE';
 
-const fetchUserDataStart = createAction(FETCH_USER_START);
-const fetchUserDataDone = createAction(FETCH_USER_DONE);
+const fetchUserDataStart = createAction(FETCH_USER_DATA_START);
+const fetchUserDataDone = createAction(FETCH_USER_DATA_DONE);
 
 const fetchUserData = () => async (dispatch, getState) => {
     dispatch(fetchUserDataStart());
@@ -22,8 +22,8 @@ const fetchUserData = () => async (dispatch, getState) => {
 }
 
 export {
-    FETCH_USER_START,
-    FETCH_USER_DONE,
+    FETCH_USER_DATA_START,
+    FETCH_USER_DATA_DONE,
 }
 export default fetchUserData;
 
