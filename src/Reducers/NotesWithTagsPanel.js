@@ -24,7 +24,7 @@ const initialState = {
     loadingStatus: IDLE,
 };
 
-const note = handleActions({
+const notesWithTagsPanel = handleActions({
     [FETCH_NOTES_START]: (state) => ({
         ...state,
         loadingStatus: LOADING,
@@ -93,4 +93,4 @@ const note = handleActions({
     },
 }, initialState);
 
-export default note;
+export default notesWithTagsPanel;

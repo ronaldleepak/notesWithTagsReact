@@ -1,6 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
-import note from './Note';
+import componentError from './Error';
 
 import startAppProgress from './StartAppProgress';
 import fetchUserDataProgress from './FetchUserDataProgress';
@@ -10,10 +10,10 @@ import loginPanel from './LoginPanel';
 import signUpPanel from './SignUpPanel';
 import forgotPasswordPanel from './ForgotPasswordPanel';
 
-import componentError from './Error';
+import notesWithTagsPanel from './NotesWithTagsPanel';
 
 const reducer = combineReducers({
-    note,
+    componentError,
 
     startAppProgress,
     fetchUserDataProgress,
@@ -23,7 +23,7 @@ const reducer = combineReducers({
     signUpPanel,
     forgotPasswordPanel,
 
-    componentError,
+    notesWithTagsPanel,
 });
 
 export default reducer;
