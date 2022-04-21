@@ -14,7 +14,7 @@ import {
     LOADING_STATUS,
 } from "Util/Constants"
 
-class NoteEdit extends React.Component {
+class NoteEditorPanel extends React.Component {
     constructor(props) {
         super(props);
 
@@ -22,8 +22,8 @@ class NoteEdit extends React.Component {
             content: props.note.content,
             header: props.note.header,
             tags: (props.note.tags.items != null) ? props.note.tags.items : [],
-            newTags: [],
-            deleteTags: [],
+            tagsToBeCreated: [],
+            tagsToBeDeleted: [],
         };
     }
 
@@ -37,8 +37,8 @@ class NoteEdit extends React.Component {
         const {
             content,
             header,
-            newTags,
-            deleteTags,
+            tagsToBeCreated,
+            tagsToBeDeleted,
         } = this.state;
 
         onSaveNoteClick({
@@ -47,8 +47,8 @@ class NoteEdit extends React.Component {
                 header: header,
                 content: content,
             },
-            newTags: newTags,
-            deleteTags: deleteTags,
+            tagsToBeCreated,
+            tagsToBeDeleted,
         });
         onViewChange(VIEW_STATUS.DETAIL);
     }
@@ -68,24 +68,28 @@ class NoteEdit extends React.Component {
     }
 
     handleTagAdded = (newNoteTag) => {
+        const {
+            tags,
+            tagsToBeCreated,
+        } = this.state;
+
         this.setState({
-            tags: [ newNoteTag, ...this.state.tags ],
-            newTags: [ newNoteTag, ...this.state.newTags ],
+            tags: [ newNoteTag, ...tags ],
+            tagsToBeCreated: [ newNoteTag, ...tagsToBeCreated ],
         })
     }
 
     handleTagDeleted = (deletedNoteTag) => {
-
         const {
-            deleteTags,
             tags,
-            newTags,
+            tagsToBeCreated,
+            tagsToBeDeleted,
         } = this.state;
 
         this.setState({
             tags: tags.filter( noteTag => noteTag.id !== deletedNoteTag.id ),
-            newTags: newTags.filter( noteTag => noteTag.id !== deletedNoteTag.id ),
-            deleteTags: (deletedNoteTag.createdAt !== null) ? [ deletedNoteTag, ...deleteTags ] : deleteTags,
+            tagsToBeCreated: tagsToBeCreated.filter( noteTag => noteTag.id !== deletedNoteTag.id ),
+            tagsToBeDeleted: (deletedNoteTag.createdAt !== null) ? [ deletedNoteTag, ...tagsToBeDeleted ] : tagsToBeDeleted,
         })
     }
 
@@ -147,4 +151,4 @@ const mapDispatchToProps = {
 
 const enhancer = connect(mapStateToProps, mapDispatchToProps);
 
-export default enhancer(NoteEdit)
+export default enhancer(NoteEditorPanel)

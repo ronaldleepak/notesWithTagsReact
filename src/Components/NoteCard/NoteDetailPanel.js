@@ -9,7 +9,7 @@ import {
 import { VIEW_STATUS } from "Util/Constants"
 import { copyTextToClipboard } from "Util/Util"
 
-export default class NoteDetail extends React.Component {
+export default class NoteDetailPanel extends React.Component {
 
     handleTitleClick = () => {
         const { onViewChange } = this.props;

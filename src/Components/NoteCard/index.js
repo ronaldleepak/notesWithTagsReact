@@ -1,7 +1,7 @@
 import React from "react"
-import Thumbnail from "./Thumbnail"
-import Edit from "./Edit"
-import Detail from "./Detail"
+import NoteThumbnailPanel from "./NoteThumbnailPanel"
+import NoteEditorPanel from "./NoteEditorPanel"
+import NoteDetailPanel from "./NoteDetailPanel"
 import { VIEW_STATUS } from "Util/Constants"
 
 const {
@@ -28,11 +28,23 @@ export default class NoteCard extends React.Component {
     loadCardContent = (viewStatus, note) => {
         switch (viewStatus) {
             case THUMBNAIL:
-                return <Thumbnail note={note} onViewChange={this.handleViewChange}/>
+                return (
+                    <NoteThumbnailPanel
+                        note={note}
+                        onViewChange={this.handleViewChange}/>
+                )
             case DETAIL:
-                return <Detail note={note} onViewChange={this.handleViewChange}/>
+                return (
+                    <NoteDetailPanel
+                        note={note}
+                        onViewChange={this.handleViewChange}/>
+                )
             case EDIT:
-                return <Edit note={note} onViewChange={this.handleViewChange}/>
+                return (
+                    <NoteEditorPanel
+                        note={note}
+                        onViewChange={this.handleViewChange}/>
+                )
             default:
                 return null;
         }

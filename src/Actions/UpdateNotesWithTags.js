@@ -63,8 +63,16 @@ export const saveNote = (saveData) => async (dispatch, getState) => {
     const tags = getState().notesWithTagsPanel.tags;
 
     try {
+
+        const noteID = saveData.note.id;
+        const {
+            tagsToBeCreated,
+            tagsToBeDeleted,
+            note,
+        } = saveData;
+
         // delete note tags
-        for (const noteTag of saveData.deleteTags) {
+        for (const noteTag of tagsToBeDeleted) {
             dispatch(deleteNoteTag(noteTag.id))
         }
 
@@ -72,30 +80,32 @@ export const saveNote = (saveData) => async (dispatch, getState) => {
         dispatch(deleteUnusedTags());
 
         // create new note tags
-        for (const noteTag of saveData.newTags) {
+        for (const newNoteTag of tagsToBeCreated) {
             // search if there is existing tag, if yes, use that tag
-            var newTagID = noteTag.tag.id;
+            const { tag, id } = newNoteTag;
+            var newTagID = tag.id;
 
-            const existingTag = _.find(tags, { 'name': noteTag.tag.name });
+            const existingTag = _.find(tags, { 'name': tag.name });
             if (existingTag != null) {
                 newTagID = existingTag.id;
             } else {
-                dispatch(createTag(noteTag.tag));
+                dispatch(createTag(tag));
             }
 
             // create note tag
-            dispatch(createNoteTag(noteTag.id, saveData.note.id, newTagID))
+            dispatch(createNoteTag(id, noteID, newTagID))
         }
 
         // update note
-        const updatedNote = (await API.graphql(
-        {
-            query: UpdateNote,
-            variables: {
-                input: saveData.note,
-            },
-            authMode: "AMAZON_COGNITO_USER_POOLS",
-        })).data.updateNote;
+        const { updatedNote } = (await API.graphql(
+            {
+                query: UpdateNote,
+                variables: {
+                    input: note,
+                },
+                authMode: "AMAZON_COGNITO_USER_POOLS",
+            })
+        ).data;
 
         dispatch(saveNoteSuccess(updatedNote))
         dispatch(fetchTags())
