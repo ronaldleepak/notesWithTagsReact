@@ -12,7 +12,7 @@ import {
 import {
     BUTTON_STYLE,
     LOADING_STATUS,
-    SIGNIN_PANEL_STATUS,
+    SIGNIN_PAGE_VIEW_STATUS,
 } from "Util/Constants"
 
 class ForgotPasswordSendConfirmationPanel extends React.Component {
@@ -42,7 +42,7 @@ class ForgotPasswordSendConfirmationPanel extends React.Component {
 
     handleCancelButtonClick = () => {
         const { onPanelChange } = this.props;
-        onPanelChange(SIGNIN_PANEL_STATUS.SIGNIN);
+        onPanelChange(SIGNIN_PAGE_VIEW_STATUS.SIGNIN);
     }
 
     render() {

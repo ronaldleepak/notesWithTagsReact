@@ -10,7 +10,7 @@ import { signUp } from "Actions"
 import {
     BUTTON_STYLE,
     LOADING_STATUS,
-    SIGNIN_PANEL_STATUS,
+    SIGNIN_PAGE_VIEW_STATUS,
 } from "Util/Constants"
 
 class SignUpPanel extends React.Component {
@@ -31,7 +31,7 @@ class SignUpPanel extends React.Component {
 
     handleSignInButtonClick = () => {
         const { onPanelChange } = this.props;
-        onPanelChange(SIGNIN_PANEL_STATUS.SIGNIN);
+        onPanelChange(SIGNIN_PAGE_VIEW_STATUS.SIGNIN);
     }
 
     handleSignUpButtonClick = () => {

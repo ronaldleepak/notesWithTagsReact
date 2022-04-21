@@ -3,17 +3,15 @@ import { connect } from 'react-redux'
 import {
     SignInPanel,
     SignUpPanel,
-    SignUpConfirmationPanel,
     ForgotPasswordPanel,
 } from "Components/User"
-import { SIGNIN_PANEL_STATUS, LOADING_STATUS } from "Util/Constants"
+import { SIGNIN_PAGE_VIEW_STATUS, LOADING_STATUS } from "Util/Constants"
 
 const {
     SIGNIN,
     SIGNUP,
-    SIGNUP_CONFIRM,
     FORGOT_PASSWORD,
-} = SIGNIN_PANEL_STATUS;
+} = SIGNIN_PAGE_VIEW_STATUS;
 
 class SignInPage extends React.Component {
     constructor(props) {
@@ -36,8 +34,6 @@ class SignInPage extends React.Component {
                 return <SignInPanel onPanelChange={this.handlePanelChange}/>
             case SIGNUP:
                 return <SignUpPanel onPanelChange={this.handlePanelChange}/>
-            case SIGNUP_CONFIRM:
-                return <SignUpConfirmationPanel onPanelChange={this.handlePanelChange}/>
             case FORGOT_PASSWORD:
                 return <ForgotPasswordPanel onPanelChange={this.handlePanelChange}/>
             default:

@@ -7,13 +7,11 @@ import {
     Textfield,
 } from "Components/Common"
 import {
-    confirmSignUp,
     resendConfirmationEmail,
 } from "Actions"
 import {
     BUTTON_STYLE,
     LOADING_STATUS,
-    SIGNIN_PANEL_STATUS,
 } from "Util/Constants"
 
 class SignUpConfirmationPanel extends React.Component {
@@ -31,16 +29,14 @@ class SignUpConfirmationPanel extends React.Component {
 
     handleConfirmationCodeSubmit = () => {
         const {
-            userName,
-            password,
-            onConfirm,
+            onConfirmationCodeSubmit,
         } = this.props;
 
         const {
             confirmationCode,
         } = this.state;
 
-        onConfirm(userName, password, confirmationCode);
+        onConfirmationCodeSubmit(confirmationCode);
     }
 
     handleResendButtonClick = () => {
@@ -53,8 +49,8 @@ class SignUpConfirmationPanel extends React.Component {
     }
 
     handleCancelButtonClick = () => {
-        const { onPanelChange } = this.props;
-        onPanelChange(SIGNIN_PANEL_STATUS.SIGNIN);
+        const { onCancel } = this.props;
+        onCancel();
     }
 
     render() {
@@ -106,7 +102,6 @@ class SignUpConfirmationPanel extends React.Component {
 }
 
 const mapDispatchToProps = {
-    onConfirm: confirmSignUp,
     onResend: resendConfirmationEmail,
 };
 

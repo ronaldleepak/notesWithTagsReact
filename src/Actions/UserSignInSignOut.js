@@ -7,12 +7,14 @@ const SIGNIN_SUCCESS = 'SIGNIN_SUCCESS';
 const SIGNIN_SUCCESS_UNCONFIRMED_USER = 'SIGNIN_SUCCESS_UNCONFIRMED_USER';
 const SIGNOUT_START = 'SIGNOUT_START';
 const SIGNOUT_SUCCESS = 'SIGNOUT_SUCCESS';
+const SIGNOUT_UNCONFIRMED_USER = 'SIGNOUT_UNCONFIRMED_USER';
 
 const signInStart = createAction(SIGNIN_START);
 const signInSuccess = createAction(SIGNIN_SUCCESS);
 const signInSuccessUnconfirmedUser = createAction(SIGNIN_SUCCESS_UNCONFIRMED_USER);
 const signOutStart = createAction(SIGNOUT_START);
 const signOutSuccess = createAction(SIGNOUT_SUCCESS);
+const signOutUnconfirmedUserDone = createAction(SIGNOUT_UNCONFIRMED_USER);
 
 const signIn = (userName, password) => async (dispatch, getState) => {
     dispatch(signInStart())
@@ -48,14 +50,20 @@ const signOut = () => async (dispatch, getState) => {
     }
 }
 
+const signOutUnconfirmedUser = () => async (dispatch, getState) => {
+    dispatch(signOutUnconfirmedUserDone());
+}
+
 export {
     SIGNIN_START,
     SIGNIN_SUCCESS,
     SIGNIN_SUCCESS_UNCONFIRMED_USER,
     SIGNOUT_START,
     SIGNOUT_SUCCESS,
+    SIGNOUT_UNCONFIRMED_USER,
 }
 export {
     signIn,
     signOut,
+    signOutUnconfirmedUser,
 }

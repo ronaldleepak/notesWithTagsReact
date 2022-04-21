@@ -56,8 +56,10 @@ export {
     SIGNIN_SUCCESS_UNCONFIRMED_USER,
     SIGNOUT_START,
     SIGNOUT_SUCCESS,
+    SIGNOUT_UNCONFIRMED_USER,
     signIn,
     signOut,
+    signOutUnconfirmedUser,
 } from './UserSignInSignOut';
 export {
     FORGOT_PASSWORD_START,
