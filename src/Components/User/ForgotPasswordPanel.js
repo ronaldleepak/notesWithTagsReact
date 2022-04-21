@@ -1,21 +1,14 @@
 import React from "react"
 import { connect } from 'react-redux'
 import {
-    Button,
-    LinkButton,
-    MessageBox,
-    Textfield,
-} from "Components/Common"
-import {
     forgotPassword,
     submitNewPassword,
 } from "Actions"
 import {
-    BUTTON_STYLE,
-    LOADING_STATUS,
-    LOGIN_PANEL_STATUS,
     FORGOT_PASSWORD_PANEL_STATUS,
 } from "Util/Constants"
+import ForgotPasswordSendConfirmationPanel from "./ForgotPasswordSendConfirmationPanel"
+import ForgotPasswordNewPasswordPanel from "./ForgotPasswordNewPasswordPanel"
 
 const {
     SEND_CONFIRM,
@@ -28,134 +21,45 @@ class ForgotPasswordPanel extends React.Component {
 
         this.state = {
             userName: "",
-            confirmationCode: "",
-            newPassword: "",
-            confirmNewPassword: "",
             panelStatus: SEND_CONFIRM,
         };
     }
 
-    handleInputChange = (field) => (event) => {
-        this.setState({[field]: event.target.value})
+    handleSendConfirmation = (userName) => {
+        const { onSendConfirmation } = this.props;
+        onSendConfirmation(userName);
+
+        this.setState({userName: userName});
+        this.handlePanelChange(NEW_PASSWORD);
     }
 
-    handleSendButtonClick = () => {
-        const {
-            onForgotPassword,
-        } = this.props;
-
-        const {
-            username,
-        } = this.state;
-
-        onForgotPassword(username);
-
-        this.setState({panelStatus: NEW_PASSWORD})
+    handleNewPasswordSubmit = (userName, confirmationCode, password) => {
+        const { onSubmitNewPassword } = this.props;
+        onSubmitNewPassword(userName, confirmationCode, password);
     }
 
-    handleSubmitButtonClick = () => {
-        const {
-            onSubmitNewPassword,
-        } = this.props;
-
-        const {
-            userName,
-            confirmationCode,
-            newPassword,
-        } = this.state;
-
-        onSubmitNewPassword(userName, confirmationCode, newPassword);
-    }
-
-    handleCancelButtonClick = () => {
-        const { onPanelChange } = this.props;
-        onPanelChange(LOGIN_PANEL_STATUS.LOGIN);
+    handlePanelChange = (panelStatus) => {
+        this.setState({
+            panelStatus: panelStatus,
+        })
     }
 
     loadPanel = (panelStatus) => {
         const {
             userName,
-            confirmationCode,
-            newPassword,
-            confirmNewPassword,
         } = this.state;
 
         switch (panelStatus) {
             case SEND_CONFIRM:
                 return (
-                    <div className="box">
-                        <p>
-                            Please input user name
-                        </p>
-                        <MessageBox component="forgotPassword"/>
-                        <Textfield
-                            value={userName}
-                            placeholder="User Name"
-                            name="username-input"
-                            onChange={this.handleInputChange("username")}
-                        />
-                        <Button
-                            label="Continue"
-                            name="send-confirmation-email"
-                            buttonStyle={BUTTON_STYLE.SUBMIT}
-                            action={this.handleSendButtonClick}/>
-
-                        <div className="mt-6">
-                            <LinkButton
-                                label="Cancel"
-                                name="cancel"
-                                action={this.handleCancelButtonClick}
-                            />
-                        </div>
-                    </div>
-                );
+                    <ForgotPasswordSendConfirmationPanel
+                        onSendConfirmation={this.handleSendConfirmation}/>
+                )
             case NEW_PASSWORD:
                 return (
-                    <div className="box">
-                        <p>
-                            Please input confirmation code and new password
-                        </p>
-                        <MessageBox component="forgotPasswordSubmit"/>
-                        <Textfield
-                            value={userName}
-                            placeholder="User Name"
-                            name="username-input"
-                            onChange={this.handleInputChange("username")}
-                        />
-                        <Textfield
-                            value={confirmationCode}
-                            placeholder="Confirmation Code"
-                            name="confirmation-code-input"
-                            onChange={this.handleInputChange("confirmationCode")}
-                        />
-                        <Textfield
-                            value={newPassword}
-                            placeholder="New Password"
-                            isPassword={true}
-                            name="confirmation-code-input"
-                            onChange={this.handleInputChange("newPassword")}
-                        />
-                        <Textfield
-                            value={confirmNewPassword}
-                            placeholder="Confirm New Password"
-                            isPassword={true}
-                            name="confirmation-code-input"
-                            onChange={this.handleInputChange("confirmNewPassword")}
-                        />
-                        <Button
-                            label="Submit"
-                            name="submit"
-                            buttonStyle={BUTTON_STYLE.SUBMIT}
-                            action={this.handleSubmitButtonClick}/>
-
-                        <div className="mt-6">
-                            <LinkButton
-                                label="Cancel"
-                                name="cancel"
-                                action={this.handleCancelButtonClick}
-                            />
-                        </div>
-                    </div>
+                    <ForgotPasswordNewPasswordPanel
+                        userName={userName}
+                        onSubmitNewPassword={this.handleNewPasswordSubmit}/>
                 );
             default:
                 return null;
@@ -178,7 +82,7 @@ class ForgotPasswordPanel extends React.Component {
 }
 
 const mapDispatchToProps = {
-    onForgotPassword: forgotPassword,
+    onSendConfirmation: forgotPassword,
     onSubmitNewPassword: submitNewPassword,
 };
 

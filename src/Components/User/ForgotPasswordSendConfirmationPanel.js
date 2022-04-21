@@ -30,14 +30,14 @@ class ForgotPasswordSendConfirmationPanel extends React.Component {
 
     handleSendButtonClick = () => {
         const {
-            onForgotPassword,
+            onSendConfirmation,
         } = this.props;
 
         const {
             userName,
         } = this.state;
 
-        onForgotPassword(userName);
+        onSendConfirmation(userName);
     }
 
     handleCancelButtonClick = () => {
@@ -79,11 +79,4 @@ class ForgotPasswordSendConfirmationPanel extends React.Component {
         );
     };
 }
-
-const mapDispatchToProps = {
-    onForgotPassword: forgotPassword,
-};
-
-const enhancer = connect(null, mapDispatchToProps);
-
-export default enhancer(ForgotPasswordSendConfirmationPanel)
+export default ForgotPasswordSendConfirmationPanel;
