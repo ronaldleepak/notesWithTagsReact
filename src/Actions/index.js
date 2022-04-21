@@ -70,14 +70,11 @@ export {
 export {
     SIGNUP_START,
     SIGNUP_SUCCESS,
-    CANCEL_CONFIRM_START,
-    CANCEL_CONFIRM_SUCCESS,
     CONFIRM_SIGNUP_START,
     CONFIRM_SIGNUP_SUCCESS,
-    CONFIRM_RESEND_START,
-    CONFIRM_RESEND_SUCCESS,
+    RESEND_CONFIRMATION_START,
+    RESEND_CONFIRMATION_SUCCESS,
     signUp,
-    cancelConfirmSignup,
     confirmSignUp,
     resendConfirmationEmail,
 } from './UserSignUp';

@@ -5,28 +5,24 @@ import { addComponentError } from ".";
 
 const SIGNUP_START = 'SIGNUP_START';
 const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
-const CANCEL_CONFIRM_START = 'CANCEL_CONFIRM_START';
-const CANCEL_CONFIRM_SUCCESS = 'CANCEL_CONFIRM_SUCCESS';
 const CONFIRM_SIGNUP_START = 'CONFIRM_SIGNUP_START';
 const CONFIRM_SIGNUP_SUCCESS = 'CONFIRM_SIGNUP_SUCCESS';
-const CONFIRM_RESEND_START = 'CONFIRM_RESEND_START';
-const CONFIRM_RESEND_SUCCESS = 'CONFIRM_RESEND_SUCCESS';
+const RESEND_CONFIRMATION_START = 'RESEND_CONFIRMATION_START';
+const RESEND_CONFIRMATION_SUCCESS = 'RESEND_CONFIRMATION_SUCCESS';
 
 const signUpStart = createAction(SIGNUP_START);
 const signUpSuccess = createAction(SIGNUP_SUCCESS);
-const cancelConfirmStart = createAction(CANCEL_CONFIRM_START);
-const cancelConfirmSuccess = createAction(CANCEL_CONFIRM_SUCCESS);
 const confirmSignUpStart = createAction(CONFIRM_SIGNUP_START);
 const confirmSignUpSuccess = createAction(CONFIRM_SIGNUP_SUCCESS);
-const confirmResendStart = createAction(CONFIRM_RESEND_START);
-const confirmResendSuccess = createAction(CONFIRM_RESEND_SUCCESS);
+const resendConfirmationStart = createAction(RESEND_CONFIRMATION_START);
+const resendConfirmationSuccess = createAction(RESEND_CONFIRMATION_SUCCESS);
 
-const signUp = (username, password, email) => async (dispatch, getState) => {
+const signUp = (userName, password, email) => async (dispatch, getState) => {
     dispatch(signUpStart())
 
     try {
         await Auth.signUp({
-            username,
+            userName,
             password,
             attributes: {
                 email
@@ -40,26 +36,13 @@ const signUp = (username, password, email) => async (dispatch, getState) => {
     }
 }
 
-const cancelConfirmSignup = () => async (dispatch, getState) => {
-    dispatch(cancelConfirmStart())
-
-    try {
-        dispatch(cancelConfirmSuccess())
-    } catch (error) {
-        const errorMessage = `Failed to cancel confirm: ${error.message.toString()}`;
-        console.log(error)
-
-        dispatch(addComponentError("confirmSignup", errorMessage))
-    }
-}
-
-const confirmSignUp = (username, password, code) => async (dispatch, getState) => {
+const confirmSignUp = (userName, password, confirmationCode) => async (dispatch, getState) => {
     dispatch(confirmSignUpStart())
 
     try {
-        await Auth.confirmSignUp(username, code);
+        await Auth.confirmSignUp(userName, confirmationCode);
 
-        dispatch(signIn(username, password));
+        await dispatch(signIn(userName, password));
 
         dispatch(confirmSignUpSuccess())
     } catch (error) {
@@ -70,15 +53,15 @@ const confirmSignUp = (username, password, code) => async (dispatch, getState) =
     }
 }
 
-const resendConfirmationEmail = (username) => async (dispatch, getState) => {
-    dispatch(confirmResendStart())
+const resendConfirmationEmail = (userName) => async (dispatch, getState) => {
+    dispatch(resendConfirmationStart())
 
     try {
-        await Auth.resendSignUp(username);
+        await Auth.resendSignUp(userName);
 
-        dispatch(confirmResendSuccess())
+        dispatch(resendConfirmationSuccess())
     } catch (error) {
-        const errorMessage = `Failed to resend confirmation code: ${error.message.toString()}`;
+        const errorMessage = `Failed to resend confirmation email: ${error.message.toString()}`;
         console.log(error)
 
         dispatch(addComponentError("confirmSignup", errorMessage))
@@ -88,16 +71,13 @@ const resendConfirmationEmail = (username) => async (dispatch, getState) => {
 export {
     SIGNUP_START,
     SIGNUP_SUCCESS,
-    CANCEL_CONFIRM_START,
-    CANCEL_CONFIRM_SUCCESS,
     CONFIRM_SIGNUP_START,
     CONFIRM_SIGNUP_SUCCESS,
-    CONFIRM_RESEND_START,
-    CONFIRM_RESEND_SUCCESS,
+    RESEND_CONFIRMATION_START,
+    RESEND_CONFIRMATION_SUCCESS,
 }
 export {
     signUp,
-    cancelConfirmSignup,
     confirmSignUp,
     resendConfirmationEmail,
 };

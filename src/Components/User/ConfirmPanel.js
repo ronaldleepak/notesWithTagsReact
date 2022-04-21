@@ -9,7 +9,6 @@ import {
 import {
     confirmSignUp,
     resendConfirmationEmail,
-    cancelConfirmSignup,
 } from "Actions"
 import {
     BUTTON_STYLE,
@@ -53,8 +52,7 @@ class ConfirmPanel extends React.Component {
     }
 
     handleCancelButtonClick = () => {
-        const { onPanelChange, onCancel } = this.props;
-        onCancel();
+        const { onPanelChange } = this.props;
         onPanelChange(LOGIN_PANEL_STATUS.LOGIN);
     }
 
@@ -115,7 +113,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
     onConfirm: confirmSignUp,
     onResend: resendConfirmationEmail,
-    onCancel: cancelConfirmSignup,
 };
 
 const enhancer = connect(mapStateToProps, mapDispatchToProps);
