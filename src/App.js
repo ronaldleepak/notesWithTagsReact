@@ -1,5 +1,5 @@
 import React from "react"
-import { HomePage, SigninPage } from "./Pages";
+import { HomePage, SignInPage } from "./Pages";
 import { NavBar } from "./Components/Common"
 class App extends React.Component {
     render() {
@@ -8,7 +8,8 @@ class App extends React.Component {
                 <NavBar/>
                 
                 <HomePage/>
-                <SigninPage/>
+                
+                <SignInPage/>
             </div>
         );
     }
