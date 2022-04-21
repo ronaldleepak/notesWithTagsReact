@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import { Provider } from 'react-redux'
-import NoteList from 'Components/NoteList';
+import NotesList from 'Components/NotesList';
 import NoteCard from 'Components/NoteCard';
 import { createTestStore } from 'store';
 
@@ -15,7 +15,7 @@ describe("Test note controls", () => {
     test('New Note', () => {
         render(
             <Provider store={store}>
-                <NoteList notes={[]}/>
+                <NotesList notes={[]}/>
             </Provider>
         );
         
@@ -71,7 +71,7 @@ describe("Test note controls", () => {
     test('Delete Note', () => {
         render(
             <Provider store={store}>
-                <NoteList notes={[]}/>
+                <NotesList notes={[]}/>
             </Provider>
         );
     

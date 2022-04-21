@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from 'react-redux'
-import NoteList from "Components/NoteList";
+import NotesList from "Components/NotesList";
 import ImportExport from "Components/ImportExport";
 import { getNotes } from "Selectors/GetNotes";
 import { LOADING_STATUS } from "Util/Constants";
@@ -17,7 +17,7 @@ class HomePage extends React.Component {
                     </h1>
                 </div>
                 <div>
-                    <NoteList notes={notes}/>
+                    <NotesList notes={notes}/>
 
                     <ImportExport notes={notes}/>
                 </div>

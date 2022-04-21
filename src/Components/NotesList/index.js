@@ -4,19 +4,24 @@ import { Button, MessageBox } from "Components/Common"
 import { createNote } from "Actions"
 import NoteCard from "Components/NoteCard"
 import { LOADING_STATUS } from 'Util/Constants';
-class NoteList extends React.Component {
+class NotesList extends React.Component {
+
+    handleCreateNoteButtonClick = () => {
+        const { onNewNoteClick } = this.props;
+        onNewNoteClick();
+    }
 
     render() {
-        var {notes, onNewNoteClick} = this.props
+        const { notes } = this.props
         return (
             <div className="columns is-centered is-mobile">
                 <div className="column is-9">
                     <MessageBox component="note"/>
                     <Button
-                        label="New Note"
+                        label="Create Note"
                         name="new-note"
                         isLoading={this.props.loadingStatus === LOADING_STATUS.LOADING}
-                        action={onNewNoteClick}/>
+                        action={this.handleCreateNoteButtonClick}/>
                     <div className="list">
                     {
                         notes.map(note => {
@@ -44,4 +49,4 @@ const mapDispatchToProps = {
 
 const enhancer = connect(mapStateToProps, mapDispatchToProps);
 
-export default enhancer(NoteList)
+export default enhancer(NotesList)
