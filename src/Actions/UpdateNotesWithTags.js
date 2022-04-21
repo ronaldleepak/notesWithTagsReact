@@ -11,6 +11,7 @@ import {
 } from 'graphql/noteWithTagsMutations'
 import {
     listTags as ListTags,
+    listNoteTags as ListNoteTags,
 } from 'graphql/noteWithTagsQueries'
 import {
     fetchTags
@@ -19,22 +20,22 @@ import { Note } from 'models/'
 import _ from 'lodash-es'
 import { addComponentError } from ".";
 
-const NEW_NOTE_START = 'NEW_NOTE_START';
-const NEW_NOTE_SUCCESS = 'NEW_NOTE_SUCCESS';
+const CREATE_NOTE_START = 'CREATE_NOTE_START';
+const CREATE_NOTE_SUCCESS = 'CREATE_NOTE_SUCCESS';
 const SAVE_NOTE_START = 'SAVE_NOTE_START';
 const SAVE_NOTE_SUCCESS = 'SAVE_NOTE_SUCCESS';
 const DELETE_NOTE_START = 'DELETE_NOTE_START';
 const DELETE_NOTE_SUCCESS = 'DELETE_NOTE_SUCCESS';
 
-const newNoteStart = createAction(NEW_NOTE_START);
-const newNoteSuccess = createAction(NEW_NOTE_SUCCESS);
+const createNoteStart = createAction(CREATE_NOTE_START);
+const createNoteSuccess = createAction(CREATE_NOTE_SUCCESS);
 const saveNoteStart = createAction(SAVE_NOTE_START);
 const saveNoteSuccess = createAction(SAVE_NOTE_SUCCESS);
 const deleteNoteStart = createAction(DELETE_NOTE_START);
 const deleteNoteSuccess = createAction(DELETE_NOTE_SUCCESS);
 
-export const newNote = () => async (dispatch, getState) => {
-    dispatch(newNoteStart())
+export const createNote = () => async (dispatch, getState) => {
+    dispatch(createNoteStart())
 
     try {
         const newNote = (await API.graphql(
@@ -49,9 +50,9 @@ export const newNote = () => async (dispatch, getState) => {
             authMode: "AMAZON_COGNITO_USER_POOLS",
         })).data.createNote;
 
-        dispatch(newNoteSuccess(newNote))
+        dispatch(createNoteSuccess(newNote))
     } catch (error) {
-        const errorMessage = `Failed to new note: ${error.toString()}`;
+        const errorMessage = `Failed to create note: ${error.toString()}`;
         dispatch(addComponentError("note", errorMessage))
     }
 }
@@ -59,7 +60,7 @@ export const newNote = () => async (dispatch, getState) => {
 export const saveNote = (saveData) => async (dispatch, getState) => {
     dispatch(saveNoteStart())
 
-    const tags = getState().note.tags;
+    const tags = getState().notesWithTagsPanel.tags;
 
     try {
         // delete note tags
@@ -104,12 +105,18 @@ export const saveNote = (saveData) => async (dispatch, getState) => {
     }
 }
 
-export const deleteNote = (note) => async (dispatch, getState) => {
+export const deleteNote = (noteID) => async (dispatch, getState) => {
     dispatch(deleteNoteStart())
 
     try {
+        const noteTagList = (await API.graphql({
+            query: ListNoteTags,
+            authMode: 'AMAZON_COGNITO_USER_POOLS',
+        })).data.listNoteTags.items;
+        const noteTagListToBeDeleted = noteTagList.filter((noteTag) => noteTag.noteID === noteID)
+
         // Delete related note tags
-        for (const noteTag of note.tags.items) {
+        for (const noteTag of noteTagListToBeDeleted) {
             dispatch(deleteNoteTag(noteTag.id))
         }
 
@@ -117,7 +124,7 @@ export const deleteNote = (note) => async (dispatch, getState) => {
         const deletedNoteData = await API.graphql(
         {
             query: DeleteNote,
-            variables: { input: { id: note.id }},
+            variables: { input: { id: noteID }},
             authMode: "AMAZON_COGNITO_USER_POOLS",
         });
 
@@ -191,8 +198,8 @@ const deleteUnusedTags = () => async (dispatch) => {
 }
 
 export {
-    NEW_NOTE_START,
-    NEW_NOTE_SUCCESS,
+    CREATE_NOTE_START,
+    CREATE_NOTE_SUCCESS,
     SAVE_NOTE_START,
     SAVE_NOTE_SUCCESS,
     DELETE_NOTE_START,

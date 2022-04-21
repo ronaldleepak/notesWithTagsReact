@@ -5,8 +5,8 @@ import {
     FETCH_NOTES_SUCCESS,
     FETCH_TAGS_START,
     FETCH_TAGS_SUCCESS,
-    NEW_NOTE_START,
-    NEW_NOTE_SUCCESS,
+    CREATE_NOTE_START,
+    CREATE_NOTE_SUCCESS,
     SAVE_NOTE_START,
     SAVE_NOTE_SUCCESS,
     DELETE_NOTE_START,
@@ -43,11 +43,11 @@ const notesWithTagsPanel = handleActions({
         tags: payload,
         loadingStatus: IDLE,
     }),
-    [NEW_NOTE_START]: (state, { payload }) => ({
+    [CREATE_NOTE_START]: (state, { payload }) => ({
         ...state,
         loadingStatus: LOADING,
     }),
-    [NEW_NOTE_SUCCESS]: (state, { payload }) => {
+    [CREATE_NOTE_SUCCESS]: (state, { payload }) => {
         const { notes } = state;
         return {
             ...state,

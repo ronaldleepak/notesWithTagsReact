@@ -60,7 +60,7 @@ class NoteEdit extends React.Component {
 
     handleDeleteButtonClick = () => {
         const { onDeleteNoteClick, note } = this.props;
-        onDeleteNoteClick(note)
+        onDeleteNoteClick(note.id)
     }
 
     handleInputChange = (field) => (event) => {
@@ -136,7 +136,7 @@ class NoteEdit extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        loadingStatus: state.note.loadingStatus,
+        loadingStatus: state.notesWithTagsPanel.loadingStatus,
     }
 }
 

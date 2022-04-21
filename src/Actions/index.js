@@ -30,16 +30,16 @@ export {
     default as fetchTags,
 } from './FetchTags';
 export { 
-    NEW_NOTE_START,
-    NEW_NOTE_SUCCESS,
+    CREATE_NOTE_START,
+    CREATE_NOTE_SUCCESS,
     SAVE_NOTE_START,
     SAVE_NOTE_SUCCESS,
     DELETE_NOTE_START,
     DELETE_NOTE_SUCCESS,
-    newNote,
+    createNote,
     saveNote,
     deleteNote,
-} from './UpdateNoteList';
+} from './UpdateNotesWithTags';
 export { 
     IMPORT_NOTES_START,
     IMPORT_NOTES_SUCCESS,

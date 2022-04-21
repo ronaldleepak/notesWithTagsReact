@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from 'react-redux'
 import { Button, MessageBox } from "Components/Common"
-import { newNote } from "Actions"
+import { createNote } from "Actions"
 import NoteCard from "Components/NoteCard"
 import { LOADING_STATUS } from 'Util/Constants';
 class NoteList extends React.Component {
@@ -34,12 +34,12 @@ class NoteList extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        loadingStatus: state.note.loadingStatus,
+        loadingStatus: state.notesWithTagsPanel.loadingStatus,
     }
 }
 
 const mapDispatchToProps = {
-    onNewNoteClick: newNote,
+    onNewNoteClick: createNote,
 };
 
 const enhancer = connect(mapStateToProps, mapDispatchToProps);
