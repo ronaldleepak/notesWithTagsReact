@@ -51,14 +51,14 @@ export {
     default as exportNotes,
 } from './ExportNotes';
 export {
-    LOGIN_START,
-    LOGIN_SUCCESS,
-    LOGIN_CONFIRM_USER,
-    LOGOUT_START,
-    LOGOUT_SUCCESS,
-    login,
-    logout,
-} from './UserAuth';
+    SIGNIN_START,
+    SIGNIN_SUCCESS,
+    SIGNIN_SUCCESS_UNCONFIRMED_USER,
+    SIGNOUT_START,
+    SIGNOUT_SUCCESS,
+    signIn,
+    signOut,
+} from './SignInSignOut';
 export {
     FORGOT_PASSWORD_START,
     FORGOT_PASSWORD_SUCCESS,

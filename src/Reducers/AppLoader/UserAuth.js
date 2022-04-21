@@ -1,8 +1,8 @@
 import { handleActions } from 'redux-actions';
 import { LOADING_STATUS } from 'Util/Constants';
 import {
-    LOGOUT_START,
-    LOGOUT_SUCCESS,
+    SIGNOUT_START,
+    SIGNOUT_SUCCESS,
     FETCH_CURRENT_USER_START,
     FETCH_CURRENT_USER_SUCCESS,
 } from 'Actions'
@@ -18,11 +18,11 @@ const initialState = {
 };
 
 const userAuth = handleActions({
-    [LOGOUT_START]: (state) => ({
+    [SIGNOUT_START]: (state) => ({
         ...state,
         loadingStatus: LOADING,
     }),
-    [LOGOUT_SUCCESS]: (state) => ({
+    [SIGNOUT_SUCCESS]: (state) => ({
         ...state,
         user: null,
         loadingStatus: IDLE,

@@ -1,6 +1,6 @@
 import { createAction } from "redux-actions";
 import { Auth } from 'aws-amplify'
-import { login } from "."
+import { signIn } from "."
 import { addComponentError } from ".";
 
 const SIGNUP_START = 'SIGNUP_START';
@@ -59,7 +59,7 @@ const confirmSignUp = (username, password, code) => async (dispatch, getState) =
     try {
         await Auth.confirmSignUp(username, code);
 
-        dispatch(login(username, password));
+        dispatch(signIn(username, password));
 
         dispatch(confirmSignUpSuccess())
     } catch (error) {

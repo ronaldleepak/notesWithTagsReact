@@ -6,7 +6,7 @@ import {
     MessageBox,
     Textfield,
 } from "Components/Common"
-import { login } from "Actions"
+import { signIn } from "Actions"
 import {
     BUTTON_STYLE,
     LOADING_STATUS,
@@ -123,7 +123,7 @@ class LoginPanel extends React.Component {
 }
 
 const mapDispatchToProps = {
-    onSignin: login,
+    onSignin: signIn,
 };
 
 const enhancer = connect(null, mapDispatchToProps);

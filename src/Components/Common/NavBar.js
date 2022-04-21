@@ -4,7 +4,7 @@ import {
     Button,
     LinkButton,
 } from "."
-import { logout } from "Actions"
+import { signOut } from "Actions"
 import { BUTTON_STYLE } from "Util/Constants"
 
 class NavBar extends React.Component {
@@ -47,7 +47,7 @@ class NavBar extends React.Component {
 }
 
 const mapDispatchToProps = {
-    onSignout: logout,
+    onSignout: signOut,
 };
 
 const mapStateToProps = (state) => {

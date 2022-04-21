@@ -6,7 +6,7 @@ import startAppProgress from './AppLoader/StartAppProgress';
 import fetchUserDataProgress from './AppLoader/FetchUserDataProgress';
 import userAuth from './AppLoader/UserAuth';
 
-import loginPanel from './UserAuthentication/LoginPanel';
+import signInPanel from './UserAuthentication/SignInPanel';
 import signUpPanel from './UserAuthentication/SignUpPanel';
 import forgotPasswordPanel from './UserAuthentication/ForgotPasswordPanel';
 
@@ -20,7 +20,7 @@ const reducer = combineReducers({
     fetchUserDataProgress,
     userAuth,
 
-    loginPanel,
+    signInPanel,
     signUpPanel,
     forgotPasswordPanel,
 

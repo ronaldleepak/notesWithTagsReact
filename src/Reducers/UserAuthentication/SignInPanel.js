@@ -1,9 +1,9 @@
 import { handleActions } from 'redux-actions';
 import { LOADING_STATUS } from 'Util/Constants';
 import {
-    LOGIN_START,
-    LOGIN_SUCCESS,
-    LOGIN_CONFIRM_USER,
+    SIGNIN_START,
+    SIGNIN_SUCCESS,
+    SIGNIN_SUCCESS_UNCONFIRMED_USER,
 } from 'Actions'
 
 const {
@@ -16,21 +16,21 @@ const initialState = {
     isUserConfirmed: null,
 };
 
-const loginPanel = handleActions({
-    [LOGIN_START]: (state) => ({
+const signInPanel = handleActions({
+    [SIGNIN_START]: (state) => ({
         ...state,
         loadingStatus: LOADING,
     }),
-    [LOGIN_SUCCESS]: (state, { payload }) => ({
+    [SIGNIN_SUCCESS]: (state, { payload }) => ({
         ...state,
         loadingStatus: IDLE,
         isUserConfirmed: true,
     }),
-    [LOGIN_CONFIRM_USER]: (state, { payload }) => ({
+    [SIGNIN_SUCCESS_UNCONFIRMED_USER]: (state, { payload }) => ({
         ...state,
         loadingStatus: IDLE,
         isUserConfirmed: false,
     }),
 }, initialState);
 
-export default loginPanel;
+export default signInPanel;
