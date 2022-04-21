@@ -18,7 +18,7 @@ export default class NoteDetailPanel extends React.Component {
 
     handleEditButtonClick = () => {
         const { onViewChange } = this.props;
-        onViewChange(VIEW_STATUS.EDIT);
+        onViewChange(VIEW_STATUS.EDITOR);
     }
 
     handleCopyButtonClick = () => {

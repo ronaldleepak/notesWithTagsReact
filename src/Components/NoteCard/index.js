@@ -7,7 +7,7 @@ import { VIEW_STATUS } from "Util/Constants"
 const {
     THUMBNAIL,
     DETAIL,
-    EDIT,
+    EDITOR,
 } = VIEW_STATUS;
 
 export default class NoteCard extends React.Component {
@@ -15,7 +15,7 @@ export default class NoteCard extends React.Component {
         super(props);
 
         this.state = {
-            viewStatus: (this.props.isNew === true) ? EDIT : THUMBNAIL,
+            viewStatus: (this.props.isNew === true) ? EDITOR : THUMBNAIL,
         };
     }
 
@@ -39,7 +39,7 @@ export default class NoteCard extends React.Component {
                         note={note}
                         onViewChange={this.handleViewChange}/>
                 )
-            case EDIT:
+            case EDITOR:
                 return (
                     <NoteEditorPanel
                         note={note}
