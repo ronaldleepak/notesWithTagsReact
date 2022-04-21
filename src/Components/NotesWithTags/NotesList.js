@@ -2,8 +2,10 @@ import React from "react"
 import { connect } from 'react-redux'
 import { Button, MessageBox } from "Components/Common"
 import { createNote } from "Actions"
+import { getNotes } from "Selectors/GetNotes";
 import NoteCard from "Components/NoteCard"
 import { LOADING_STATUS } from 'Util/Constants';
+
 class NotesList extends React.Component {
 
     handleCreateNoteButtonClick = () => {
@@ -13,6 +15,9 @@ class NotesList extends React.Component {
 
     render() {
         const { notes } = this.props
+
+        console.log(notes)
+
         return (
             <div className="columns is-centered is-mobile">
                 <div className="column is-9">
@@ -39,6 +44,7 @@ class NotesList extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
+        notes: getNotes(state),
         loadingStatus: state.notesWithTagsPanel.loadingStatus,
     }
 }

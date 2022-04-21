@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import { Provider } from 'react-redux'
-import NotesList from 'Components/NotesList';
+import NotesList from 'Components/NotesWithTags';
 import NoteCard from 'Components/NoteCard';
 import { createTestStore } from 'store';
 
