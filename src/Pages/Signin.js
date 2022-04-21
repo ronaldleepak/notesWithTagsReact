@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from 'react-redux'
 import {
     LoginPanel,
-    SignupPanel,
+    SignUpPanel,
     ConfirmPanel,
     ForgotPasswordPanel,
 } from "Components/User"
@@ -41,7 +41,7 @@ class SigninPage extends React.Component {
             case LOGIN:
                 return <LoginPanel onPanelChange={this.handlePanelChange}/>
             case SIGNUP:
-                return <SignupPanel onPanelChange={this.handlePanelChange}/>
+                return <SignUpPanel onPanelChange={this.handlePanelChange}/>
             case CONFIRM:
                 return <ConfirmPanel onPanelChange={this.handlePanelChange}/>
             case FORGOT_PASSWORD:
