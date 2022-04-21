@@ -4,19 +4,19 @@ import { addComponentError } from ".";
 
 const FORGOT_PASSWORD_START = 'FORGOT_PASSWORD_START';
 const FORGOT_PASSWORD_SUCCESS = 'FORGOT_PASSWORD_SUCCESS';
-const FORGOT_PASSWORD_SUBMIT_START = 'FORGOT_PASSWORD_SUBMIT_START';
-const FORGOT_PASSWORD_SUBMIT_SUCCESS = 'FORGOT_PASSWORD_SUBMIT_SUCCESS';
+const SUBMIT_NEW_PASSWORD_START = 'SUBMIT_NEW_PASSWORD_START';
+const SUBMIT_NEW_PASSWORD_SUCCESS = 'SUBMIT_NEW_PASSWORD_SUCCESS';
 
 const forgotPasswordStart = createAction(FORGOT_PASSWORD_START);
 const forgotPasswordSuccess = createAction(FORGOT_PASSWORD_SUCCESS);
-const forgotPasswordSubmitStart = createAction(FORGOT_PASSWORD_SUBMIT_START);
-const forgotPasswordSubmitSuccess = createAction(FORGOT_PASSWORD_SUBMIT_SUCCESS);
+const forgotPasswordSubmitStart = createAction(SUBMIT_NEW_PASSWORD_START);
+const forgotPasswordSubmitSuccess = createAction(SUBMIT_NEW_PASSWORD_SUCCESS);
 
-const forgotPassword = (username) => async (dispatch, getState) => {
+const forgotPassword = (userName) => async (dispatch, getState) => {
     dispatch(forgotPasswordStart())
 
     try {
-        await Auth.forgotPassword(username);
+        await Auth.forgotPassword(userName);
 
         dispatch(forgotPasswordSuccess())
     } catch (error) {
@@ -25,11 +25,11 @@ const forgotPassword = (username) => async (dispatch, getState) => {
     }
 }
 
-const forgotPasswordNewPasswordSubmit = (username, code, newPassword) => async (dispatch, getState) => {
+const submitNewPassword = (userName, confirmationCode, newPassword) => async (dispatch, getState) => {
     dispatch(forgotPasswordSubmitStart())
 
     try {
-        await Auth.forgotPasswordSubmit(username, code, newPassword);
+        await Auth.forgotPasswordSubmit(userName, confirmationCode, newPassword);
 
         dispatch(forgotPasswordSubmitSuccess())
     } catch (error) {
@@ -41,10 +41,10 @@ const forgotPasswordNewPasswordSubmit = (username, code, newPassword) => async (
 export {
     FORGOT_PASSWORD_START,
     FORGOT_PASSWORD_SUCCESS,
-    FORGOT_PASSWORD_SUBMIT_START,
-    FORGOT_PASSWORD_SUBMIT_SUCCESS,
+    SUBMIT_NEW_PASSWORD_START,
+    SUBMIT_NEW_PASSWORD_SUCCESS,
 }
 export {
     forgotPassword,
-    forgotPasswordNewPasswordSubmit,
+    submitNewPassword,
 }

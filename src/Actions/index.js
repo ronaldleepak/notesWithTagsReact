@@ -62,10 +62,10 @@ export {
 export {
     FORGOT_PASSWORD_START,
     FORGOT_PASSWORD_SUCCESS,
-    FORGOT_PASSWORD_SUBMIT_START,
-    FORGOT_PASSWORD_SUBMIT_SUCCESS,
+    SUBMIT_NEW_PASSWORD_START,
+    SUBMIT_NEW_PASSWORD_SUCCESS,
     forgotPassword,
-    forgotPasswordNewPasswordSubmit,
+    submitNewPassword,
 } from './UserForgotPassword';
 export {
     SIGNUP_START,

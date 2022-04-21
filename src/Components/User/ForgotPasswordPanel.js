@@ -8,7 +8,7 @@ import {
 } from "Components/Common"
 import {
     forgotPassword,
-    forgotPasswordNewPasswordSubmit,
+    submitNewPassword,
 } from "Actions"
 import {
     BUTTON_STYLE,
@@ -27,7 +27,7 @@ class ForgotPasswordPanel extends React.Component {
         super(props);
 
         this.state = {
-            username: "",
+            userName: "",
             confirmationCode: "",
             newPassword: "",
             confirmNewPassword: "",
@@ -55,16 +55,16 @@ class ForgotPasswordPanel extends React.Component {
 
     handleSubmitButtonClick = () => {
         const {
-            onForgotPasswordNewPasswordSubmit,
+            onSubmitNewPassword,
         } = this.props;
 
         const {
-            username,
+            userName,
             confirmationCode,
             newPassword,
         } = this.state;
 
-        onForgotPasswordNewPasswordSubmit(username, confirmationCode, newPassword);
+        onSubmitNewPassword(userName, confirmationCode, newPassword);
     }
 
     handleCancelButtonClick = () => {
@@ -74,7 +74,7 @@ class ForgotPasswordPanel extends React.Component {
 
     loadPanel = (panelStatus) => {
         const {
-            username,
+            userName,
             confirmationCode,
             newPassword,
             confirmNewPassword,
@@ -89,7 +89,7 @@ class ForgotPasswordPanel extends React.Component {
                         </p>
                         <MessageBox component="forgotPassword"/>
                         <Textfield
-                            value={username}
+                            value={userName}
                             placeholder="User Name"
                             name="username-input"
                             onChange={this.handleInputChange("username")}
@@ -117,7 +117,7 @@ class ForgotPasswordPanel extends React.Component {
                         </p>
                         <MessageBox component="forgotPasswordSubmit"/>
                         <Textfield
-                            value={username}
+                            value={userName}
                             placeholder="User Name"
                             name="username-input"
                             onChange={this.handleInputChange("username")}
@@ -179,7 +179,7 @@ class ForgotPasswordPanel extends React.Component {
 
 const mapDispatchToProps = {
     onForgotPassword: forgotPassword,
-    onForgotPasswordNewPasswordSubmit: forgotPasswordNewPasswordSubmit,
+    onSubmitNewPassword: submitNewPassword,
 };
 
 const enhancer = connect(null, mapDispatchToProps);

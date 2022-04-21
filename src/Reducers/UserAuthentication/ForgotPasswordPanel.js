@@ -3,8 +3,8 @@ import { LOADING_STATUS } from 'Util/Constants';
 import {
     FORGOT_PASSWORD_START,
     FORGOT_PASSWORD_SUCCESS,
-    FORGOT_PASSWORD_SUBMIT_START,
-    FORGOT_PASSWORD_SUBMIT_SUCCESS,
+    SUBMIT_NEW_PASSWORD_START,
+    SUBMIT_NEW_PASSWORD_SUCCESS,
 } from 'Actions'
 
 const {
@@ -25,11 +25,11 @@ const forgotPasswordPanel = handleActions({
         ...state,
         loadingStatus: IDLE,
     }),
-    [FORGOT_PASSWORD_SUBMIT_START]: (state, { payload }) => ({
+    [SUBMIT_NEW_PASSWORD_START]: (state, { payload }) => ({
         ...state,
         loadingStatus: LOADING,
     }),
-    [FORGOT_PASSWORD_SUBMIT_SUCCESS]: (state, { payload }) => ({
+    [SUBMIT_NEW_PASSWORD_SUCCESS]: (state, { payload }) => ({
         ...state,
         loadingStatus: IDLE,
     }),
