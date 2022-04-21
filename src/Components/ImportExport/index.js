@@ -4,16 +4,16 @@ import { LOADING_STATUS } from "Util/Constants"
 import { connect } from 'react-redux'
 import { exportNotes, importNotes } from "Actions"
 
-class ImportExport extends React.Component {
+class NotesImportExportPanel extends React.Component {
 
     handleImportButtonClick = (event) => {
-        const { onImportButtonClick } = this.props;
-        onImportButtonClick(event.file)
+        const { onImport } = this.props;
+        onImport(event.file)
     }
 
     handleExportButtonClick = (event) => {
-        const { onExportButtonClick } = this.props;
-        onExportButtonClick()
+        const { onExport } = this.props;
+        onExport()
     }
 
     render() {
@@ -41,10 +41,10 @@ class ImportExport extends React.Component {
 }
 
 const mapDispatchToProps = {
-    onImportButtonClick: importNotes,
-    onExportButtonClick: exportNotes,
+    onImport: importNotes,
+    onExport: exportNotes,
 };
 
 const enhancer = connect(null, mapDispatchToProps);
 
-export default enhancer(ImportExport)
+export default enhancer(NotesImportExportPanel)
