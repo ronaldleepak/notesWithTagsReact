@@ -58,7 +58,7 @@ export {
     SIGNOUT_SUCCESS,
     signIn,
     signOut,
-} from './SignInSignOut';
+} from './UserSignInSignOut';
 export {
     FORGOT_PASSWORD_START,
     FORGOT_PASSWORD_SUCCESS,
