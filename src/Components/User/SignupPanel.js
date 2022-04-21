@@ -10,7 +10,7 @@ import { signUp } from "Actions"
 import {
     BUTTON_STYLE,
     LOADING_STATUS,
-    LOGIN_PANEL_STATUS,
+    SIGNIN_PANEL_STATUS,
 } from "Util/Constants"
 
 class SignUpPanel extends React.Component {
@@ -31,7 +31,7 @@ class SignUpPanel extends React.Component {
 
     handleSignInButtonClick = () => {
         const { onPanelChange } = this.props;
-        onPanelChange(LOGIN_PANEL_STATUS.LOGIN);
+        onPanelChange(SIGNIN_PANEL_STATUS.SIGNIN);
     }
 
     handleSignUpButtonClick = () => {
@@ -62,8 +62,8 @@ class SignUpPanel extends React.Component {
                         <Textfield
                             value={userName}
                             placeholder="User name"
-                            name="username-input"
-                            onChange={this.handleInputChange("username")}
+                            name="userName-input"
+                            onChange={this.handleInputChange("userName")}
                         />
                         <Textfield
                             value={email}

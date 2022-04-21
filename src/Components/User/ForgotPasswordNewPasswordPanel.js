@@ -13,7 +13,7 @@ import {
 import {
     BUTTON_STYLE,
     LOADING_STATUS,
-    LOGIN_PANEL_STATUS,
+    SIGNIN_PANEL_STATUS,
 } from "Util/Constants"
 
 class ForgotPasswordNewPasswordPanel extends React.Component {
@@ -48,7 +48,7 @@ class ForgotPasswordNewPasswordPanel extends React.Component {
 
     handleCancelButtonClick = () => {
         const { onPanelChange } = this.props;
-        onPanelChange(LOGIN_PANEL_STATUS.LOGIN);
+        onPanelChange(SIGNIN_PANEL_STATUS.SIGNIN);
     }
 
     render() {
@@ -68,8 +68,8 @@ class ForgotPasswordNewPasswordPanel extends React.Component {
                 <Textfield
                     value={userName}
                     placeholder="User Name"
-                    name="username-input"
-                    onChange={this.handleInputChange("username")}
+                    name="userName-input"
+                    onChange={this.handleInputChange("userName")}
                 />
                 <Textfield
                     value={confirmationCode}

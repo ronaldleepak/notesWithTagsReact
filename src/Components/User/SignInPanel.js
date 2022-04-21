@@ -10,15 +10,15 @@ import { signIn } from "Actions"
 import {
     BUTTON_STYLE,
     LOADING_STATUS,
-    LOGIN_PANEL_STATUS,
+    SIGNIN_PANEL_STATUS,
 } from "Util/Constants"
 
-class LoginPanel extends React.Component {
+class SignInPanel extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            username: "",
+            userName: "",
             password: "",
             isShowPasswordField: false,
         };
@@ -38,26 +38,26 @@ class LoginPanel extends React.Component {
         } = this.props;
 
         const {
-            username,
+            userName,
             password,
         } = this.state;
 
-        onSignin(username, password);
+        onSignin(userName, password);
     }
 
     handleSignupButtonClick = () => {
         const { onPanelChange } = this.props;
-        onPanelChange(LOGIN_PANEL_STATUS.SIGNUP);
+        onPanelChange(SIGNIN_PANEL_STATUS.SIGNUP);
     }
 
     handleForgotPasswordButtonClick = () => {
         const { onPanelChange } = this.props;
-        onPanelChange(LOGIN_PANEL_STATUS.FORGOT_PASSWORD);
+        onPanelChange(SIGNIN_PANEL_STATUS.FORGOT_PASSWORD);
     }
 
     render() {
         const {
-            username,
+            userName,
             password,
             isShowPasswordField,
         } = this.state;
@@ -68,10 +68,10 @@ class LoginPanel extends React.Component {
                     <div className="box">
                         <MessageBox component="login"/>
                         <Textfield
-                            value={username}
+                            value={userName}
                             placeholder="User name"
-                            name="username-input"
-                            onChange={this.handleInputChange("username")}
+                            name="userName-input"
+                            onChange={this.handleInputChange("userName")}
                         />
                         {(isShowPasswordField) ? (
                             <div>
@@ -128,4 +128,4 @@ const mapDispatchToProps = {
 
 const enhancer = connect(null, mapDispatchToProps);
 
-export default enhancer(LoginPanel)
+export default enhancer(SignInPanel)

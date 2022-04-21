@@ -13,10 +13,10 @@ import {
 import {
     BUTTON_STYLE,
     LOADING_STATUS,
-    LOGIN_PANEL_STATUS,
+    SIGNIN_PANEL_STATUS,
 } from "Util/Constants"
 
-class ConfirmPanel extends React.Component {
+class SignUpConfirmationPanel extends React.Component {
     constructor(props) {
         super(props);
 
@@ -31,7 +31,8 @@ class ConfirmPanel extends React.Component {
 
     handleConfirmationCodeSubmit = () => {
         const {
-            confirmUser,
+            userName,
+            password,
             onConfirm,
         } = this.props;
 
@@ -39,26 +40,26 @@ class ConfirmPanel extends React.Component {
             confirmationCode,
         } = this.state;
 
-        onConfirm(confirmUser.username, confirmUser.password, confirmationCode);
+        onConfirm(userName, password, confirmationCode);
     }
 
     handleResendButtonClick = () => {
         const {
-            confirmUser,
+            userName,
             onResend,
         } = this.props;
 
-        onResend(confirmUser.username);
+        onResend(userName);
     }
 
     handleCancelButtonClick = () => {
         const { onPanelChange } = this.props;
-        onPanelChange(LOGIN_PANEL_STATUS.LOGIN);
+        onPanelChange(SIGNIN_PANEL_STATUS.SIGNIN);
     }
 
     render() {
         const {
-            confirmUser,
+            userName,
         } = this.props;
 
         const {
@@ -70,7 +71,7 @@ class ConfirmPanel extends React.Component {
                 <div className="column is-4">
                     <div className="box">
                         <p>
-                            Welcome {confirmUser.username}! Please input confirmation code from confirmation email
+                            Welcome {userName}! Please input confirmation code from confirmation email
                         </p>
                         <MessageBox component="signup"/>
                         <Textfield
@@ -104,17 +105,11 @@ class ConfirmPanel extends React.Component {
     };
 }
 
-const mapStateToProps = (state) => {
-    return {
-        confirmUser: state.userAuth.confirmUser,
-    }
-}
-
 const mapDispatchToProps = {
     onConfirm: confirmSignUp,
     onResend: resendConfirmationEmail,
 };
 
-const enhancer = connect(mapStateToProps, mapDispatchToProps);
+const enhancer = connect(null, mapDispatchToProps);
 
-export default enhancer(ConfirmPanel)
+export default enhancer(SignUpConfirmationPanel)

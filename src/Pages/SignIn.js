@@ -1,26 +1,26 @@
 import React from "react"
 import { connect } from 'react-redux'
 import {
-    LoginPanel,
+    SignInPanel,
     SignUpPanel,
-    ConfirmPanel,
+    SignUpConfirmationPanel,
     ForgotPasswordPanel,
 } from "Components/User"
-import { LOGIN_PANEL_STATUS, LOADING_STATUS } from "Util/Constants"
+import { SIGNIN_PANEL_STATUS, LOADING_STATUS } from "Util/Constants"
 
 const {
-    LOGIN,
+    SIGNIN,
     SIGNUP,
-    CONFIRM,
+    SIGNUP_CONFIRM,
     FORGOT_PASSWORD,
-} = LOGIN_PANEL_STATUS;
+} = SIGNIN_PANEL_STATUS;
 
 class SignInPage extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            panelStatus: LOGIN,
+            panelStatus: SIGNIN,
         };
     }
 
@@ -31,19 +31,13 @@ class SignInPage extends React.Component {
     }
 
     loadPanel = (panelStatus) => {
-        const { isUserConfirmed } = this.props;
-
-        if (isUserConfirmed && panelStatus !== CONFIRM) {
-            return <ConfirmPanel onPanelChange={this.handlePanelChange}/>
-        }
-
         switch (panelStatus) {
-            case LOGIN:
-                return <LoginPanel onPanelChange={this.handlePanelChange}/>
+            case SIGNIN:
+                return <SignInPanel onPanelChange={this.handlePanelChange}/>
             case SIGNUP:
                 return <SignUpPanel onPanelChange={this.handlePanelChange}/>
-            case CONFIRM:
-                return <ConfirmPanel onPanelChange={this.handlePanelChange}/>
+            case SIGNUP_CONFIRM:
+                return <SignUpConfirmationPanel onPanelChange={this.handlePanelChange}/>
             case FORGOT_PASSWORD:
                 return <ForgotPasswordPanel onPanelChange={this.handlePanelChange}/>
             default:
@@ -77,7 +71,6 @@ class SignInPage extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        isUserConfirmed: state.signInPanel.isUserConfirmed,
         user: state.userAuth.user,
         fetchUserDataProgress: state.fetchUserDataProgress,
     }
