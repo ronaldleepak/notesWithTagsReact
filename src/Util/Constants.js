@@ -1,4 +1,4 @@
-export const VIEW_STATUS = {
+export const NOTE_CARD_VIEW_STATUS = {
     THUMBNAIL: 'THUMBNAIL',
     DETAIL: 'DETAIL',
     EDITOR: 'EDIT',

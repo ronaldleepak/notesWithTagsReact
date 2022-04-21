@@ -6,19 +6,19 @@ import {
     Card,
     TagsControl,
 } from "Components/Common"
-import { VIEW_STATUS } from "Util/Constants"
+import { NOTE_CARD_VIEW_STATUS } from "Util/Constants"
 import { copyTextToClipboard } from "Util/Util"
 
 export default class NoteDetailPanel extends React.Component {
 
     handleTitleClick = () => {
         const { onViewChange } = this.props;
-        onViewChange(VIEW_STATUS.THUMBNAIL);
+        onViewChange(NOTE_CARD_VIEW_STATUS.THUMBNAIL);
     }
 
     handleEditButtonClick = () => {
         const { onViewChange } = this.props;
-        onViewChange(VIEW_STATUS.EDITOR);
+        onViewChange(NOTE_CARD_VIEW_STATUS.EDITOR);
     }
 
     handleCopyButtonClick = () => {

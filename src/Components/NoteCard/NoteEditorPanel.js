@@ -9,7 +9,7 @@ import {
 } from "Components/Common"
 import { deleteNote, saveNote } from "Actions"
 import {
-    VIEW_STATUS,
+    NOTE_CARD_VIEW_STATUS,
     BUTTON_STYLE,
     LOADING_STATUS,
 } from "Util/Constants"
@@ -50,12 +50,12 @@ class NoteEditorPanel extends React.Component {
             tagsToBeCreated,
             tagsToBeDeleted,
         });
-        onViewChange(VIEW_STATUS.DETAIL);
+        onViewChange(NOTE_CARD_VIEW_STATUS.DETAIL);
     }
 
     handleCloseButtonClick = () => {
         const { onViewChange } = this.props;
-        onViewChange(VIEW_STATUS.DETAIL);
+        onViewChange(NOTE_CARD_VIEW_STATUS.DETAIL);
     }
 
     handleDeleteButtonClick = () => {

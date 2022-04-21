@@ -1,12 +1,12 @@
 import React from "react"
 import { CreatedModifiedDate, Card } from "Components/Common"
-import { VIEW_STATUS } from "Util/Constants"
+import { NOTE_CARD_VIEW_STATUS } from "Util/Constants"
 
 export default class NoteThumbnailPanel extends React.Component {
 
     handleTitleClick = () => {
         const { onViewChange } = this.props;
-        onViewChange(VIEW_STATUS.DETAIL);
+        onViewChange(NOTE_CARD_VIEW_STATUS.DETAIL);
     }
 
     render() {

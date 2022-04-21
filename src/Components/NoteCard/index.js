@@ -2,13 +2,13 @@ import React from "react"
 import NoteThumbnailPanel from "./NoteThumbnailPanel"
 import NoteEditorPanel from "./NoteEditorPanel"
 import NoteDetailPanel from "./NoteDetailPanel"
-import { VIEW_STATUS } from "Util/Constants"
+import { NOTE_CARD_VIEW_STATUS } from "Util/Constants"
 
 const {
     THUMBNAIL,
     DETAIL,
     EDITOR,
-} = VIEW_STATUS;
+} = NOTE_CARD_VIEW_STATUS;
 
 export default class NoteCard extends React.Component {
     constructor(props) {
