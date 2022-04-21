@@ -4,7 +4,6 @@ import { API } from 'aws-amplify'
 import { validateNoteContents } from "Validators";
 import { Note, Tag, NoteTags } from 'models/'
 import _ from 'lodash-es'
-
 import {
     createNote as CreateNote,
     createTag as CreateTag,
@@ -12,37 +11,15 @@ import {
 } from 'graphql/noteWithTagsMutations'
 import {
     fetchUserData,
+    addComponentError,
 } from '.'
-import { addComponentError } from ".";
+import { getContentFromFile } from "Util";
 
 const IMPORT_NOTES_START = 'IMPORT_NOTES_START';
 const IMPORT_NOTES_SUCCESS = 'IMPORT_NOTES_SUCCESS';
 
 const importStart = createAction(IMPORT_NOTES_START);
 const importSuccess = createAction(IMPORT_NOTES_SUCCESS);
-
-const getContentFromFile = async (file) => {
-    return new Promise((resolve, reject) => {
-
-        if (!file || file.size === 0 || file.type !== "application/json") {
-            reject(new Error("Invalid File"))
-        }
-
-        const reader = new FileReader();
-
-        reader.onloadend = () => {
-            try {
-                console.log(reader.result)
-                const contentObject = JSON.parse(reader.result);
-                resolve(contentObject);
-            } catch (error) {
-                reject(error);
-            }
-        }
-        reader.onerror = reject;
-        reader.readAsText(file);
-    })
-}
 
 const importNotes = (file) => async (dispatch, getState) => {
     dispatch(importStart);
@@ -56,7 +33,7 @@ const importNotes = (file) => async (dispatch, getState) => {
         const notes = content.notes;
         const existingTags = getState().note.tags;
 
-        dispatch(importNotesWithTags(notes, existingTags))
+        dispatch(insertNotesWithTags(notes, existingTags))
 
         dispatch(importSuccess())
         dispatch(fetchUserData())
@@ -68,13 +45,14 @@ const importNotes = (file) => async (dispatch, getState) => {
     }
 }
 
-const importNotesWithTags = (notes, existingTags) => async (dispatch, getState) => {
+const insertNotesWithTags = (notes, existingTags) => async (dispatch, getState) => {
     for (const note of notes) {
+        // insert note
         const newNote = new Note({
             header: note.header,
             content: note.content,
         });
-        dispatch(importNote(newNote))
+        dispatch(insertNote(newNote))
 
         for (const tag of note.tags) {
             const newTag = new Tag({
@@ -86,18 +64,18 @@ const importNotesWithTags = (notes, existingTags) => async (dispatch, getState) 
             if (existingTag != null) {
                 newTagID = existingTag.id;
             } else {
-                // create tag
-                dispatch(importTag(newTag));
+                // insert tag
+                dispatch(insertTag(newTag));
             }
 
-            // import note tags
+            // insert note tags
             const newNoteTags = new NoteTags({});
-            dispatch(importNoteTag(newNoteTags.id, newNote.id, newTagID));
+            dispatch(insertNoteTag(newNoteTags.id, newNote.id, newTagID));
         }
     }
 }
 
-const importNote = (note) => async () => {
+const insertNote = (note) => async () => {
     await API.graphql(
     {
         query: CreateNote,
@@ -108,7 +86,7 @@ const importNote = (note) => async () => {
     });
 }
 
-const importTag = (tag) => async () => {
+const insertTag = (tag) => async () => {
     await API.graphql(
     {
         query: CreateTag,
@@ -119,7 +97,7 @@ const importTag = (tag) => async () => {
     });
 }
 
-const importNoteTag = (noteTagID, noteID, tagID) => async () => {
+const insertNoteTag = (noteTagID, noteID, tagID) => async () => {
     await API.graphql(
     {
         query: CreateNoteTags,
