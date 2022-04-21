@@ -1,5 +1,4 @@
 import React from "react"
-import { connect } from 'react-redux'
 import {
     Button,
     LinkButton,
@@ -7,12 +6,7 @@ import {
     Textfield,
 } from "Components/Common"
 import {
-    forgotPassword,
-    submitNewPassword,
-} from "Actions"
-import {
     BUTTON_STYLE,
-    LOADING_STATUS,
     SIGNIN_PAGE_VIEW_STATUS,
 } from "Util/Constants"
 
@@ -109,10 +103,4 @@ class ForgotPasswordNewPasswordPanel extends React.Component {
     };
 }
 
-const mapDispatchToProps = {
-    onSubmitNewPassword: submitNewPassword,
-};
-
-const enhancer = connect(null, mapDispatchToProps);
-
-export default enhancer(ForgotPasswordNewPasswordPanel)
+export default ForgotPasswordNewPasswordPanel

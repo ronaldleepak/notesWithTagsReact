@@ -9,7 +9,6 @@ import {
 import { signUp } from "Actions"
 import {
     BUTTON_STYLE,
-    LOADING_STATUS,
     SIGNIN_PAGE_VIEW_STATUS,
 } from "Util/Constants"
 

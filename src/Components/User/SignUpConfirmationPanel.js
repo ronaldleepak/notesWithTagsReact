@@ -11,7 +11,6 @@ import {
 } from "Actions"
 import {
     BUTTON_STYLE,
-    LOADING_STATUS,
 } from "Util/Constants"
 
 class SignUpConfirmationPanel extends React.Component {

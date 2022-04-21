@@ -1,5 +1,4 @@
 import React from "react"
-import { connect } from 'react-redux'
 import {
     Button,
     LinkButton,
@@ -7,11 +6,7 @@ import {
     Textfield,
 } from "Components/Common"
 import {
-    forgotPassword,
-} from "Actions"
-import {
     BUTTON_STYLE,
-    LOADING_STATUS,
     SIGNIN_PAGE_VIEW_STATUS,
 } from "Util/Constants"
 
