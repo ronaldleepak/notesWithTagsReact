@@ -13,7 +13,7 @@ import {
     fetchUserData,
     addComponentError,
 } from '.'
-import { getContentFromFile } from "Util";
+import { getContentFromFile } from "Util/Util";
 
 const IMPORT_NOTES_START = 'IMPORT_NOTES_START';
 const IMPORT_NOTES_SUCCESS = 'IMPORT_NOTES_SUCCESS';
