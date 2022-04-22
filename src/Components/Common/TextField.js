@@ -133,7 +133,7 @@ export default class TextField extends React.Component {
                         onChange={onChange}
                         onKeyDown={this.handleKeyDown}
                         onBlur={this.handleFocusOut}/>
-                    {this.loadMessage()} 
+                    {this.loadBottomMessage()} 
                 </div>
                 {this.loadPasswordVisiblityButton()}
             </div>
