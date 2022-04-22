@@ -1,5 +1,5 @@
 import React from "react"
-import { CreatedModifiedDate, Card } from "Components/Common"
+import { NotesDate, Card } from "Components/Common"
 import { NOTE_CARD_VIEW_STATUS } from "Util/Constants"
 
 export default class NoteThumbnailPanel extends React.Component {
@@ -21,9 +21,7 @@ export default class NoteThumbnailPanel extends React.Component {
                         </h2>
                     </div>
                     <div className="column is-4">
-                        <CreatedModifiedDate
-                            createdDate={note.createdAt}
-                            modifiedDate={note.updatedAt}/>
+                        <NotesDate note={note}/>
                     </div>
                 </div>
             </Card>

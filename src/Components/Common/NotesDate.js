@@ -1,10 +1,10 @@
 import React from "react"
 
-export default class CreatedModifiedDate extends React.Component {
+export default class NotesDate extends React.Component {
     render() {
-        var { createdDate, modifiedDate } = this.props;
-        createdDate = new Date(createdDate);
-        modifiedDate = new Date(modifiedDate);
+        const { note } = this.props;
+        const createdDate = new Date(note.createdAt);
+        const modifiedDate = new Date(note.updatedAt);
         return (
             <div className="content has-text-grey-light is-small">
                 <div>Created Time: {createdDate.toLocaleString('en-GB')}</div>

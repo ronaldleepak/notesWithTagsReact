@@ -1,7 +1,7 @@
 import React from "react"
 import {
     NewLineText,
-    CreatedModifiedDate,
+    NotesDate,
     Button,
     Card,
     TagsControl,
@@ -39,9 +39,7 @@ export default class NoteDetailPanel extends React.Component {
                         </h2>
                     </div>
                     <div className="column is-4">
-                        <CreatedModifiedDate
-                            createdDate={note.createdAt}
-                            modifiedDate={note.updatedAt}/>
+                        <NotesDate note={note}/>
                     </div>
                 </div>
                 <NewLineText text={note.content}/>
