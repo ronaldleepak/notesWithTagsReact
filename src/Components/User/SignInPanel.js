@@ -4,7 +4,7 @@ import {
     Button,
     LinkButton,
     ErrorMessageBox,
-    Textfield,
+    TextField,
 } from "Components/Common"
 import { SignUpConfirmationPanel } from '.'
 import {
@@ -99,7 +99,7 @@ class SignInPanel extends React.Component {
                     <div className="column is-4">
                         <div className="box">
                             <ErrorMessageBox refName="login"/>
-                            <Textfield
+                            <TextField
                                 value={userName}
                                 placeholder="User name"
                                 name="userName-input"
@@ -107,7 +107,7 @@ class SignInPanel extends React.Component {
                             />
                             {(isShowPasswordField) ? (
                                 <div>
-                                    <Textfield
+                                    <TextField
                                         value={password}
                                         placeholder="Password"
                                         name="password-input"

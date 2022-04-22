@@ -4,7 +4,7 @@ import {
     Button,
     LinkButton,
     ErrorMessageBox,
-    Textfield,
+    TextField,
 } from "Components/Common"
 import {
     resendConfirmationEmail,
@@ -69,7 +69,7 @@ class SignUpConfirmationPanel extends React.Component {
                             Welcome {userName}! Please input confirmation code from confirmation email
                         </p>
                         <ErrorMessageBox refName="signup"/>
-                        <Textfield
+                        <TextField
                             value={confirmationCode}
                             placeholder="Confirmation Code"
                             name="confirmation-code-input"

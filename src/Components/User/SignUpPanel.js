@@ -4,7 +4,7 @@ import {
     Button,
     LinkButton,
     ErrorMessageBox,
-    Textfield,
+    TextField,
 } from "Components/Common"
 import { signUp } from "Actions"
 import {
@@ -58,26 +58,26 @@ class SignUpPanel extends React.Component {
                 <div className="column is-4">
                     <div className="box">
                         <ErrorMessageBox refName="signup"/>
-                        <Textfield
+                        <TextField
                             value={userName}
                             placeholder="User name"
                             name="userName-input"
                             onChange={this.handleInputChange("userName")}
                         />
-                        <Textfield
+                        <TextField
                             value={email}
                             placeholder="Email"
                             name="email-input"
                             onChange={this.handleInputChange("email")}
                         />
-                        <Textfield
+                        <TextField
                             value={password}
                             placeholder="Password"
                             name="password-input"
                             isPassword={true}
                             onChange={this.handleInputChange("password")}
                         />
-                        <Textfield
+                        <TextField
                             value={passwordToConfirm}
                             placeholder="Confirm Password"
                             name="confirm-password-input"

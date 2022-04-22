@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import {
     Button,
     Card,
-    Textfield,
+    TextField,
     TextArea,
     TagsControl
 } from "Components/Common"
@@ -98,7 +98,7 @@ class NoteEditorPanel extends React.Component {
 
         return (
             <Card name="note-edit">
-                <Textfield
+                <TextField
                     value={header}
                     placeholder="Title"
                     name="note-header-input"

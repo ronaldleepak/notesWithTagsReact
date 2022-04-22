@@ -3,7 +3,7 @@ import {
     Button,
     LinkButton,
     ErrorMessageBox,
-    Textfield,
+    TextField,
 } from "Components/Common"
 import {
     BUTTON_STYLE,
@@ -59,26 +59,26 @@ class ForgotPasswordNewPasswordPanel extends React.Component {
                     Please input confirmation code and new password
                 </p>
                 <ErrorMessageBox refName="forgotPasswordSubmit"/>
-                <Textfield
+                <TextField
                     value={userName}
                     placeholder="User Name"
                     name="userName-input"
                     onChange={this.handleInputChange("userName")}
                 />
-                <Textfield
+                <TextField
                     value={confirmationCode}
                     placeholder="Confirmation Code"
                     name="confirmation-code-input"
                     onChange={this.handleInputChange("confirmationCode")}
                 />
-                <Textfield
+                <TextField
                     value={newPassword}
                     placeholder="New Password"
                     isPassword={true}
                     name="confirmation-code-input"
                     onChange={this.handleInputChange("newPassword")}
                 />
-                <Textfield
+                <TextField
                     value={confirmNewPassword}
                     placeholder="Confirm New Password"
                     isPassword={true}
