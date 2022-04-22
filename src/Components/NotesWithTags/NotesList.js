@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from 'react-redux'
-import { Button, MessageBox } from "Components/Common"
+import { Button, ErrorMessageBox } from "Components/Common"
 import { createNote } from "Actions"
 import { getNotes } from "Selectors/GetNotes";
 import NoteCard from "Components/NoteCard"
@@ -21,7 +21,7 @@ class NotesList extends React.Component {
         return (
             <div className="columns is-centered is-mobile">
                 <div className="column is-9">
-                    <MessageBox component="note"/>
+                    <ErrorMessageBox refName="note"/>
                     <Button
                         label="Create Note"
                         name="new-note"

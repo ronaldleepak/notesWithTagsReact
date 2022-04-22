@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import {
     Button,
     LinkButton,
-    MessageBox,
+    ErrorMessageBox,
     Textfield,
 } from "Components/Common"
 import { SignUpConfirmationPanel } from '.'
@@ -98,7 +98,7 @@ class SignInPanel extends React.Component {
                 <div className="columns is-centered is-mobile">
                     <div className="column is-4">
                         <div className="box">
-                            <MessageBox component="login"/>
+                            <ErrorMessageBox refName="login"/>
                             <Textfield
                                 value={userName}
                                 placeholder="User name"

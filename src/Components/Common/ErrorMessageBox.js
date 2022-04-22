@@ -5,28 +5,28 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import LinkButton from "./LinkButton";
 import { clearComponentError } from "Actions";
 
-class MessageBox extends React.Component {
+class ErrorMessageBox extends React.Component {
     static propTypes = {
-        component: PropTypes.string,
+        refName: PropTypes.string,
     }
     
-    handleMessageBoxClose = () => {
-        const { onClearError, component } = this.props;
-        onClearError(component)
+    handleCloseButtonClick = () => {
+        const { onClearError, refName } = this.props;
+        onClearError(refName)
     }
 
     render() {
-        const { errors, component } = this.props;
+        const { errors, refName } = this.props;
         return (
-            (errors[component]) ? 
+            (errors[refName]) ? 
             (<div className="field has-addons has-background-danger-light py-2">
                 <div className="control is-expanded has-text-danger ml-2">
-                    {errors[component]}
+                    {errors[refName]}
                 </div>
                 <div className="control">
                     <LinkButton
                         className="mr-2"
-                        action={this.handleMessageBoxClose}
+                        action={this.handleCloseButtonClick}
                         label={(
                             <FontAwesomeIcon className="has-text-danger" icon="xmark"/>
                         )}/>
@@ -48,5 +48,5 @@ const mapStateToProps = (state) => {
 
 const enhancer = connect(mapStateToProps, mapDispatchToProps);
 
-export default enhancer(MessageBox)
+export default enhancer(ErrorMessageBox)
 

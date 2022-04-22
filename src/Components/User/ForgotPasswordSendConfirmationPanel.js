@@ -2,7 +2,7 @@ import React from "react"
 import {
     Button,
     LinkButton,
-    MessageBox,
+    ErrorMessageBox,
     Textfield,
 } from "Components/Common"
 import {
@@ -50,7 +50,7 @@ class ForgotPasswordSendConfirmationPanel extends React.Component {
                 <p>
                     Please input user name
                 </p>
-                <MessageBox component="forgotPassword"/>
+                <ErrorMessageBox refName="forgotPassword"/>
                 <Textfield
                     value={userName}
                     placeholder="User Name"
