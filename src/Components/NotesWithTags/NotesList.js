@@ -16,8 +16,6 @@ class NotesList extends React.Component {
     render() {
         const { notes } = this.props
 
-        console.log(notes)
-
         return (
             <div className="columns is-centered is-mobile">
                 <div className="column is-9">
