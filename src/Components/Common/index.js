@@ -6,5 +6,5 @@ export { default as TextField } from './TextField';
 export { default as NotesDate } from './NotesDate';
 export { default as Card } from './Card';
 export { default as NavBar } from './NavBar';
-export { default as TagsControl } from './TagsControl';
+export { default as NoteTagsControl } from './NoteTagsControl';
 export { default as ErrorMessageBox } from './ErrorMessageBox';

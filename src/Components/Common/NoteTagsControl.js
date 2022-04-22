@@ -1,11 +1,11 @@
 import React from "react"
 import PropTypes from 'prop-types'
 import { TextField } from "."
-import TagElement from "./TagElement"
+import TagElement from "./NoteTagElement"
 import { NoteTags, Tag } from "models";
 import _ from 'lodash-es'
 
-export default class TagsControl extends React.Component {
+export default class NoteTagsControl extends React.Component {
     constructor(props) {
         super(props);
 
@@ -16,35 +16,36 @@ export default class TagsControl extends React.Component {
 
     static propTypes = {
         noteTags: PropTypes.array,
-        onTagAdded: PropTypes.func,
-        onTagDeleted: PropTypes.func,
+        onNoteTagAdded: PropTypes.func,
+        onNoteTagDeleted: PropTypes.func,
+        isAllowingEdit: PropTypes.bool,
     }
 
     handleInputChange = (field) => (event) => {
         this.setState({[field]: event.target.value});
     }
 
-    handleNewTagSubmit = (textInput) => {
-        const { noteTags, onTagAdded } = this.props;
+    handleNoteTagCreation = (textInput) => {
+        const { noteTags, onNoteTagAdded } = this.props;
 
         if (textInput !== "") {
-            const existingTag = _.find(noteTags, function(noteTag) { return noteTag.tag.name === textInput });
+            const existingNoteTag = _.find(noteTags, function(noteTag) { return noteTag.tag.name === textInput });
 
             this.clearTextField();
-            if (existingTag == null) {
+            if (existingNoteTag == null) {
                 const newNoteTag = new NoteTags({
                     tag: new Tag({
                         name: textInput
                     })
                 })
-                onTagAdded(newNoteTag);
+                onNoteTagAdded(newNoteTag);
             }
         }
     }
 
-    handleDeleteTag = (deletedNoteTag) => {
-        const { onTagDeleted } = this.props;
-        onTagDeleted(deletedNoteTag);
+    handleNoteTagDeletion = (deletedNoteTag) => {
+        const { onNoteTagDeleted } = this.props;
+        onNoteTagDeleted(deletedNoteTag);
     }
 
     clearTextField = () => {
@@ -52,20 +53,20 @@ export default class TagsControl extends React.Component {
     }
 
     render() {
-        const { noteTags, allowEdit } = this.props;
+        const { noteTags, isAllowingEdit } = this.props;
         const { textInput } = this.state;
         
         return (
             <div className="block">
                 {
-                    (allowEdit) ?
+                    (isAllowingEdit) ?
                     <TextField
                         value={textInput}
                         placeholder="Add New Tag Here"
                         name="new-tag-input"
                         onChange={this.handleInputChange("textInput")}
-                        onEnterKeyDown={this.handleNewTagSubmit}
-                        onFocusOut={this.handleNewTagSubmit}
+                        onEnterKeyDown={this.handleNoteTagCreation}
+                        onFocusOut={this.handleNoteTagCreation}
                     /> :
                     ""
                 }
@@ -75,9 +76,9 @@ export default class TagsControl extends React.Component {
                         return (
                             <TagElement
                                 noteTag={noteTag}
-                                allowEdit={allowEdit}
+                                isAllowingEdit={isAllowingEdit}
                                 key={noteTag.id}
-                                onDelete={this.handleDeleteTag}
+                                onNoteTagDelete={this.handleNoteTagDeletion}
                             />
                         )
                     })

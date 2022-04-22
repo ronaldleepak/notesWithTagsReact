@@ -5,7 +5,7 @@ import {
     Card,
     TextField,
     TextArea,
-    TagsControl
+    NoteTagsControl
 } from "Components/Common"
 import { deleteNote, saveNote } from "Actions"
 import {
@@ -67,7 +67,7 @@ class NoteEditorPanel extends React.Component {
         this.setState({[field]: event.target.value});
     }
 
-    handleTagAdded = (newNoteTag) => {
+    handleNoteTagAdded = (newNoteTag) => {
         const {
             tags,
             tagsToBeCreated,
@@ -79,7 +79,7 @@ class NoteEditorPanel extends React.Component {
         })
     }
 
-    handleTagDeleted = (deletedNoteTag) => {
+    handleNoteTagDeleted = (deletedNoteTag) => {
         const {
             tags,
             tagsToBeCreated,
@@ -110,11 +110,11 @@ class NoteEditorPanel extends React.Component {
                     name="note-content-input"
                     onChange={this.handleInputChange("content")}
                 />
-                <TagsControl
+                <NoteTagsControl
                     noteTags={tags}
-                    allowEdit={true}
-                    onTagAdded={this.handleTagAdded}
-                    onTagDeleted={this.handleTagDeleted}/>
+                    isAllowingEdit={true}
+                    onNoteTagAdded={this.handleNoteTagAdded}
+                    onNoteTagDeleted={this.handleNoteTagDeleted}/>
                 <div className="block buttons">
                     <Button
                         label="Save"

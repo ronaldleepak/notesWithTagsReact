@@ -4,7 +4,7 @@ import {
     NotesDate,
     Button,
     Card,
-    TagsControl,
+    NoteTagsControl,
 } from "Components/Common"
 import { NOTE_CARD_VIEW_STATUS } from "Util/Constants"
 import { copyTextToClipboard } from "Util/Util"
@@ -43,11 +43,9 @@ export default class NoteDetailPanel extends React.Component {
                     </div>
                 </div>
                 <NewLineText value={note.content}/>
-                <TagsControl
+                <NoteTagsControl
                     noteTags={tags}
-                    allowEdit={false}
-                    onTagAdded={this.handleTagAdded}
-                    onTagDeleted={this.handleTagDeleted}/>
+                    isAllowingEdit={false}/>
                 <div className="block buttons">
                     <Button
                         label="Edit"
