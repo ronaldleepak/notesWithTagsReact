@@ -16,7 +16,7 @@ export default class Button extends React.Component {
         action: PropTypes.func,
         buttonStyle: PropTypes.string,
         isLoading: PropTypes.bool,
-        isFileImport: PropTypes.bool,
+        isFileImportFunctionActive: PropTypes.bool,
     }
 
     buttonStyleToBulmaClass = (buttonStyle) => {
@@ -36,10 +36,10 @@ export default class Button extends React.Component {
         return isLoading ? "is-loading" : "";
     }
 
-    handleButtonClick = (event) => {
-        const { action, isFileImport } = this.props;
+    handleButtonAction = (event) => {
+        const { action, isFileImportFunctionActive } = this.props;
 
-        if (isFileImport) {
+        if (isFileImportFunctionActive) {
             const file = event.target.files[0];
             event.file = file;
         } else {
@@ -57,7 +57,7 @@ export default class Button extends React.Component {
             className,
             buttonStyle,
             isLoading,
-            isFileImport,
+            isFileImportFunctionActive,
         } = this.props;
 
         const buttonClassName = `button is-light mr-4
@@ -67,18 +67,20 @@ export default class Button extends React.Component {
 
         return (
             <div>
-                {(isFileImport) ? (
+                {(isFileImportFunctionActive) ? (
                     <input
                         type="file"
                         ref={(ref) => this.upload = ref}
                         style={{display: "none"}}
-                        onChange={this.handleButtonClick.bind(this)}
+                        onChange={this.handleButtonAction.bind(this)}
                     />
                 ) : null}
                 <button
                     aria-label={name}
                     className={buttonClassName}
-                    onClick={(isFileImport) ? () => {this.upload.click()} : this.handleButtonClick}>
+                    onClick={(isFileImportFunctionActive) ? () => {
+                        this.upload.click()
+                    } : this.handleButtonAction}>
                     {label}
                 </button>
             </div>

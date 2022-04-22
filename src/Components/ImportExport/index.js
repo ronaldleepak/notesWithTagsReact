@@ -26,7 +26,7 @@ class NotesImportExportPanel extends React.Component {
                             label="Import .json file"
                             name="import-notes"
                             isLoading={this.props.loadingStatus === LOADING_STATUS.LOADING}
-                            isFileImport={true}
+                            isFileImportFunctionActive={true}
                             action={this.handleImportButtonClick}/>
                         <Button
                             label="Export .json file"
