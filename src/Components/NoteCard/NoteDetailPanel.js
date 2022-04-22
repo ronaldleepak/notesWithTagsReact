@@ -42,7 +42,7 @@ export default class NoteDetailPanel extends React.Component {
                         <NotesDate note={note}/>
                     </div>
                 </div>
-                <NewLineText text={note.content}/>
+                <NewLineText value={note.content}/>
                 <TagsControl
                     noteTags={tags}
                     allowEdit={false}

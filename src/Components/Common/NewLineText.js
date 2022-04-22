@@ -1,17 +1,22 @@
 import React from "react"
+import PropTypes from 'prop-types'
+import { Constants } from "@aws-amplify/core";
 
 export default class NewLineText extends React.Component {
+    static propTypes = {
+        value: PropTypes.string,
+    }
 
-    splitNextLine = (multilinedText) => {
+    splitNextLineIntoArray = (multilinedText) => {
         return multilinedText.split('\n');
     }
 
     render() {
-        var { text } = this.props;
+        const { value } = this.props;
         return (
             <div className="block">
             {
-                this.splitNextLine(text).map((paragraphContent, i) => {
+                this.splitNextLineIntoArray(value).map((paragraphContent, i) => {
                     const key = "paragraph_" + i;
                     return (
                         <p key={key}>
