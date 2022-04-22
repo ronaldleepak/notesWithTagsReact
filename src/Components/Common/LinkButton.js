@@ -21,7 +21,7 @@ export default class LinkButton extends React.Component {
         buttonStyle: PropTypes.string,
     }
 
-    buttonStyleToBulmaClass = (buttonStyle) => {
+    loadBulmaClassName = (buttonStyle) => {
         switch (buttonStyle) {
             case NORMAL:
                 return "";
@@ -34,7 +34,7 @@ export default class LinkButton extends React.Component {
         }
     }
 
-    handleLinkButtonClick = (event) => {
+    handleButtonClick = (event) => {
         const { action } = this.props;
 
         event.stopPropagation();
@@ -44,7 +44,7 @@ export default class LinkButton extends React.Component {
     }
 
     render() {
-        var {
+        const {
             label,
             name,
             className,
@@ -52,16 +52,16 @@ export default class LinkButton extends React.Component {
             buttonStyle,
         } = this.props;
 
-        const linkClassName = `is-light
-                        ${this.buttonStyleToBulmaClass(buttonStyle)}
+        const bulmaClassName = `is-light
+                        ${this.loadBulmaClassName(buttonStyle)}
                         ${className}`;
 
         return (
             <a
                 href={href}
                 aria-label={name}
-                className={linkClassName}
-                onClick={this.handleLinkButtonClick}>
+                className={bulmaClassName}
+                onClick={this.handleButtonClick}>
                 {label}
             </a>
         );
