@@ -4,7 +4,7 @@ import {
     Button,
     Card,
     Textfield,
-    Textarea,
+    TextArea,
     TagsControl
 } from "Components/Common"
 import { deleteNote, saveNote } from "Actions"
@@ -104,7 +104,7 @@ class NoteEditorPanel extends React.Component {
                     name="note-header-input"
                     onChange={this.handleInputChange("header")}
                 />
-                <Textarea
+                <TextArea
                     value={content}
                     placeholder="Content"
                     name="note-content-input"
