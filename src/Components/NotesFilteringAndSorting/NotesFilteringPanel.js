@@ -6,12 +6,23 @@ import { updateCriteriaForFiltering } from "Actions"
 
 class NotesFilteringPanel extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            textForFiltering: "",
+        };
+    }
+
     handleInputChange = (field) => (event) => {
         this.setState({[field]: event.target.value});
     }
 
-    handleFilteringButtonClick = (event) => {
-        
+    handleFilteringButtonClick = () => {
+        const { onFilter } = this.props;
+        const { textForFiltering } = this.state;
+
+        onFilter(textForFiltering);
     }
 
     render() {
