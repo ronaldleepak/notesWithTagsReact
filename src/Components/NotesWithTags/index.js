@@ -1,6 +1,6 @@
 import React from "react"
 import NotesList from "Components/NotesWithTags/NotesList";
-import ImportExport from "Components/ImportExport";
+import NotesImportExportPanel from "Components/NotesImportExport";
 
 class NotesWithTagsPanel extends React.Component {
 
@@ -9,7 +9,7 @@ class NotesWithTagsPanel extends React.Component {
             <div>
                 <NotesList/>
 
-                <ImportExport/>
+                <NotesImportExportPanel/>
             </div>
         );
     };
