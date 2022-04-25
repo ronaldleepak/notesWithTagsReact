@@ -11,7 +11,7 @@ import signUpPanel from './UserAuthentication/SignUpPanel';
 import forgotPasswordPanel from './UserAuthentication/ForgotPasswordPanel';
 
 import notesWithTagsPanel from './NotesWithTags/NotesWithTagsPanel';
-import importExportNotesPanel from './ImportExportNotes/ImportExportNotesPanel';
+import notesImportExportPanel from './NotesWithTags/NotesImportExportPanel';
 
 const reducer = combineReducers({
     componentError,
@@ -25,7 +25,7 @@ const reducer = combineReducers({
     forgotPasswordPanel,
 
     notesWithTagsPanel,
-    importExportNotesPanel,
+    notesImportExportPanel,
 });
 
 export default reducer;

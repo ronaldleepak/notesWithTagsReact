@@ -16,7 +16,7 @@ const initialState = {
     loadingStatus: IDLE,
 };
 
-const importExportNotesPanel = handleActions({
+const notesImportExportPanel = handleActions({
     [IMPORT_NOTES_START]: (state, { payload }) => ({
         ...state,
         loadingStatus: LOADING,
@@ -35,4 +35,4 @@ const importExportNotesPanel = handleActions({
     }),
 }, initialState);
 
-export default importExportNotesPanel;
+export default notesImportExportPanel;
