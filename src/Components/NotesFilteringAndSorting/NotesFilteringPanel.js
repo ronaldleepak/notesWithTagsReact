@@ -1,5 +1,8 @@
 import React from "react"
-import { Button } from "Components/Common"
+import {
+    Button,
+    TextField,
+} from "Components/Common"
 import { LOADING_STATUS } from "Util/Constants"
 import { connect } from 'react-redux'
 import { updateCriteriaForFiltering } from "Actions"
@@ -26,9 +29,19 @@ class NotesFilteringPanel extends React.Component {
     }
 
     render() {
+        const { textForFiltering } = this.state;
         return (
             <div>
-                
+                <TextField
+                    value={textForFiltering}
+                    placeholder="Search by Title"
+                    name="textForFiltering-input"
+                    onChange={this.handleInputChange("textForFiltering")}
+                />
+                <Button
+                    label="Search"
+                    name="search"
+                    action={this.handleFilteringButtonClick}/>
             </div>
         );
     };
