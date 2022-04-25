@@ -80,3 +80,11 @@ export {
     confirmSignUp,
     resendConfirmationEmail,
 } from './UserSignUp';
+export {
+    UPDATE_FILTERING_CRITERIA_START,
+    UPDATE_FILTERING_CRITERIA_SUCCESS,
+    UPDATE_SORTING_CRITERIA_START,
+    UPDATE_SORTING_CRITERIA_SUCCESS,
+    updateCriteriaForFiltering,
+    updateCriteriaForSorting,
+} from './NotesFilteringAndSorting'

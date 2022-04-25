@@ -12,6 +12,7 @@ import forgotPasswordPanel from './UserAuthentication/ForgotPasswordPanel';
 
 import notesWithTagsPanel from './NotesWithTags/NotesWithTagsPanel';
 import notesImportExportPanel from './NotesWithTags/NotesImportExportPanel';
+import notesFilteringAndSortingCriteria from './NotesWithTags/NotesFilteringAndSortingCriteria';
 
 const reducer = combineReducers({
     componentError,
@@ -26,6 +27,7 @@ const reducer = combineReducers({
 
     notesWithTagsPanel,
     notesImportExportPanel,
+    notesFilteringAndSortingCriteria,
 });
 
 export default reducer;

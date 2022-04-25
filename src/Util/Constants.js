@@ -25,3 +25,9 @@ export const LOADING_STATUS = {
     LOADING: 'LOADING',
     IDLE: 'IDLE',
 }
+
+export const SORTING_CRITERIA = {
+    CREATED_AT: 'CREATED_AT',
+    UPDATED_AT: 'UPDATED_AT',
+    HEADER: 'HEADER',
+}
