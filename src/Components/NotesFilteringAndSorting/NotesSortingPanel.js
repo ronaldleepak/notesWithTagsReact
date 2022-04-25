@@ -1,9 +1,14 @@
 import React from "react"
-import { Button } from "Components/Common"
+import { SelectDropdown } from "Components/Common"
 import { LOADING_STATUS, SORTING_CRITERIA } from "Util/Constants"
 import { connect } from 'react-redux'
 import { updateCriteriaForSorting } from "Actions"
 
+const {
+    CREATED_AT,
+    UPDATED_AT,
+    HEADER,
+} = SORTING_CRITERIA;
 class NotesSortingPanel extends React.Component {
 
     constructor(props) {
@@ -27,9 +32,15 @@ class NotesSortingPanel extends React.Component {
 
     render() {
         return (
-            <div>
-                
-            </div>
+            <SelectDropdown
+                name="sorting"
+                options={[
+                    {title: "Updated at", value: UPDATED_AT},
+                    {title: "Created at", value: CREATED_AT},
+                    {title: "Header", value: HEADER},
+                ]}
+                action={this.handleCriteriaChange}
+            />
         );
     };
 }
